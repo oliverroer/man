@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
-TARGET=${SCRIPT_DIR}/man
+TARGET=${SCRIPT_DIR}/raw
 
 rm -rf "$TARGET"
 

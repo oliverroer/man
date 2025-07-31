@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
+RAW_DIR="$SCRIPT_DIR/raw"
 DOCS_DIR="$SCRIPT_DIR/docs"
 MAN_DIR="$DOCS_DIR/man"
 STYLES_DIR="$SCRIPT_DIR/styles"
 
-export() {
+mkdir -p "$DOCS_DIR"
+
+exportraw() {
   docker run --volume "$SCRIPT_DIR":/work --rm -it ubuntu bash /work/export.sh
 }
 
@@ -46,7 +49,7 @@ genhtml() {
 parsename() {
   local SOURCE="$1"
 
-  SECTION_FILE="${SOURCE##*man/man}"
+  SECTION_FILE="${SOURCE##*raw/man}"
 
   SECTION="${SECTION_FILE%%/*}"
   FILE="${SECTION_FILE#*/}"
@@ -60,7 +63,7 @@ postprocess() {
   rm -rf "$MAN_DIR"
   mkdir -p "$MAN_DIR"
 
-  find "$SCRIPT_DIR/man" -type f -name "*.gz" | while read -r SOURCE; do
+  find "$RAW_DIR" -type f -name "*.gz" | while read -r SOURCE; do
     while read -r SECTION NAME; do
       echo "Processing $NAME ($SECTION)..."
       mkdir -p "$MAN_DIR/$SECTION"
@@ -112,7 +115,7 @@ css() {
 }
 
 
-#export
-postprocess
+#exportraw
+#postprocess
 css
 index > "$DOCS_DIR/index.html"
