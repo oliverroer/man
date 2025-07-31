@@ -1,0 +1,94 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>uptime (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">UPTIME(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">UPTIME(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">uptime - Tell how long the system has been running.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>uptime</b> [<i>options</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>uptime</b> gives a one line display of the following
+    information. The current time, how long the system has been running, how
+    many users are currently logged on, and the system load averages for the
+    past 1, 5, and 15 minutes.</p>
+<p class="Pp">This is the same information contained in the header line
+    displayed by <b>w</b>(1).</p>
+<p class="Pp">System load averages is the average number of processes that are
+    either in a runnable or uninterruptable state. A process in a runnable state
+    is either using the CPU or waiting to use the CPU. A process in
+    uninterruptable state is waiting for some I/O access, eg waiting for disk.
+    The averages are taken over the three time intervals. Load averages are not
+    normalized for the number of CPUs in a system, so a load average of 1 means
+    a single CPU system is loaded all the time while on a 4 CPU system it means
+    it was idle 75% of the time.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b>, <b>--pretty</b></a></dt>
+  <dd>show uptime in pretty format</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>display this help text</dd>
+  <dt id="s"><a class="permalink" href="#s"><b>-s</b>, <b>--since</b></a></dt>
+  <dd>system up since, in yyyy-mm-dd HH:MM:SS format</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>display version information and exit</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag">
+  <dt><i>/var/run/utmp</i></dt>
+  <dd>information about who is currently logged on</dd>
+  <dt><i>/proc</i></dt>
+  <dd>process information</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
+<p class="Pp"><b>uptime</b> was written by
+    <a class="Lk" href="greenfie@gauss.rutgers.edu">Larry Greenfield</a> and
+    <a class="Lk" href="johnsonm@sunsite.unc.edu">Michael K. Johnson</a></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>ps</b>(1), <b>top</b>(1), <b>utmp</b>(5), <b>w</b>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">Please send bug reports to
+    <a class="Lk" href="procps@freelists.org">procps@freelists.org</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">December 2012</td>
+    <td class="foot-os">procps-ng</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

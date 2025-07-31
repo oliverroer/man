@@ -1,0 +1,103 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>lsearch (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lsearch(3)</td>
+    <td class="head-vol">Library Functions Manual</td>
+    <td class="head-rtitle">lsearch(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lfind, lsearch - linear search of an array</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;search.h&gt;</b></pre>
+<pre><b>void *lfind(const void </b><i>key</i><b>[.</b><i>size</i><b>], const void </b><i>base</i><b>[.</b><i>size</i><b> * .</b><i>nmemb</i><b>],</b>
+<b>            size_t *</b><i>nmemb</i><b>, size_t </b><i>size</i><b>,</b>
+<b>            int(*</b><i>compar</i><b>)(const void [.</b><i>size</i><b>], const void [.</b><i>size</i><b>]));</b>
+<b>void *lsearch(const void </b><i>key</i><b>[.</b><i>size</i><b>], void </b><i>base</i><b>[.</b><i>size</i><b> * .</b><i>nmemb</i><b>],</b>
+<b>            size_t *</b><i>nmemb</i><b>, size_t </b><i>size</i><b>,</b>
+<b>            int(*</b><i>compar</i><b>)(const void [.</b><i>size</i><b>], const void [.</b><i>size</i><b>]));</b></pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>lfind</b>() and <b>lsearch</b>() perform a linear search for
+    <i>key</i> in the array <i>base</i> which has <i>*nmemb</i> elements of
+    <i>size</i> bytes each. The comparison function referenced by <i>compar</i>
+    is expected to have two arguments which point to the <i>key</i> object and
+    to an array member, in that order, and which returns zero if the <i>key</i>
+    object matches the array member, and nonzero otherwise.</p>
+<p class="Pp">If <b>lsearch</b>() does not find a matching element, then the
+    <i>key</i> object is inserted at the end of the table, and <i>*nmemb</i> is
+    incremented. In particular, one should know that a matching element exists,
+    or that more room is available.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
+  VALUE</a></h1>
+<p class="Pp"><b>lfind</b>() returns a pointer to a matching member of the
+    array, or NULL if no match is found. <b>lsearch</b>() returns a pointer to a
+    matching member of the array, or to the newly added member if no match is
+    found.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ATTRIBUTES"><a class="permalink" href="#ATTRIBUTES">ATTRIBUTES</a></h1>
+<p class="Pp">For an explanation of the terms used in this section, see
+    <b>attributes</b>(7).</p>
+<table class="tbl" border="1" style="border-style: solid;">
+  <tr>
+    <td><b>Interface</b></td>
+    <td><b>Attribute</b></td>
+    <td><b>Value</b></td>
+  </tr>
+  <tr>
+    <td>lfind (), lsearch ()</td>
+    <td>Thread safety</td>
+    <td>MT-Safe</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<p class="Pp">POSIX.1-2008.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<p class="Pp">POSIX.1-2001, SVr4, 4.3BSD. libc-4.6.27.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">The naming is unfortunate.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>bsearch</b>(3), <b>hsearch</b>(3), <b>tsearch</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

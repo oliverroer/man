@@ -1,0 +1,116 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_issue (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_ISSUE(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_ISSUE(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_issue - PAM module to add issue file to user prompt</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_issue.so</b> [noesc] [issue=<i>issue-file-name</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">pam_issue is a PAM module to prepend an issue file to the username
+    prompt. It also by default parses escape codes in the issue file similar to
+    some common getty's (using \x format).</p>
+<p class="Pp">Recognized escapes:</p>
+<p class="Pp">\d</p>
+<div class="Bd-indent">current day</div>
+<p class="Pp">\l</p>
+<div class="Bd-indent">name of this tty</div>
+<p class="Pp">\m</p>
+<div class="Bd-indent">machine architecture (uname -m)</div>
+<p class="Pp">\n</p>
+<div class="Bd-indent">machine's network node hostname (uname -n)</div>
+<p class="Pp">\o</p>
+<div class="Bd-indent">domain name of this system</div>
+<p class="Pp">\r</p>
+<div class="Bd-indent">release number of operating system (uname -r)</div>
+<p class="Pp">\t</p>
+<div class="Bd-indent">current time</div>
+<p class="Pp">\s</p>
+<div class="Bd-indent">operating system name (uname -s)</div>
+<p class="Pp">\u</p>
+<div class="Bd-indent">number of users currently logged in</div>
+<p class="Pp">\U</p>
+<div class="Bd-indent">same as \u except it is suffixed with &quot;user&quot; or
+  &quot;users&quot; (eg. &quot;1 user&quot; or &quot;10 users&quot;)</div>
+<p class="Pp">\v</p>
+<div class="Bd-indent">operating system version and build date (uname -v)</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">noesc</p>
+<div class="Bd-indent">Turns off escape code parsing.</div>
+<p class="Pp">issue=issue-file-name</p>
+<div class="Bd-indent">The file to output if not using the default.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">Only the <b>auth</b> module type is provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_IGNORE</p>
+<div class="Bd-indent">The prompt was already changed.</div>
+<p class="Pp">PAM_SERVICE_ERR</p>
+<div class="Bd-indent">A service module error occurred.</div>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">The new prompt was set successfully.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Add the following line to /etc/pam.d/login to set the user
+    specific issue at login:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+        auth optional pam_issue.so issue=/etc/issue
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_issue was written by Ben Collins
+  &lt;bcollins@debian.org&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

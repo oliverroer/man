@@ -1,0 +1,113 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>abs (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">abs(3)</td>
+    <td class="head-vol">Library Functions Manual</td>
+    <td class="head-rtitle">abs(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">abs, labs, llabs, imaxabs - compute the absolute value of an
+    integer</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;stdlib.h&gt;</b></pre>
+<pre><b>int abs(int </b><i>j</i><b>);</b>
+<b>long labs(long </b><i>j</i><b>);</b>
+<b>long long llabs(long long </b><i>j</i><b>);</b></pre>
+<pre><b>#include &lt;inttypes.h&gt;</b></pre>
+<pre><b>intmax_t imaxabs(intmax_t </b><i>j</i><b>);</b></pre>
+<p class="Pp"></p>
+<div class="Bd-indent">Feature Test Macro Requirements for glibc (see
+  <b>feature_test_macros</b>(7)):</div>
+<p class="Pp"><b>llabs</b>():</p>
+<pre>
+<br/>
+    _ISOC99_SOURCE || _POSIX_C_SOURCE &gt;= 200112L</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>abs</b>() function computes the absolute value of the
+    integer argument <i>j</i>. The <b>labs</b>(), <b>llabs</b>(), and
+    <b>imaxabs</b>() functions compute the absolute value of the argument
+    <i>j</i> of the appropriate integer type for the function.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
+  VALUE</a></h1>
+<p class="Pp">Returns the absolute value of the integer argument, of the
+    appropriate integer type for the function.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ATTRIBUTES"><a class="permalink" href="#ATTRIBUTES">ATTRIBUTES</a></h1>
+<p class="Pp">For an explanation of the terms used in this section, see
+    <b>attributes</b>(7).</p>
+<table class="tbl" border="1" style="border-style: solid;">
+  <tr>
+    <td><b>Interface</b></td>
+    <td><b>Attribute</b></td>
+    <td><b>Value</b></td>
+  </tr>
+  <tr>
+    <td>abs (), labs (), llabs (), imaxabs ()</td>
+    <td>Thread safety</td>
+    <td>MT-Safe</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<p class="Pp">C11, POSIX.1-2008.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<p class="Pp">POSIX.1-2001, C99, SVr4, 4.3BSD.</p>
+<p class="Pp">C89 only includes the <b>abs</b>() and <b>labs</b>() functions;
+    the functions <b>llabs</b>() and <b>imaxabs</b>() were added in C99.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">Trying to take the absolute value of the most negative integer is
+    not defined.</p>
+<p class="Pp">The <b>llabs</b>() function is included since glibc 2.0. The
+    <b>imaxabs</b>() function is included since glibc 2.1.1.</p>
+<p class="Pp">For <b>llabs</b>() to be declared, it may be necessary to define
+    <b>_ISOC99_SOURCE</b> or <b>_ISOC9X_SOURCE</b> (depending on the version of
+    glibc) before including any standard headers.</p>
+<p class="Pp">By default, GCC handles <b>abs</b>(), <b>labs</b>(), and (since
+    GCC 3.0) <b>llabs</b>() and <b>imaxabs</b>() as built-in functions.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>cabs</b>(3), <b>ceil</b>(3), <b>fabs</b>(3), <b>floor</b>(3),
+    <b>rint</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

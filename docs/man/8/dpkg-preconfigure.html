@@ -1,0 +1,88 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>dpkg-preconfigure (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DPKG-PRECONFIGURE(8)</td>
+    <td class="head-vol">Debconf</td>
+    <td class="head-rtitle">DPKG-PRECONFIGURE(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">dpkg-preconfigure - let packages ask questions prior to their
+    installation</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre> dpkg-preconfigure [options] package.deb
+ dpkg-preconfigure --apt
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>dpkg-preconfigure</b> lets packages ask questions before they
+    are installed. It operates on a set of debian packages, and all packages
+    that use debconf will have their config script run so they can examine the
+    system and ask questions.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b><i>type</i>,
+    <b>--frontend=</b><i>type</i></a></dt>
+  <dd>Select the frontend to use.</dd>
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b><i>value</i>,
+    <b>--priority=</b><i>value</i></a></dt>
+  <dd>Set the lowest priority of questions you are interested in. Any questions
+      with a priority below the selected priority will be ignored and their
+      default answers will be used.</dd>
+  <dt id="terse"><a class="permalink" href="#terse"><b>--terse</b></a></dt>
+  <dd>Enables terse output mode. This affects only some frontends.</dd>
+  <dt id="apt"><a class="permalink" href="#apt"><b>--apt</b></a></dt>
+  <dd>Run in apt mode. It will expect to read a set of package filenames from
+      stdin, rather than getting them as parameters. Typically this is used to
+      make apt run dpkg-preconfigure on all packages before they are installed.
+      To do this, add something like this to /etc/apt/apt.conf:
+    <p class="Pp"></p>
+    <pre> // Pre-configure all packages before
+ // they are installed.
+ DPkg::Pre-Install-Pkgs {
+        &quot;dpkg-preconfigure --apt --priority=low&quot;;
+ };
+    </pre>
+  </dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>Display usage help.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>debconf</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Joey Hess &lt;joeyh@debian.org&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-04-12</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

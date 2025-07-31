@@ -1,0 +1,141 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_pwhistory (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_PWHISTORY(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_PWHISTORY(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_pwhistory - PAM module to remember last passwords</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_pwhistory.so</b> [debug] [use_authtok]
+    [enforce_for_root] [remember=<i>N</i>] [retry=<i>N</i>]
+    [authtok_type=<i>STRING</i>] [file=<i>/path/filename</i>]
+    [conf=<i>/path/to/config-file</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This module saves the last passwords for each user in order to
+    force password change history and keep the user from alternating between the
+    same password too frequently.</p>
+<p class="Pp">This module does not work together with kerberos. In general, it
+    does not make much sense to use this module in conjunction with NIS or LDAP,
+    since the old passwords are stored on the local machine and are not
+    available on another machine for password history checking.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Turns on debugging via <b>syslog</b>(3).</div>
+<p class="Pp">use_authtok</p>
+<div class="Bd-indent">When password changing enforce the module to use the new
+  password provided by a previously stacked <b>password</b> module (this is used
+  in the example of the stacking of the <b>pam_passwdqc</b> module documented
+  below).</div>
+<p class="Pp">enforce_for_root</p>
+<div class="Bd-indent">If this option is set, the check is enforced for root,
+  too.</div>
+<p class="Pp">remember=N</p>
+<div class="Bd-indent">The last <i>N</i> passwords for each user are saved. The
+  default is <i>10</i>. Value of <i>0</i> makes the module to keep the existing
+  contents of the opasswd file unchanged.</div>
+<p class="Pp">retry=N</p>
+<div class="Bd-indent">Prompt user at most <i>N</i> times before returning with
+  error. The default is <i>1</i>.</div>
+<p class="Pp">authtok_type=STRING</p>
+<div class="Bd-indent">See <b>pam_get_authtok</b>(3) for more details.</div>
+<p class="Pp">file=/path/filename</p>
+<div class="Bd-indent">Store password history in file /path/filename rather than
+  the default location. The default location is /etc/security/opasswd.</div>
+<p class="Pp">conf=/path/to/config-file</p>
+<div class="Bd-indent">Use another configuration file instead of the default
+  /etc/security/pwhistory.conf.</div>
+<p class="Pp">The options for configuring the module behavior are described in
+    the <b>pwhistory.conf</b>(5) manual page. The options specified on the
+    module command line override the values from the configuration file.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">Only the <b>password</b> module type is provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_AUTHTOK_ERR</p>
+<div class="Bd-indent">No new password was entered, the user aborted password
+  change or new password couldn't be set.</div>
+<p class="Pp">PAM_IGNORE</p>
+<div class="Bd-indent">Password history was disabled.</div>
+<p class="Pp">PAM_MAXTRIES</p>
+<div class="Bd-indent">Password was rejected too often.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">User is not known to system.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">An example password section would be:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>#%PAM-1.0
+password     required       pam_pwhistory.so
+password     required       pam_unix.so        use_authtok
+<br/>
+      </pre>
+</div>
+<p class="Pp">In combination with <b>pam_passwdqc</b>:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>#%PAM-1.0
+password     required       pam_passwdqc.so    config=/etc/passwdqc.conf
+password     required       pam_pwhistory.so   use_authtok
+password     required       pam_unix.so        use_authtok
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/security/opasswd</p>
+<div class="Bd-indent">Default file with password history</div>
+<p class="Pp">/etc/security/pwhistory.conf</p>
+<div class="Bd-indent">Config file for pam_pwhistory options</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pwhistory.conf</b>(5), <b>pam.conf</b>(5), <b>pam.d</b>(5),
+    <b>pam</b>(7) <b>pam_get_authtok</b>(3)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_pwhistory was written by Thorsten Kukuk
+    &lt;kukuk@thkukuk.de&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pwhistory (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PWHISTORY.CONF(5)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PWHISTORY.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pwhistory.conf - pam_pwhistory configuration file</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>pwhistory.conf</b> provides a way to configure the default
+    settings for saving the last passwords for each user. This file is read by
+    the <i>pam_pwhistory</i> module and is the preferred method over configuring
+    <i>pam_pwhistory</i> directly.</p>
+<p class="Pp">The file has a very simple <i>name = value</i> format with
+    possible comments starting with <i>#</i> character. The whitespace at the
+    beginning of line, end of line, and around the <i>=</i> sign is ignored.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Turns on debugging via <b>syslog</b>(3).</div>
+<p class="Pp">enforce_for_root</p>
+<div class="Bd-indent">If this option is set, the check is enforced for root,
+  too.</div>
+<p class="Pp">remember=N</p>
+<div class="Bd-indent">The last <i>N</i> passwords for each user are saved. The
+  default is <i>10</i>. Value of <i>0</i> makes the module to keep the existing
+  contents of the opasswd file unchanged.</div>
+<p class="Pp">retry=N</p>
+<div class="Bd-indent">Prompt user at most <i>N</i> times before returning with
+  error. The default is 1.</div>
+<p class="Pp">file=/path/filename</p>
+<div class="Bd-indent">Store password history in file <i>/path/filename</i>
+  rather than the default location. The default location is
+  /etc/security/opasswd.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">/etc/security/pwhistory.conf file example:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>debug
+remember=5
+file=/tmp/opasswd
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/security/pwhistory.conf</p>
+<div class="Bd-indent">the config file for custom options</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pwhistory</b>(8), <b>pam_pwhistory</b>(8), <b>pam.conf</b>(5),
+    <b>pam.d</b>(5), <b>pam</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_pwhistory was written by Thorsten Kukuk. The support for
+    pwhistory.conf was written by Iker Pedrosa.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

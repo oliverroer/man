@@ -1,0 +1,62 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pwhistory_helper (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PWHISTORY_HELPER(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PWHISTORY_HELPER(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pwhistory_helper - Helper binary that transfers password hashes
+    from passwd or shadow to opasswd</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pwhistory_helper</b> [...]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><i>pwhistory_helper</i> is a helper program for the
+    <i>pam_pwhistory</i> module that transfers password hashes from passwd or
+    shadow file to the opasswd file and checks a password supplied by user
+    against the existing hashes in the opasswd file.</p>
+<p class="Pp">The purpose of the helper is to enable tighter confinement of
+    login and password changing services. The helper is thus called only when
+    SELinux is enabled on the system.</p>
+<p class="Pp">The interface of the helper - command line options, and
+    input/output data format are internal to the <i>pam_pwhistory</i> module and
+    it should not be called directly from applications.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam_pwhistory</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Tomas Mraz based on the code originally in
+    <i>pam_pwhistory and pam_unix</i> modules.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

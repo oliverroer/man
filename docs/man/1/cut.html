@@ -1,0 +1,122 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>cut (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">CUT(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">CUT(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">cut - remove sections from each line of files</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>cut</b> <i>OPTION</i>... [<i>FILE</i>]...</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Print selected parts of lines from each FILE to standard
+  output.</p>
+<p class="Pp">With no FILE, or when FILE is -, read standard input.</p>
+<p class="Pp">Mandatory arguments to long options are mandatory for short
+    options too.</p>
+<dl class="Bl-tag">
+  <dt id="b"><a class="permalink" href="#b"><b>-b</b>,
+    <b>--bytes</b>=<i>LIST</i></a></dt>
+  <dd>select only these bytes</dd>
+  <dt id="c"><a class="permalink" href="#c"><b>-c</b>,
+    <b>--characters</b>=<i>LIST</i></a></dt>
+  <dd>select only these characters</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>,
+    <b>--delimiter</b>=<i>DELIM</i></a></dt>
+  <dd>use DELIM instead of TAB for field delimiter</dd>
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b>,
+    <b>--fields</b>=<i>LIST</i></a></dt>
+  <dd>select only these fields; also print any line that contains no delimiter
+      character, unless the <b>-s</b> option is specified</dd>
+  <dt id="n"><a class="permalink" href="#n"><b>-n</b></a></dt>
+  <dd>(ignored)</dd>
+  <dt id="complement"><a class="permalink" href="#complement"><b>--complement</b></a></dt>
+  <dd>complement the set of selected bytes, characters or fields</dd>
+  <dt id="s"><a class="permalink" href="#s"><b>-s</b>,
+    <b>--only-delimited</b></a></dt>
+  <dd>do not print lines not containing delimiters</dd>
+  <dt id="output"><a class="permalink" href="#output"><b>--output-delimiter</b>=<i>STRING</i></a></dt>
+  <dd>use STRING as the output delimiter the default is to use the input
+      delimiter</dd>
+  <dt id="z"><a class="permalink" href="#z"><b>-z</b>,
+    <b>--zero-terminated</b></a></dt>
+  <dd>line delimiter is NUL, not newline</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+<p class="Pp">Use one, and only one of <b>-b</b>, <b>-c</b> or <b>-f</b>. Each
+    LIST is made up of one range, or many ranges separated by commas. Selected
+    input is written in the same order that it is read, and is written exactly
+    once. Each range is one of:</p>
+<dl class="Bl-tag">
+  <dt id="N"><a class="permalink" href="#N">N</a></dt>
+  <dd>N'th byte, character or field, counted from 1</dd>
+  <dt>N-</dt>
+  <dd>from N'th byte, character or field, to end of line</dd>
+  <dt>N-M</dt>
+  <dd>from N'th to M'th (included) byte, character or field</dd>
+  <dt id="M"><a class="permalink" href="#M"><b>-M</b></a></dt>
+  <dd>from first to M'th (included) byte, character or field</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by David M. Ihnat, David MacKenzie, and Jim Meyering.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/cut&gt;
+  <br/>
+  or available locally via: info '(coreutils) cut invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

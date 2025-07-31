@@ -1,0 +1,87 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>deb-systemd-helper (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DEB-SYSTEMD-HELPER(1p)</td>
+    <td class="head-vol">init-system-helpers</td>
+    <td class="head-rtitle">DEB-SYSTEMD-HELPER(1p)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">deb-systemd-helper - subset of systemctl for machines not running
+    systemd</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>deb-systemd-helper</b> enable | disable | purge | mask | unmask
+    | is-enabled | was-enabled | debian-installed | update-state | reenable
+    <i>unit&#x00A0;file</i>&#x00A0;...</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>deb-systemd-helper</b> is a Debian-specific helper script which
+    re-implements the enable, disable, is-enabled and reenable commands from
+    systemctl.</p>
+<p class="Pp">The &quot;enable&quot; action will only be performed once (when
+    first installing the package). On the first &quot;enable&quot;, a state file
+    is created which will be deleted upon &quot;purge&quot;.</p>
+<p class="Pp">The &quot;mask&quot; action will keep state on whether the service
+    was enabled/disabled before and will properly return to that state on
+    &quot;unmask&quot;.</p>
+<p class="Pp">The &quot;was-enabled&quot; action is not present in systemctl,
+    but is required in Debian so that we can figure out whether a service was
+    enabled before we installed an updated service file. See
+    http://bugs.debian.org/717603 for details.</p>
+<p class="Pp">The &quot;debian-installed&quot; action is also not present in
+    systemctl. It returns 0 if the state file of at least one of the given units
+    is present.</p>
+<p class="Pp">The &quot;update-state&quot; action is also not present in
+    systemctl. It updates <b>deb-systemd-helper</b>'s state file, removing
+    obsolete entries (e.g. service files that are no longer shipped by the
+    package) and adding new entries (e.g. new service files shipped by the
+    package) without enabling them.</p>
+<p class="Pp"><b>deb-systemd-helper</b> is intended to be used from maintscripts
+    to enable systemd unit files. It is specifically NOT intended to be used
+    interactively by users. Instead, users should run systemd and use systemctl,
+    or not bother about the systemd enabled state in case they are not running
+    systemd.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ENVIRONMENT"><a class="permalink" href="#ENVIRONMENT">ENVIRONMENT</a></h1>
+<dl class="Bl-tag">
+  <dt><b>_DEB_SYSTEMD_HELPER_DEBUG</b></dt>
+  <dd>If you export _DEB_SYSTEMD_HELPER_DEBUG=1, deb-systemd-helper will print
+      debug messages to stderr (thus visible in dpkg runs). Please include these
+      when filing a bugreport.</dd>
+  <dt id="DPKG_ROOT"><a class="permalink" href="#DPKG_ROOT"><b>DPKG_ROOT</b></a></dt>
+  <dd>Instead of working on the filesystem root /, perform all operations on a
+      chroot system in the directory given by DPKG_ROOT.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Michael Stapelberg &lt;stapelberg@debian.org&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-12-06</td>
+    <td class="foot-os">1.66ubuntu1</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

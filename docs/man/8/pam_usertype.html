@@ -1,0 +1,110 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_usertype (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_USERTYPE(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_USERTYPE(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_usertype - check if the authenticated user is a system or
+    regular account</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_usertype.so</b> [<i>flag</i>...] {<i>condition</i>}</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">pam_usertype.so is designed to succeed or fail authentication
+    based on type of the account of the authenticated user. The type of the
+    account is decided with help of <i>SYS_UID_MAX</i> settings in
+    <i>/etc/login.defs</i>. One use is to select whether to load other modules
+    based on this test.</p>
+<p class="Pp">The module should be given only one condition as module argument.
+    Authentication will succeed only if the condition is met.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">The following <i>flag</i>s are supported:</p>
+<p class="Pp">use_uid</p>
+<div class="Bd-indent">Evaluate conditions using the account of the user whose
+  UID the application is running under instead of the user being
+  authenticated.</div>
+<p class="Pp">audit</p>
+<div class="Bd-indent">Log unknown users to the system log.</div>
+<p class="Pp">Available <i>condition</i>s are:</p>
+<p class="Pp">issystem</p>
+<div class="Bd-indent">Succeed if the user is a system user.</div>
+<p class="Pp">isregular</p>
+<div class="Bd-indent">Succeed if the user is a regular user.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">All module types (<b>account</b>, <b>auth</b>, <b>password</b> and
+    <b>session</b>) are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">The condition was true.</div>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_CONV_ERR</p>
+<div class="Bd-indent">The conversation method supplied by the application
+  failed to obtain the username.</div>
+<p class="Pp">PAM_INCOMPLETE</p>
+<div class="Bd-indent">The conversation method supplied by the application
+  returned PAM_CONV_AGAIN.</div>
+<p class="Pp">PAM_AUTH_ERR</p>
+<div class="Bd-indent">The condition was false.</div>
+<p class="Pp">PAM_SERVICE_ERR</p>
+<div class="Bd-indent">A service error occurred or the arguments can't be parsed
+  correctly.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">User was not found.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Skip remaining modules if the user is a system user:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>account sufficient pam_usertype.so issystem
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>login.defs</b>(5), <b>pam</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Pavel B&#x0159;ezina &lt;pbrezina@redhat.com&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_rhosts (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_RHOSTS(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_RHOSTS(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_rhosts - The rhosts PAM module</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_rhosts.so</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This module performs the standard network authentication for
+    services, as used by traditional implementations of <b>rlogin</b> and
+    <b>rsh</b> etc.</p>
+<p class="Pp">The authentication mechanism of this module is based on the
+    contents of two files; /etc/hosts.equiv (or and ~/.rhosts. Firstly, hosts
+    listed in the former file are treated as equivalent to the localhost.
+    Secondly, entries in the user's own copy of the latter file is used to map
+    &quot;<i>remote-host remote-user</i>&quot; pairs to that user's account on
+    the current host. Access is granted to the user if their host is present in
+    /etc/hosts.equiv and their remote account is identical to their local one,
+    or if their remote account has an entry in their personal configuration
+    file.</p>
+<p class="Pp">The module authenticates a remote user (internally specified by
+    the item <i>PAM_RUSER</i> connecting from the remote host (internally
+    specified by the item <b>PAM_RHOST</b>). Accordingly, for applications to be
+    compatible this authentication module they must set these items prior to
+    calling <b>pam_authenticate()</b>. The module is not capable of
+    independently probing the network connection for such information.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Print debug information.</div>
+<p class="Pp">silent</p>
+<div class="Bd-indent">Don't print informative messages.</div>
+<p class="Pp">superuser=account</p>
+<div class="Bd-indent">Handle <i>account</i> as root.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">Only the <b>auth</b> module type is provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_AUTH_ERR</p>
+<div class="Bd-indent">The remote host, remote user name or the local user name
+  couldn't be determined or access was denied by .rhosts file.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">User is not known to system.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">To grant a remote user access by /etc/hosts.equiv or .rhosts for
+    <b>rsh</b> add the following lines to /etc/pam.d/rsh:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>#%PAM-1.0
+#
+auth     required       pam_rhosts.so
+auth     required       pam_nologin.so
+auth     required       pam_env.so
+auth     required       pam_unix.so
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>rootok</b>(3), <b>hosts.equiv</b>(5), <b>rhosts</b>(5),
+    <b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_rhosts was written by Thorsten Kukuk
+  &lt;kukuk@thkukuk.de&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

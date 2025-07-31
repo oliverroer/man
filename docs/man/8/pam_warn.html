@@ -1,0 +1,92 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_warn (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_WARN(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_WARN(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_warn - PAM module which logs all PAM items if called</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_warn.so</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">pam_warn is a PAM module that logs the service, terminal, user,
+    remote user and remote host to <b>syslog</b>(3). The items are not probed
+    for, but instead obtained from the standard PAM items. The module always
+    returns <b>PAM_IGNORE</b>, indicating that it does not want to affect the
+    authentication process.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">This module does not recognise any options.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">The <b>auth</b>, <b>account</b>, <b>password</b> and
+    <b>session</b> module types are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_IGNORE</p>
+<div class="Bd-indent">This module always returns PAM_IGNORE.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<div class="Bd-indent">
+<pre>#%PAM-1.0
+#
+# If we don't have config entries for a service, the
+# OTHER entries are used. To be secure, warn and deny
+# access to everything.
+other auth     required       pam_warn.so
+other auth     required       pam_deny.so
+other account  required       pam_warn.so
+other account  required       pam_deny.so
+other password required       pam_warn.so
+other password required       pam_deny.so
+other session  required       pam_warn.so
+other session  required       pam_deny.so
+<br/>
+      </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_warn was written by Andrew G. Morgan
+    &lt;morgan@kernel.org&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

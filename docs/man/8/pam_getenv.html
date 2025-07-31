@@ -1,0 +1,55 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_getenv (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_GETENV(8)</td>
+    <td class="head-vol">User Contributed Perl Documentation</td>
+    <td class="head-rtitle">PAM_GETENV(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_getenv - get environment variables from /etc/environment</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp">pam_getenv <b>[-l] [-s]</b> <i>env_var</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This tool will print out the value of <i>env_var</i> from
+    <i>/etc/environment</i>. It will attempt to expand environment variable
+    references in the definition of <i>env_var</i> but will fail if PAM items
+    are expanded.</p>
+<p class="Pp">The <b>-l</b> option indicates the script should return an
+    environment variable related to default locale information.</p>
+<p class="Pp">The <b>-s</b> option indicates that the script should return an
+    system default environment variable.</p>
+<p class="Pp">Currently neither the <b>-l</b> or <b>-s</b> options do anything.
+    They are included because future versions of Debian may have a separate
+    repository for the initial environment used by init scripts and for system
+    locale information. These options will allow this script to be a stable
+    interface even in that environment.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2025-06-12</td>
+    <td class="foot-os">Debian GNU/Linux</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

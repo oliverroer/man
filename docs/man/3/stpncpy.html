@@ -1,0 +1,217 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>stpncpy (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">stpncpy(3)</td>
+    <td class="head-vol">Library Functions Manual</td>
+    <td class="head-rtitle">stpncpy(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">stpncpy, strncpy - fill a fixed-size buffer with non-null bytes
+    from a string, padding with null bytes as needed</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;string.h&gt;</b></pre>
+<pre><b>char *strncpy(char </b><i>dst</i><b>[restrict .</b><i>dsize</i><b>], const char *restrict </b><i>src</i><b>,</b>
+<b>              size_t </b><i>dsize</i><b>);</b>
+<b>char *stpncpy(char </b><i>dst</i><b>[restrict .</b><i>dsize</i><b>], const char *restrict </b><i>src</i><b>,</b>
+<b>              size_t </b><i>dsize</i><b>);</b></pre>
+<p class="Pp"></p>
+<div class="Bd-indent">Feature Test Macro Requirements for glibc (see
+  <b>feature_test_macros</b>(7)):</div>
+<p class="Pp"><b>stpncpy</b>():</p>
+<pre>
+<br/>
+    Since glibc 2.10:
+<br/>
+        _POSIX_C_SOURCE &gt;= 200809L
+<br/>
+    Before glibc 2.10:
+<br/>
+        _GNU_SOURCE</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">These functions copy non-null bytes from the string pointed to by
+    <i>src</i> into the array pointed to by <i>dst</i>. If the source has too
+    few non-null bytes to fill the destination, the functions pad the
+    destination with trailing null bytes. If the destination buffer, limited by
+    its size, isn't large enough to hold the copy, the resulting character
+    sequence is truncated. For the difference between the two functions, see
+    RETURN VALUE.</p>
+<p class="Pp">An implementation of these functions might be:</p>
+<p class="Pp">
+  <br/>
+</p>
+<pre>char *
+strncpy(char *restrict dst, const char *restrict src, size_t dsize)
+{
+<br/>
+    stpncpy(dst, src, dsize);
+<br/>
+    return dst;
+}
+char *
+stpncpy(char *restrict dst, const char *restrict src, size_t dsize)
+{
+<br/>
+    size_t  dlen;
+<br/>
+    dlen = strnlen(src, dsize);
+<br/>
+    return memset(mempcpy(dst, src, dlen), 0, dsize - dlen);
+}
+</pre>
+<br/>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
+  VALUE</a></h1>
+<dl class="Bl-tag">
+  <dt id="strncpy"><a class="permalink" href="#strncpy"><b>strncpy</b>()</a></dt>
+  <dd>returns <i>dst</i>.</dd>
+  <dt id="stpncpy"><a class="permalink" href="#stpncpy"><b>stpncpy</b>()</a></dt>
+  <dd>returns a pointer to one after the last character in the destination
+      character sequence.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ATTRIBUTES"><a class="permalink" href="#ATTRIBUTES">ATTRIBUTES</a></h1>
+<p class="Pp">For an explanation of the terms used in this section, see
+    <b>attributes</b>(7).</p>
+<table class="tbl" border="1" style="border-style: solid;">
+  <tr>
+    <td><b>Interface</b></td>
+    <td><b>Attribute</b></td>
+    <td><b>Value</b></td>
+  </tr>
+  <tr>
+    <td>stpncpy (), strncpy ()</td>
+    <td>Thread safety</td>
+    <td>MT-Safe</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<dl class="Bl-tag">
+  <dt id="strncpy~2"><a class="permalink" href="#strncpy~2"><b>strncpy</b>()</a></dt>
+  <dd>C11, POSIX.1-2008.</dd>
+  <dt id="stpncpy~2"><a class="permalink" href="#stpncpy~2"><b>stpncpy</b>()</a></dt>
+  <dd>POSIX.1-2008.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<dl class="Bl-tag">
+  <dt id="strncpy~3"><a class="permalink" href="#strncpy~3"><b>strncpy</b>()</a></dt>
+  <dd>C89, POSIX.1-2001, SVr4, 4.3BSD.</dd>
+  <dt id="stpncpy~3"><a class="permalink" href="#stpncpy~3"><b>stpncpy</b>()</a></dt>
+  <dd>glibc 1.07. POSIX.1-2008.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CAVEATS"><a class="permalink" href="#CAVEATS">CAVEATS</a></h1>
+<p class="Pp">The name of these functions is confusing. These functions produce
+    a null-padded character sequence, not a string (see
+    <b>string_copying</b>(7)). For example:</p>
+<p class="Pp">
+  <br/>
+</p>
+<pre>strncpy(buf, &quot;1&quot;, 5);       // { '1',   0,   0,   0,   0 }
+strncpy(buf, &quot;1234&quot;, 5);    // { '1', '2', '3', '4',   0 }
+strncpy(buf, &quot;12345&quot;, 5);   // { '1', '2', '3', '4', '5' }
+strncpy(buf, &quot;123456&quot;, 5);  // { '1', '2', '3', '4', '5' }
+</pre>
+<br/>
+<p class="Pp">It's impossible to distinguish truncation by the result of the
+    call, from a character sequence that just fits the destination buffer;
+    truncation should be detected by comparing the length of the input string
+    with the size of the destination buffer.</p>
+<p class="Pp">If you're going to use this function in chained calls, it would be
+    useful to develop a similar function that accepts a pointer to the end (one
+    after the last element) of the destination buffer instead of its size.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<pre>#include &lt;err.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+int
+main(void)
+{
+<br/>
+    char    *p;
+<br/>
+    char    buf1[20];
+<br/>
+    char    buf2[20];
+<br/>
+    size_t  len;
+<br/>
+    if (sizeof(buf2) &lt; strlen(&quot;Hello world!&quot;))
+<br/>
+        errx(&quot;strncpy: truncating character sequence&quot;);
+<br/>
+    strncpy(buf2, &quot;Hello world!&quot;, sizeof(buf2));
+<br/>
+    len = strnlen(buf2, sizeof(buf2));
+<br/>
+    printf(&quot;[len = %zu]: &quot;, len);
+<br/>
+    fwrite(buf2, 1, len, stdout);
+<br/>
+    putchar('\n');
+<br/>
+    if (sizeof(buf1) &lt; strlen(&quot;Hello world!&quot;))
+<br/>
+        errx(&quot;stpncpy: truncating character sequence&quot;);
+<br/>
+    p = stpncpy(buf1, &quot;Hello world!&quot;, sizeof(buf1));
+<br/>
+    len = p - buf1;
+<br/>
+    printf(&quot;[len = %zu]: &quot;, len);
+<br/>
+    fwrite(buf1, 1, len, stdout);
+<br/>
+    putchar('\n');
+<br/>
+    exit(EXIT_SUCCESS);
+}
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>wcpncpy</b>(3), <b>string_copying</b>(7)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-02-12</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

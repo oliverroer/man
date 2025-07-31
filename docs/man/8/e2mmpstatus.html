@@ -1,0 +1,86 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>e2mmpstatus (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">E2MMPSTATUS(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">E2MMPSTATUS(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">e2mmpstatus - Check MMP status of an ext4 file system</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>e2mmpstatus</b> [<b>-i</b>]
+  &lt;<i>file</i>system<i>&gt;</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="i"><a class="permalink" href="#i"><b>-i</b></a></dt>
+  <dd>prints out the MMP information rather than check it.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>e2mmpstatus</b> is used to check Multiple-Mount Protection
+    (MMP) status of an ext4 file system with the <b>mmp</b> feature enabled. The
+    specified <i>file system</i> can be a device name (e.g. <i>/dev/hdc1</i>,
+    <i>/dev/sdb2</i>), or an ext4 file system label or UUID, for example
+    <b>UUID=8868abf6-88c5-4a83-98b8-bfc24057f7bd</b> or <b>LABEL=root</b>. By
+    default, the <b>e2mmpstatus</b> program checks whether it is safe to mount
+    the file system without taking the risk of mounting it more than once.</p>
+<p class="Pp">MMP (multiple-mount protection) is a feature that adds protection
+    against the file system being modified simultaneously by more than one node.
+    It is NOT safe to mount a file system when one of the following conditions
+    is true:
+  <br/>
+  	1. e2fsck is running on the file system.
+  <br/>
+  	2. the file system is in use by another node.
+  <br/>
+  	3. The MMP block is corrupted or cannot be read for some reason.
+  <br/>
+  The <b>e2mmpstatus</b> program might wait for some time to see whether the MMP
+    block is being updated by any node during this period. The time taken
+    depends on how frequently the MMP block is being written by the other
+  node.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_CODE"><a class="permalink" href="#EXIT_CODE">EXIT
+  CODE</a></h1>
+<p class="Pp">The exit code returned by <b>e2mmpstatus</b> is 0 when it is safe
+    to mount the file system, 1 when the MMP block shows the file system is in
+    use on another node and it is NOT safe to mount the file system, and 2 if
+    some other failure occurred that prevents the check from properly detecting
+    the current MMP status.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>dumpe2fs</b>(8), <b>e2fsck</b>(8), <b>fstab</b>(5),
+    <b>fsck</b>(8),</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">February 2023</td>
+    <td class="foot-os">E2fsprogs version 1.47.0</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

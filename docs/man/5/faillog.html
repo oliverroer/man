@@ -1,0 +1,66 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>faillog (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">FAILLOG(5)</td>
+    <td class="head-vol">File Formats and Configuratio</td>
+    <td class="head-rtitle">FAILLOG(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">faillog - login failure logging file</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">/var/log/faillog maintains a count of login failures and the
+    limits for each account.</p>
+<p class="Pp">The file contains fixed length records, indexed by numerical UID.
+    Each record contains the count of login failures since the last successful
+    login; the maximum number of failures before the account is disabled; the
+    line on which the last login failure occurred; the date of the last login
+    failure; and the duration (in seconds) during which the account will be
+    locked after a failure.</p>
+<p class="Pp">The structure of the file is:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>struct	faillog {
+	short   fail_cnt;
+	short   fail_max;
+	char    fail_line[12];
+	time_t  fail_time;
+	long    fail_locktime;
+};</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/var/log/faillog</p>
+<div class="Bd-indent">Failure logging file.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>faillog</b>(8)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/30/2024</td>
+    <td class="foot-os">shadow-utils 4.13</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

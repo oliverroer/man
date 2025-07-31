@@ -1,0 +1,89 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>lconv (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">lconv(3type)</td>
+    <td class="head-vol"></td>
+    <td class="head-rtitle">lconv(3type)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">lconv - numeric formatting information</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;locale.h&gt;</b></pre>
+<pre><b>struct lconv {</b>                /* Values in the &quot;C&quot; locale: */
+<b>    char *decimal_point;</b>      /* &quot;.&quot; */
+<b>    char *thousands_sep;</b>      /* &quot;&quot; */
+<b>    char *grouping;</b>           /* &quot;&quot; */
+<b>    char *mon_decimal_point;</b>  /* &quot;&quot; */
+<b>    char *mon_thousands_sep;</b>  /* &quot;&quot; */
+<b>    char *mon_grouping;</b>       /* &quot;&quot; */
+<b>    char *positive_sign;</b>      /* &quot;&quot; */
+<b>    char *negative_sign;</b>      /* &quot;&quot; */
+<b>    char *currency_symbol;</b>    /* &quot;&quot; */
+<b>    char  frac_digits;</b>        /* CHAR_MAX */
+<b>    char  p_cs_precedes;</b>      /* CHAR_MAX */
+<b>    char  n_cs_precedes;</b>      /* CHAR_MAX */
+<b>    char  p_sep_by_space;</b>     /* CHAR_MAX */
+<b>    char  n_sep_by_space;</b>     /* CHAR_MAX */
+<b>    char  p_sign_posn;</b>        /* CHAR_MAX */
+<b>    char  n_sign_posn;</b>        /* CHAR_MAX */
+<b>    char *int_curr_symbol;</b>    /* &quot;&quot; */
+<b>    char  int_frac_digits;</b>    /* CHAR_MAX */
+<b>    char  int_p_cs_precedes;</b>  /* CHAR_MAX */
+<b>    char  int_n_cs_precedes;</b>  /* CHAR_MAX */
+<b>    char  int_p_sep_by_space;</b> /* CHAR_MAX */
+<b>    char  int_n_sep_by_space;</b> /* CHAR_MAX */
+<b>    char  int_p_sign_posn;</b>    /* CHAR_MAX */
+<b>    char  int_n_sign_posn;</b>    /* CHAR_MAX */
+<b>};</b>
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Contains members related to the formatting of numeric values. In
+    the &quot;C&quot; locale, its members have the values shown in the comments
+    above.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<p class="Pp">C11, POSIX.1-2008.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<p class="Pp">POSIX.1-2001.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>setlocale</b>(3), <b>localeconv</b>(3), <b>charsets</b>(7),
+    <b>locale</b>(7)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

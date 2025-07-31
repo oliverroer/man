@@ -1,0 +1,111 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_time (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_TIME(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_TIME(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_time - PAM module for time control access</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_time.so</b> [conffile=conf-file] [debug] [noaudit]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The pam_time PAM module does not authenticate the user, but
+    instead it restricts access to a system and or specific applications at
+    various times of the day and on specific days or over various terminal
+    lines. This module can be configured to deny access to (individual) users
+    based on their name, the time of day, the day of week, the service they are
+    applying for and their terminal from which they are making their
+  request.</p>
+<p class="Pp">By default rules for time/port access are taken from config file
+    /etc/security/time.conf. An alternative file can be specified with the
+    <i>conffile</i> option.</p>
+<p class="Pp">If Linux PAM is compiled with audit support the module will report
+    when it denies access.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">conffile=/path/to/time.conf</p>
+<div class="Bd-indent">Indicate an alternative time.conf style configuration
+  file to override the default.</div>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Some debug information is printed with
+  <b>syslog</b>(3).</div>
+<p class="Pp">noaudit</p>
+<div class="Bd-indent">Do not report logins at disallowed time to the audit
+  subsystem.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">Only the <b>account</b> type is provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">Access was granted.</div>
+<p class="Pp">PAM_ABORT</p>
+<div class="Bd-indent">Not all relevant data could be gotten.</div>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_PERM_DENIED</p>
+<div class="Bd-indent">Access was not granted.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">The user is not known to the system.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/security/time.conf</p>
+<div class="Bd-indent">Default configuration file</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<div class="Bd-indent">
+<pre>#%PAM-1.0
+#
+# apply pam_time accounting to login requests
+#
+login  account  required  pam_time.so
+<br/>
+      </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>time.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_time was written by Andrew G. Morgan
+    &lt;morgan@kernel.org&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

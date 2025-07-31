@@ -1,0 +1,79 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>infotocap (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">infotocap(1)</td>
+    <td class="head-vol">User commands</td>
+    <td class="head-rtitle">infotocap(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><b>infotocap</b> - convert a <i>terminfo</i> description into a
+    <i>termcap</i> description</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>infotocap</b> [<i>tic-option</i>] <i>file</i> ...</p>
+<p class="Pp"><b>infotocap -V</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>infotocap</b> translates terminal descriptions. It looks in
+    each given text <i>file</i> for <i>terminfo</i> entries and, For each one
+    found, it writes an analogous <i>termcap</i> description to the standard
+    output stream. <i>terminfo</i> &#x201C;<b>use</b>&#x201D; capabilities
+    translate to <i>termcap</i> <b>tc</b> capabilities. Because <i>termcap</i>
+    is a less expressive format than <i>terminfo</i>, some capabilities cannot
+    be translated.</p>
+<p class="Pp">This utility is implemented as a link to <b>tic</b>(1), with the
+    latter's <b>-C</b> option implied. You can use other <b>tic</b> options such
+    as <b>-1</b>, <b>-f</b>, <b>-v</b>, <b>-w</b>, and <b>-x</b>. The <b>-V</b>
+    option reports the version of <i>ncurses</i> associated with this program
+    and exits with a successful status.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag">
+  <dt><i>/etc/terminfo</i></dt>
+  <dd>compiled terminal description database</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="PORTABILITY"><a class="permalink" href="#PORTABILITY">PORTABILITY</a></h1>
+<p class="Pp">None of X/Open Curses, Issue 7 (2009), SVr4, or NetBSD document
+    this application.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
+<p class="Pp">Eric S. Raymond &lt;esr@snark.thyrsus.com&gt; and
+  <br/>
+  Thomas E. Dickey &lt;dickey@invisible-island.net&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>infocmp</b>(1), <b>tic</b>(1), <b>ncurses</b>(3NCURSES),
+    <b>terminfo</b>(5)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-12-10</td>
+    <td class="foot-os">ncurses 6.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

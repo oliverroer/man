@@ -1,0 +1,97 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>dirname (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DIRNAME(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">DIRNAME(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">dirname - strip last component from file name</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>dirname</b> [<i>OPTION</i>] <i>NAME</i>...</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Output each NAME with its last non-slash component and trailing
+    slashes removed; if NAME contains no /'s, output '.' (meaning the current
+    directory).</p>
+<dl class="Bl-tag">
+  <dt id="z"><a class="permalink" href="#z"><b>-z</b>, <b>--zero</b></a></dt>
+  <dd>end each output line with NUL, not newline</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<dl class="Bl-tag">
+  <dt id="dirname"><a class="permalink" href="#dirname">dirname
+    /usr/bin/</a></dt>
+  <dd>-&gt; &quot;/usr&quot;</dd>
+  <dt id="dirname~2"><a class="permalink" href="#dirname~2">dirname dir1/str
+    dir2/str</a></dt>
+  <dd>-&gt; &quot;dir1&quot; followed by &quot;dir2&quot;</dd>
+  <dt id="dirname~3"><a class="permalink" href="#dirname~3">dirname
+    stdio.h</a></dt>
+  <dd>-&gt; &quot;.&quot;</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by David MacKenzie and Jim Meyering.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>basename</b>(1), <b>readlink</b>(1)</p>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/dirname&gt;
+  <br/>
+  or available locally via: info '(coreutils) dirname invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

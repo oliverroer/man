@@ -1,0 +1,124 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>touch (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">TOUCH(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">TOUCH(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">touch - change file timestamps</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>touch</b> [<i>OPTION</i>]... <i>FILE</i>...</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Update the access and modification times of each FILE to the
+    current time.</p>
+<p class="Pp">A FILE argument that does not exist is created empty, unless
+    <b>-c</b> or <b>-h</b> is supplied.</p>
+<p class="Pp">A FILE argument string of - is handled specially and causes touch
+    to change the times of the file associated with standard output.</p>
+<p class="Pp">Mandatory arguments to long options are mandatory for short
+    options too.</p>
+<dl class="Bl-tag">
+  <dt id="a"><a class="permalink" href="#a"><b>-a</b></a></dt>
+  <dd>change only the access time</dd>
+  <dt id="c"><a class="permalink" href="#c"><b>-c</b>,
+    <b>--no-create</b></a></dt>
+  <dd>do not create any files</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>,
+    <b>--date</b>=<i>STRING</i></a></dt>
+  <dd>parse STRING and use it instead of current time</dd>
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b></a></dt>
+  <dd>(ignored)</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>,
+    <b>--no-dereference</b></a></dt>
+  <dd>affect each symbolic link instead of any referenced file (useful only on
+      systems that can change the timestamps of a symlink)</dd>
+  <dt id="m"><a class="permalink" href="#m"><b>-m</b></a></dt>
+  <dd>change only the modification time</dd>
+  <dt id="r"><a class="permalink" href="#r"><b>-r</b>,
+    <b>--reference</b>=<i>FILE</i></a></dt>
+  <dd>use this file's times instead of current time</dd>
+  <dt id="t"><a class="permalink" href="#t"><b>-t</b> STAMP</a></dt>
+  <dd>use [[CC]YY]MMDDhhmm[.ss] instead of current time</dd>
+  <dt id="time"><a class="permalink" href="#time"><b>--time</b>=<i>WORD</i></a></dt>
+  <dd>change the specified time: WORD is access, atime, or use: equivalent to
+      <b>-a</b> WORD is modify or mtime: equivalent to <b>-m</b></dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+<p class="Pp">Note that the <b>-d</b> and <b>-t</b> options accept different
+    time-date formats.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DATE_STRING"><a class="permalink" href="#DATE_STRING">DATE
+  STRING</a></h1>
+<p class="Pp">The --date=STRING is a mostly free format human readable date
+    string such as &quot;Sun, 29 Feb 2004 16:21:42 -0800&quot; or
+    &quot;2004-02-29 16:21:42&quot; or even &quot;next Thursday&quot;. A date
+    string may contain items indicating calendar date, time of day, time zone,
+    day of week, relative time, relative date, and numbers. An empty string
+    indicates the beginning of the day. The date string format is more complex
+    than is easily documented here but is fully described in the info
+    documentation.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Paul Rubin, Arnold Robbins, Jim Kingdon, David
+    MacKenzie, and Randy Smith.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/touch&gt;
+  <br/>
+  or available locally via: info '(coreutils) touch invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

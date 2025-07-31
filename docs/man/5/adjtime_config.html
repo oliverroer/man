@@ -1,0 +1,112 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>adjtime_config (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ADJTIME_CONFIG(5)</td>
+    <td class="head-vol">File formats</td>
+    <td class="head-rtitle">ADJTIME_CONFIG(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">adjtime_config - information about hardware clock setting and
+    drift factor</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><i>/etc/adjtime</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The file <i>/etc/adjtime</i> contains descriptive information
+    about the hardware mode clock setting and clock drift factor. The file is
+    read and write by <b>hwclock</b>(8); and read by programs like rtcwake to
+    get RTC time mode.</p>
+<p class="Pp">The file is usually located in <i>/etc</i>, but tools like
+    <b>hwclock</b>(8) or <b>rtcwake</b>(8) can use alternative location by
+    command line options if write access to <i>/etc</i> is unwanted. The default
+    clock mode is &quot;UTC&quot; if the file is missing.</p>
+<p class="Pp">The Hardware Clock is usually not very accurate. However, much of
+    its inaccuracy is completely predictable - it gains or loses the same amount
+    of time every day. This is called systematic drift. The util
+    <b>hwclock</b>(8) keeps the file <i>/etc/adjtime</i>, that keeps some
+    historical information. For more details see &quot;<b>The Adjust
+    Function</b>&quot; and &quot;<b>The Adjtime File</b>&quot; sections from
+    <b>hwclock</b>(8) man page.</p>
+<p class="Pp">The <i>adjtime</i> file is formatted in ASCII.</p>
+<section class="Ss">
+<h2 class="Ss" id="First_line"><a class="permalink" href="#First_line">First
+  line</a></h2>
+<p class="Pp">Three numbers, separated by blanks:</p>
+<p class="Pp"><b>drift factor</b></p>
+<div class="Bd-indent">the systematic drift rate in seconds per day (floating
+  point decimal)</div>
+<p class="Pp"><b>last adjust time</b></p>
+<div class="Bd-indent">the resulting number of seconds since 1969 UTC of most
+  recent adjustment or calibration (decimal integer)</div>
+<p class="Pp"><b>adjustment status</b></p>
+<div class="Bd-indent">zero (for compatibility with <b>clock</b>(8)) as a
+  floating point decimal</div>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Second_line"><a class="permalink" href="#Second_line">Second
+  line</a></h2>
+<p class="Pp"><b>last calibration time</b></p>
+<div class="Bd-indent">The resulting number of seconds since 1969 UTC of most
+  recent calibration. Zero if there has been no calibration yet or it is known
+  that any previous calibration is moot (for example, because the Hardware Clock
+  has been found, since that calibration, not to contain a valid time). This is
+  a decimal integer.</div>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Third_line"><a class="permalink" href="#Third_line">Third
+  line</a></h2>
+<p class="Pp"><b>clock mode</b></p>
+<div class="Bd-indent">Supported values are <b>UTC</b> or <b>LOCAL</b>. Tells
+  whether the Hardware Clock is set to Coordinated Universal Time or local time.
+  You can always override this value with options on the <b>hwclock</b>(8)
+  command line.</div>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp"><i>/etc/adjtime</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>hwclock</b>(8), <b>rtcwake</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">For bug reports, use the issue tracker at <i></i>
+    &lt;https://github.com/util-linux/util-linux/issues&gt;.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h1>
+<p class="Pp"><b>adjtime_config</b> is part of the util-linux package which can
+    be downloaded from <i>Linux Kernel Archive</i>
+    &lt;https://www.kernel.org/pub/linux/utils/util-linux/&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-23</td>
+    <td class="foot-os">util-linux 2.39.3</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

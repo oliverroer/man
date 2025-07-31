@@ -1,0 +1,83 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>subuid (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">SUBUID(5)</td>
+    <td class="head-vol">File Formats and Configuration</td>
+    <td class="head-rtitle">SUBUID(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">subuid - the configuration for subordinate user ids</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Subuid authorizes a user id to map ranges of user ids from its
+    namespace into child namespaces.</p>
+<p class="Pp">The delegation of the subordinate uids can be configured via the
+    <i>subid</i> field in /etc/nsswitch.conf file. Only one value can be set as
+    the delegation source. Setting this field to <i>files</i> configures the
+    delegation of uids to /etc/subuid. Setting any other value treats the
+    delegation as a plugin following with a name of the form
+    <i>libsubid_$value.so</i>. If the value or plugin is missing, then the
+    subordinate uid delegation falls back to <i>files</i>.</p>
+<p class="Pp">Note, that <b>useradd</b> will only create entries in /etc/subuid
+    if subid delegation is managed via subid files.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LOCAL_SUBORDINATE_DELEGATION"><a class="permalink" href="#LOCAL_SUBORDINATE_DELEGATION">LOCAL
+  SUBORDINATE DELEGATION</a></h1>
+<p class="Pp">Each line in /etc/subuid contains a user name and a range of
+    subordinate user ids that user is allowed to use. This is specified with
+    three fields delimited by colons (&#x201C;:&#x201D;). These fields are:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;login name or UID</div>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;numerical subordinate user ID</div>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;numerical subordinate user ID count</div>
+<p class="Pp">This file specifies the user IDs that ordinary users can use, with
+    the <b>newuidmap</b> command, to configure uid mapping in a user
+  namespace.</p>
+<p class="Pp">Multiple ranges may be specified per user.</p>
+<p class="Pp">When large number of entries (10000-100000 or more) are defined in
+    /etc/subuid, parsing performance penalty will become noticeable. In this
+    case it is recommended to use UIDs instead of login names. Benchmarks have
+    shown speed-ups up to 20x.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/subuid</p>
+<div class="Bd-indent">Per user subordinate user IDs.</div>
+<p class="Pp">/etc/subuid-</p>
+<div class="Bd-indent">Backup file for /etc/subuid.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>login.defs</b>(5), <b>newgidmap</b>(1), <b>newuidmap</b>(1),
+    <b>newusers</b>(1), <b>subgid</b>(5), <b>useradd</b>(8), <b>userdel</b>(8),
+    <b>usermod</b>(8), <b>user_namespaces</b>(7).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/30/2024</td>
+    <td class="foot-os">shadow-utils 4.13</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

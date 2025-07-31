@@ -1,0 +1,96 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>EXIT_SUCCESS (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">EXIT_SUCCESS(3const)</td>
+    <td class="head-vol"></td>
+    <td class="head-rtitle">EXIT_SUCCESS(3const)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">EXIT_SUCCESS, EXIT_FAILURE - termination status constants</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;stdlib.h&gt;</b></pre>
+<pre><b>#define EXIT_SUCCESS  </b>0
+<b>#define EXIT_FAILURE  </b>/* nonzero */</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>EXIT_SUCCESS</b> and <b>EXIT_FAILURE</b> represent a successful
+    and unsuccessful exit status respectively, and can be used as arguments to
+    the <b>exit</b>(3) function.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CONFORMING_TO"><a class="permalink" href="#CONFORMING_TO">CONFORMING
+  TO</a></h1>
+<p class="Pp">C99 and later; POSIX.1-2001 and later.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int
+main(int argc, char *argv[])
+{
+<br/>
+    FILE *fp;
+<br/>
+    if (argc != 2) {
+<br/>
+        fprintf(stderr, &quot;Usage: %s &lt;file&gt;\n&quot;, argv[0]);
+<br/>
+        exit(EXIT_FAILURE);
+<br/>
+    }
+<br/>
+    fp = fopen(argv[1], &quot;r&quot;);
+<br/>
+    if (fp == NULL) {
+<br/>
+        perror(argv[1]);
+<br/>
+        exit(EXIT_FAILURE);
+<br/>
+    }
+<br/>
+    /* Other code omitted */
+<br/>
+    fclose(fp);
+<br/>
+    exit(EXIT_SUCCESS);
+}
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>exit</b>(3), <b>sysexits.h</b>(3head)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

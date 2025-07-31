@@ -1,0 +1,83 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>getconf (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">GETCONF(1)</td>
+    <td class="head-vol">Debian GNU/Linux</td>
+    <td class="head-rtitle">GETCONF(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">getconf - Query system configuration variables</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>getconf</b> -a</p>
+<p class="Pp"><b>getconf</b> [<b>-v specification</b>] system_var</p>
+<p class="Pp"><b>getconf</b> [<b>-v specification</b>] path_var pathname</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>-a</b></p>
+<p class="Pp"></p>
+<pre>        Displays all configuration variables for the current system
+        and their values.
+</pre>
+<b>-v</b>
+<p class="Pp"></p>
+<pre>        Indicate the specification and version for which to obtain
+        configuration variables.
+</pre>
+<b>system_var</b>
+<p class="Pp"></p>
+<pre>        A system configuration variable, as defined by sysconf(3) or
+        confstr(3).
+</pre>
+<b>path_var</b>
+<p class="Pp"></p>
+<pre>        A system configuration variable as defined by pathconf(3). This
+        must be used with a pathname.
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><i>getconf</i> was written by Roland McGrath for the GNU C
+  Library</p>
+<p class="Pp">This man page was written by Ben Collins
+    &lt;bcollins@debian.org&gt; for the Debian GNU/Linux system.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>sysconf</b>(3), <b>pathconf</b>(3), <b>confstr</b>(3)</p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">squeeze</td>
+    <td class="foot-os">3rd Berkeley Distribution</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

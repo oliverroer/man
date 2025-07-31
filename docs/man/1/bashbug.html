@@ -1,0 +1,84 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>bashbug (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">BASHBUG(1)</td>
+    <td class="head-vol">bashbug</td>
+    <td class="head-rtitle">BASHBUG(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">bashbug - report a bug in bash</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>bashbug</b> [<b>--help</b>] [<b>--version</b>]
+    [<b></b><i>bug-report-email-addresses</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>bashbug</b> is a utility for reporting bugs in Bash to the
+    maintainers.</p>
+<p class="Pp"><b>bashbug</b> will start up your preferred editor with a
+    preformatted bug report template for you to fill in. Save the file and quit
+    the editor once you have completed the missing fields. <b>bashbug</b> will
+    notify you of any problems with the report and ask for confirmation before
+    sending it. By default the bug report is mailed to both the GNU developers
+    and the Debian Bash maintainers. The recipients can be changed by giving a
+    comma separated list of <i>bug-report-email-addresses</i>.</p>
+<p class="Pp">If you invoke <b>bashbug</b> by accident, just quit your editor.
+    You will always be asked for confirmation before a bug report is sent.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp"><b>--help</b></p>
+<div class="Bd-indent">Show a brief usage message and exit.</div>
+<p class="Pp"><b>--version</b></p>
+<div class="Bd-indent">Show the version of <b>bashbug</b> and exit.</div>
+<p class="Pp"><b>bug-report-email-addresses</b></p>
+<div class="Bd-indent">Comma separated list of recipients&#x00B4; email
+  addresses. By default the report is mailed to both the GNU developers and the
+  Debian Bash maintainers.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ENVIRONMENT"><a class="permalink" href="#ENVIRONMENT">ENVIRONMENT</a></h1>
+<p class="Pp"><b>DEFEDITOR</b></p>
+<div class="Bd-indent">Editor to use for editing the bug report.</div>
+<p class="Pp"><b>EDITOR</b></p>
+<div class="Bd-indent">Editor to use for editing the bug report (overridden by
+  <b>DEFEDITOR</b>).</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>bash</b>(1), <b>reportbug</b>(1), <b>update-alternatives</b>(8)
+    for preferred editor.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">This manual page was written by Christer Andersson
+    &lt;klamm@comhem.se&gt; for the Debian project (but may be used by
+  others).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">11 December 2007</td>
+    <td class="foot-os">GNU Bash 3.1</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

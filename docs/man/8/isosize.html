@@ -1,0 +1,91 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>isosize (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ISOSIZE(8)</td>
+    <td class="head-vol">System Administration</td>
+    <td class="head-rtitle">ISOSIZE(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">isosize - output the length of an iso9660 filesystem</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>isosize</b> [options] <i>iso9660_image_file</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This command outputs the length of an iso9660 filesystem that is
+    contained in the specified file. This file may be a normal file or a block
+    device (e.g. <i>/dev/hdd</i> or <i>/dev/sr0</i>). In the absence of any
+    options (and errors), it will output the size of the iso9660 filesystem in
+    bytes. This can now be a large number (&gt;&gt; 4 GB).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp"><b>-x</b>, <b>--sectors</b></p>
+<div class="Bd-indent">Show the block count and block size in human-readable
+  form. The output uses the term &quot;sectors&quot; for
+  &quot;blocks&quot;.</div>
+<p class="Pp"><b>-d</b>, <b>--divisor</b> <i>number</i></p>
+<div class="Bd-indent">Only has an effect when <b>-x</b> is not given. The value
+  shown (if no errors) is the iso9660 file size in bytes divided by
+  <i>number</i>. So if <i>number</i> is the block size then the shown value will
+  be the block count.
+<p class="Pp">The size of the file (or block device) holding an iso9660
+    filesystem can be marginally larger than the actual size of the iso9660
+    filesystem. One reason for this is that cd writers are allowed to add
+    &quot;run out&quot; sectors at the end of an iso9660 image.</p>
+</div>
+<p class="Pp"><b>-h</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help text and exit.</div>
+<p class="Pp"><b>-V</b>, <b>--version</b></p>
+<div class="Bd-indent">Print version and exit.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<p class="Pp"><b>0</b></p>
+<div class="Bd-indent">success</div>
+<p class="Pp"><b>1</b></p>
+<div class="Bd-indent">generic failure, such as invalid usage</div>
+<p class="Pp"><b>32</b></p>
+<div class="Bd-indent">all failed</div>
+<p class="Pp"><b>64</b></p>
+<div class="Bd-indent">some failed</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">For bug reports, use the issue tracker at <i></i>
+    &lt;https://github.com/util-linux/util-linux/issues&gt;.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h1>
+<p class="Pp">The <b>isosize</b> command is part of the util-linux package which
+    can be downloaded from <i>Linux Kernel Archive</i>
+    &lt;https://www.kernel.org/pub/linux/utils/util-linux/&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-23</td>
+    <td class="foot-os">util-linux 2.39.3</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

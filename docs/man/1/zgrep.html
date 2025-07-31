@@ -1,0 +1,74 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zgrep (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ZGREP(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">ZGREP(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">zgrep - search possibly compressed files for a regular
+  expression</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>zgrep</b> [ grep_options ] <b>[&#x00A0;-e&#x00A0;]</b><i>
+    pattern</i> <i>filename</i>...</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>zgrep</b> command invokes <b>grep</b> on compressed or
+    gzipped files. All options specified are passed directly to <b>grep</b>. If
+    no file is specified, then the standard input is decompressed if necessary
+    and fed to grep. Otherwise the given files are uncompressed if necessary and
+    fed to <b>grep</b>.</p>
+<p class="Pp">If the GREP environment variable is set, <b>zgrep</b> uses it as
+    the <b>grep</b> program to be invoked.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<p class="Pp">Exit status is 0 for a match, 1 for no matches, and 2 if
+  trouble.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">The following <b>grep</b> options are not supported:
+    <b>--dereference-recursive</b> (<b>-R</b>), <b>--directories</b>
+    (<b>-d</b>), <b>--exclude</b>, <b>--exclude-from</b>, <b>--exclude-dir</b>,
+    <b>--include</b>, <b>--null</b> (<b>-Z</b>), <b>--null-data</b> (<b>-z</b>),
+    and <b>--recursive</b> (<b>-r</b>).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Charles Levert (charles@comm.polymtl.ca)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>grep</b>(1), <b>gzexe</b>(1), <b>gzip</b>(1), <b>zdiff</b>(1),
+    <b>zforce</b>(1), <b>zmore</b>(1), <b>znew</b>(1)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date"></td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

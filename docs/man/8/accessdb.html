@@ -1,0 +1,73 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>accessdb (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ACCESSDB(8)</td>
+    <td class="head-vol">Manual pager utils</td>
+    <td class="head-rtitle">ACCESSDB(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">accessdb - dumps the content of a man-db database in a human
+    readable format</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>/usr/sbin/accessdb</b> [<b>-d?V</b>]
+    [<i>&lt;index-file&gt;</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>accessdb</b> will output the data contained within a man-db
+    database in a human readable form. By default, it will dump the data from
+    <b>/var/cache/man/index.&lt;db-type&gt;,</b> where &lt;db-type&gt; is
+    dependent on the database library in use.</p>
+<p class="Pp">Supplying an argument to accessdb will override this default.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>, <b>--debug</b></a></dt>
+  <dd>Print debugging information.</dd>
+  <dt><b>-?</b>, <b>--help</b></dt>
+  <dd>Print a help message and exit.</dd>
+  <dt id="usage"><a class="permalink" href="#usage"><b>--usage</b></a></dt>
+  <dd>Print a short usage message and exit.</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>Display version information.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<pre>Wilf. (G.Wilford@ee.surrey.ac.uk).
+Fabrizio Polacco (fpolacco@debian.org).
+Colin Watson (cjwatson@debian.org).</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">https://gitlab.com/man-db/man-db/-/issues
+  <br/>
+  https://savannah.nongnu.org/bugs/?group=man-db</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-09-23</td>
+    <td class="foot-os">2.12.0</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

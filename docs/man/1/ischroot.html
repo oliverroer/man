@@ -1,0 +1,66 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ischroot (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ISCHROOT(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">ISCHROOT(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">ischroot - detect if running in a chroot</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>ischroot</b> [--default-false] [--default-true] [--help]
+    [--version]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>ischroot</b> detects if it is currently running in a chroot.
+    The exit status is:</p>
+<dl class="Bl-tag">
+  <dt>0</dt>
+  <dd>if currently running in a chroot</dd>
+  <dt>1</dt>
+  <dd>if currently not running in a chroot</dd>
+  <dt>2</dt>
+  <dd>if the detection is not possible.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="f,"><a class="permalink" href="#f,"><b>-f,
+    --default-false</b></a></dt>
+  <dd>Exit with status 1 if the detection is not possible.</dd>
+  <dt id="t,"><a class="permalink" href="#t,"><b>-t, --default-true</b></a></dt>
+  <dd>Exit with status 0 if the detection is not possible.</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>Print a usage message on standard output and exit successfully.</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>Print version information on standard output and exit successfully.</dd>
+</dl>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">30 May 2011</td>
+    <td class="foot-os">Debian</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

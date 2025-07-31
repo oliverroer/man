@@ -1,0 +1,135 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>basenc (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">BASENC(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">BASENC(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">basenc - Encode/decode data and print to standard output</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>basenc</b> [<i>OPTION</i>]... [<i>FILE</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">basenc encode or decode FILE, or standard input, to standard
+    output.</p>
+<p class="Pp">With no FILE, or when FILE is -, read standard input.</p>
+<p class="Pp">Mandatory arguments to long options are mandatory for short
+    options too.</p>
+<dl class="Bl-tag">
+  <dt id="base64"><a class="permalink" href="#base64"><b>--base64</b></a></dt>
+  <dd>same as 'base64' program (RFC4648 section 4)</dd>
+  <dt id="base64url"><a class="permalink" href="#base64url"><b>--base64url</b></a></dt>
+  <dd>file- and url-safe base64 (RFC4648 section 5)</dd>
+  <dt id="base32"><a class="permalink" href="#base32"><b>--base32</b></a></dt>
+  <dd>same as 'base32' program (RFC4648 section 6)</dd>
+  <dt id="base32hex"><a class="permalink" href="#base32hex"><b>--base32hex</b></a></dt>
+  <dd>extended hex alphabet base32 (RFC4648 section 7)</dd>
+  <dt id="base16"><a class="permalink" href="#base16"><b>--base16</b></a></dt>
+  <dd>hex encoding (RFC4648 section 8)</dd>
+  <dt id="base2msbf"><a class="permalink" href="#base2msbf"><b>--base2msbf</b></a></dt>
+  <dd>bit string with most significant bit (msb) first</dd>
+  <dt id="base2lsbf"><a class="permalink" href="#base2lsbf"><b>--base2lsbf</b></a></dt>
+  <dd>bit string with least significant bit (lsb) first</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>, <b>--decode</b></a></dt>
+  <dd>decode data</dd>
+  <dt id="i"><a class="permalink" href="#i"><b>-i</b>,
+    <b>--ignore-garbage</b></a></dt>
+  <dd>when decoding, ignore non-alphabet characters</dd>
+  <dt id="w"><a class="permalink" href="#w"><b>-w</b>,
+    <b>--wrap</b>=<i>COLS</i></a></dt>
+  <dd>wrap encoded lines after COLS character (default 76). Use 0 to disable
+      line wrapping</dd>
+  <dt id="z85"><a class="permalink" href="#z85"><b>--z85</b></a></dt>
+  <dd>ascii85-like encoding (ZeroMQ spec:32/Z85); when encoding, input length
+      must be a multiple of 4; when decoding, input length must be a multiple of
+      5</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+<p class="Pp">When decoding, the input may contain newlines in addition to the
+    bytes of the formal alphabet. Use <b>--ignore-garbage</b> to attempt to
+    recover from any other non-alphabet bytes in the encoded stream.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ENCODING_EXAMPLES"><a class="permalink" href="#ENCODING_EXAMPLES">ENCODING
+  EXAMPLES</a></h1>
+<div class="Bd-indent">
+<pre>$ printf '\376\117\202' | basenc --base64
+/k+C
+$ printf '\376\117\202' | basenc --base64url
+_k-C
+$ printf '\376\117\202' | basenc --base32
+7ZHYE===
+$ printf '\376\117\202' | basenc --base32hex
+VP7O4===
+$ printf '\376\117\202' | basenc --base16
+FE4F82
+$ printf '\376\117\202' | basenc --base2lsbf
+011111111111001001000001
+$ printf '\376\117\202' | basenc --base2msbf
+111111100100111110000010
+$ printf '\376\117\202\000' | basenc --z85
+@.FaC</pre>
+</div>
+<pre></pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Simon Josefsson and Assaf Gordon.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/basenc&gt;
+  <br/>
+  or available locally via: info '(coreutils) basenc invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

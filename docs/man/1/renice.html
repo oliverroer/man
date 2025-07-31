@@ -1,0 +1,137 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>renice (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">RENICE(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">RENICE(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">renice - alter priority of running processes</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>renice</b> [<b>--priority|--relative</b>] <i>priority</i>
+    [<b>-g</b>|<b>-p</b>|<b>-u</b>] <i>identifier</i>...</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>renice</b> alters the scheduling priority of one or more
+    running processes. The first argument is the <i>priority</i> value to be
+    used. The other arguments are interpreted as process IDs (by default),
+    process group IDs, user IDs, or user names. <b>renice</b>'ing a process
+    group causes all processes in the process group to have their scheduling
+    priority altered. <b>renice</b>'ing a user causes all processes owned by the
+    user to have their scheduling priority altered.</p>
+<p class="Pp">If no <b>-n</b>, <b>--priority</b> or <b>--relative</b> option is
+    used, then the priority is set as <b>absolute</b>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp"><b>-n</b> <i>priority</i></p>
+<div class="Bd-indent">Specify the <b>absolute</b> or <b>relative</b> (depending
+  on environment variable POSIXLY_CORRECT) scheduling <i>priority</i> to be used
+  for the process, process group, or user. Use of the option <b>-n</b> is
+  optional, but when used, it must be the first argument. See <b>NOTES</b> for
+  more information.</div>
+<p class="Pp"><b>--priority</b> <i>priority</i></p>
+<div class="Bd-indent">Specify an <b>absolute</b> scheduling <i>priority</i>.
+  <i>Priority</i> is set to the given value. This is the default, when no option
+  is specified.</div>
+<p class="Pp"><b>--relative</b> <i>priority</i></p>
+<div class="Bd-indent">Specify a <b>relative</b> scheduling <i>priority</i>.
+  Same as the standard POSIX <b>-n</b> option. <i>Priority</i> gets
+  <i>incremented/decremented</i> by the given value.</div>
+<p class="Pp"><b>-g</b>, <b>--pgrp</b></p>
+<div class="Bd-indent">Interpret the succeeding arguments as process group
+  IDs.</div>
+<p class="Pp"><b>-p</b>, <b>--pid</b></p>
+<div class="Bd-indent">Interpret the succeeding arguments as process IDs (the
+  default).</div>
+<p class="Pp"><b>-u</b>, <b>--user</b></p>
+<div class="Bd-indent">Interpret the succeeding arguments as usernames or
+  UIDs.</div>
+<p class="Pp"><b>-h</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help text and exit.</div>
+<p class="Pp"><b>-V</b>, <b>--version</b></p>
+<div class="Bd-indent">Print version and exit.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp"><i>/etc/passwd</i></p>
+<div class="Bd-indent">to map user names to user IDs</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">Users other than the superuser may only alter the priority of
+    processes they own. Furthermore, an unprivileged user can only
+    <i>increase</i> the &quot;nice value&quot; (i.e., choose a lower priority)
+    and such changes are irreversible unless (since Linux 2.6.12) the user has a
+    suitable &quot;nice&quot; resource limit (see <b>ulimit</b>(1p) and
+    <b>getrlimit</b>(2)).</p>
+<p class="Pp">The superuser may alter the priority of any process and set the
+    priority to any value in the range -20 to 19. Useful priorities are: 19 (the
+    affected processes will run only when nothing else in the system wants to),
+    0 (the &quot;base&quot; scheduling priority), anything negative (to make
+    things go very fast).</p>
+<p class="Pp">For historical reasons in this implementation, the <b>-n</b>
+    option did not follow the POSIX specification. Therefore, instead of setting
+    a <b>relative</b> priority, it sets an <b>absolute</b> priority by default.
+    As this may not be desirable, this behavior can be controlled by setting the
+    environment variable POSIXLY_CORRECT to be fully POSIX compliant. See the
+    <b>-n</b> option for details. See <b>--relative</b> and <b>--priority</b>
+    for options that do not change behavior depending on environment
+  variables.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<p class="Pp">The <b>renice</b> command appeared in 4.0BSD.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">The following command would change the priority of the processes
+    with PIDs 987 and 32, plus all processes owned by the users daemon and
+  root:</p>
+<p class="Pp"><b>renice +1 987 -u daemon root -p 32</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>nice</b>(1), <b>chrt</b>(1), <b>getpriority</b>(2),
+    <b>setpriority</b>(2), <b>credentials</b>(7), <b>sched</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">For bug reports, use the issue tracker at <i></i>
+    &lt;https://github.com/util-linux/util-linux/issues&gt;.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h1>
+<p class="Pp">The <b>renice</b> command is part of the util-linux package which
+    can be downloaded from <i>Linux Kernel Archive</i>
+    &lt;https://www.kernel.org/pub/linux/utils/util-linux/&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-11-21</td>
+    <td class="foot-os">util-linux 2.39.3</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

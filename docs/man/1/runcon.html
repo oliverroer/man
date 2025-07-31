@@ -1,0 +1,123 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>runcon (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">RUNCON(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">RUNCON(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">runcon - run command with specified security context</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>runcon</b> <i>CONTEXT COMMAND </i>[<i>args</i>]
+  <br/>
+  <b>runcon</b> [ <i>-c </i>] [<i>-u USER</i>] [<i>-r ROLE</i>] [<i>-t TYPE</i>]
+    [<i>-l RANGE</i>] <i>COMMAND </i>[<i>args</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Run COMMAND with completely-specified CONTEXT, or with current or
+    transitioned security context modified by one or more of LEVEL, ROLE, TYPE,
+    and USER.</p>
+<p class="Pp">If none of <i>-c</i>, <i>-t</i>, <i>-u</i>, <i>-r</i>, or
+    <i>-l</i>, is specified, the first argument is used as the complete context.
+    Any additional arguments after <i>COMMAND</i> are interpreted as arguments
+    to the command.</p>
+<p class="Pp">Note that only carefully-chosen contexts are likely to
+    successfully run.</p>
+<p class="Pp">Run a program in a different SELinux security context. With
+    neither CONTEXT nor COMMAND, print the current security context.</p>
+<p class="Pp">Mandatory arguments to long options are mandatory for short
+    options too.</p>
+<dl class="Bl-tag">
+  <dt id="CONTEXT"><a class="permalink" href="#CONTEXT">CONTEXT</a></dt>
+  <dd>Complete security context</dd>
+  <dt id="c"><a class="permalink" href="#c"><b>-c</b>, <b>--compute</b></a></dt>
+  <dd>compute process transition context before modifying</dd>
+  <dt id="t"><a class="permalink" href="#t"><b>-t</b>,
+    <b>--type</b>=<i>TYPE</i></a></dt>
+  <dd>type (for same role as parent)</dd>
+  <dt id="u"><a class="permalink" href="#u"><b>-u</b>,
+    <b>--user</b>=<i>USER</i></a></dt>
+  <dd>user identity</dd>
+  <dt id="r"><a class="permalink" href="#r"><b>-r</b>,
+    <b>--role</b>=<i>ROLE</i></a></dt>
+  <dd>role</dd>
+  <dt id="l"><a class="permalink" href="#l"><b>-l</b>,
+    <b>--range</b>=<i>RANGE</i></a></dt>
+  <dd>levelrange</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+<section class="Ss">
+<h2 class="Ss" id="Exit_status:"><a class="permalink" href="#Exit_status:">Exit
+  status:</a></h2>
+<dl class="Bl-tag">
+  <dt>125</dt>
+  <dd>if the runcon command itself fails</dd>
+  <dt>126</dt>
+  <dd>if COMMAND is found but cannot be invoked</dd>
+  <dt>127</dt>
+  <dd>if COMMAND cannot be found</dd>
+  <dt>-</dt>
+  <dd>the exit status of COMMAND otherwise</dd>
+</dl>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Russell Coker.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/runcon&gt;
+  <br/>
+  or available locally via: info '(coreutils) runcon invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

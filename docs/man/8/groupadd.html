@@ -1,0 +1,193 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>groupadd (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">GROUPADD(8)</td>
+    <td class="head-vol">System Management Commands</td>
+    <td class="head-rtitle">GROUPADD(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">groupadd - create a new group</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>groupadd</b> [<i>OPTIONS</i>] <i>NEWGROUP</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>groupadd</b> command creates a new group account using the
+    values specified on the command line plus the default values from the
+    system. The new group will be entered into the system files as needed.</p>
+<p class="Pp">Groupnames may contain only lower and upper case letters, digits,
+    underscores, or dashes. They can end with a dollar sign. Dashes are not
+    allowed at the beginning of the groupname. Fully numeric groupnames and
+    groupnames . or .. are also disallowed.</p>
+<p class="Pp">On Debian, the only constraints are that groupnames must neither
+    start with a dash ('-') nor plus ('+') nor tilde ('~') nor contain a colon
+    (':'), a comma (','), or a whitespace (space:' ', end of line: '\n',
+    tabulation: '\t', etc.).</p>
+<p class="Pp">On Ubuntu, the same constraints as Debian are in place, with the
+    additional constraint that the groupname cannot be fully numeric. This
+    includes octal and hexadecimal syntax.</p>
+<p class="Pp">Groupnames may only be up to 32 characters long.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">The options which apply to the <b>groupadd</b> command are:</p>
+<p class="Pp"><b>-f</b>, <b>--force</b></p>
+<div class="Bd-indent">This option causes the command to simply exit with
+  success status if the specified group already exists. When used with
+  <b>-g</b>, and the specified GID already exists, another (unique) GID is
+  chosen (i.e. <b>-g</b> is turned off).</div>
+<p class="Pp"><b>-g</b>, <b>--gid</b>&#x00A0;<i>GID</i></p>
+<div class="Bd-indent">The numerical value of the group's ID. <i>GID</i> must be
+  unique, unless the <b>-o</b> option is used. The value must be non-negative.
+  The default is to use the smallest ID value greater than or equal to
+  <b>GID_MIN</b> and greater than every other group.
+<p class="Pp">See also the <b>-r</b> option and the <b>GID_MAX</b>
+  description.</p>
+</div>
+<p class="Pp"><b>-h</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help message and exit.</div>
+<p class="Pp"><b>-K</b>, <b>--key</b>&#x00A0;<i>KEY</i>=<i>VALUE</i></p>
+<div class="Bd-indent">Overrides /etc/login.defs defaults (GID_MIN, GID_MAX and
+  others). Multiple <b>-K</b> options can be specified.
+<p class="Pp">Example: <b>-K</b>&#x00A0;<i>GID_MIN</i>=<i>100</i>&#x00A0;
+    <b>-K</b>&#x00A0;<i>GID_MAX</i>=<i>499</i></p>
+<p class="Pp">Note:
+    <b>-K</b>&#x00A0;<i>GID_MIN</i>=<i>10</i>,<i>GID_MAX</i>=<i>499</i> doesn't
+    work yet.</p>
+</div>
+<p class="Pp"><b>-o</b>, <b>--non-unique</b></p>
+<div class="Bd-indent">permits the creation of a group with an already used
+  numerical ID. As a result, for this <i>GID</i>, the mapping towards group
+  <i>NEWGROUP</i> may not be unique.</div>
+<p class="Pp"><b>-p</b>, <b>--password</b>&#x00A0;<i>PASSWORD</i></p>
+<div class="Bd-indent">defines an initial password for the group account.
+  PASSWORD is expected to be encrypted, as returned by <b>crypt </b>(3).
+<p class="Pp">Without this option, the group account will be locked and with no
+    password defined, i.e. a single exclamation mark in the respective field of
+    ths system account file /etc/group or /etc/gshadow.</p>
+<p class="Pp"><b>Note:</b> This option is not recommended because the password
+    (or encrypted password) will be visible by users listing the processes.</p>
+<p class="Pp">You should make sure the password respects the system's password
+    policy.</p>
+</div>
+<p class="Pp"><b>-r</b>, <b>--system</b></p>
+<div class="Bd-indent">Create a system group.
+<p class="Pp">The numeric identifiers of new system groups are chosen in the
+    <b>SYS_GID_MIN</b>-<b>SYS_GID_MAX</b> range, defined in login.defs, instead
+    of <b>GID_MIN</b>-<b>GID_MAX</b>.</p>
+</div>
+<p class="Pp"><b>-R</b>, <b>--root</b>&#x00A0;<i>CHROOT_DIR</i></p>
+<div class="Bd-indent">Apply changes in the <i>CHROOT_DIR</i> directory and use
+  the configuration files from the <i>CHROOT_DIR</i> directory. Only absolute
+  paths are supported.</div>
+<p class="Pp"><b>-P</b>, <b>--prefix</b>&#x00A0;<i>PREFIX_DIR</i></p>
+<div class="Bd-indent">Apply changes to configuration files under the root
+  filesystem found under the directory <i>PREFIX_DIR</i>. This option does not
+  chroot and is intended for preparing a cross-compilation target. Some
+  limitations: NIS and LDAP users/groups are not verified. PAM authentication is
+  using the host files. No SELINUX support.</div>
+<p class="Pp"><b>-U</b>, <b>--users</b></p>
+<div class="Bd-indent">A list of usernames to add as members of the group.
+<p class="Pp">The default behavior (if the <b>-g</b>, <b>-N</b>, and <b>-U</b>
+    options are not specified) is defined by the <b>USERGROUPS_ENAB</b> variable
+    in /etc/login.defs.</p>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CONFIGURATION"><a class="permalink" href="#CONFIGURATION">CONFIGURATION</a></h1>
+<p class="Pp">The following configuration variables in /etc/login.defs change
+    the behavior of this tool:</p>
+<p class="Pp"><b>GID_MAX</b> (number), <b>GID_MIN</b> (number)</p>
+<div class="Bd-indent">Range of group IDs used for the creation of regular
+  groups by <b>useradd</b>, <b>groupadd</b>, or <b>newusers</b>.
+<p class="Pp">The default value for <b>GID_MIN</b> (resp. <b>GID_MAX</b>) is
+    1000 (resp. 60000).</p>
+</div>
+<p class="Pp"><b>MAX_MEMBERS_PER_GROUP</b> (number)</p>
+<div class="Bd-indent">Maximum members per group entry. When the maximum is
+  reached, a new group entry (line) is started in /etc/group (with the same
+  name, same password, and same GID).
+<p class="Pp">The default value is 0, meaning that there are no limits in the
+    number of members in a group.</p>
+<p class="Pp">This feature (split group) permits to limit the length of lines in
+    the group file. This is useful to make sure that lines for NIS groups are
+    not larger than 1024 characters.</p>
+<p class="Pp">If you need to enforce such limit, you can use 25.</p>
+<p class="Pp">Note: split groups may not be supported by all tools (even in the
+    Shadow toolsuite). You should not use this variable unless you really need
+    it.</p>
+</div>
+<p class="Pp"><b>SYS_GID_MAX</b> (number), <b>SYS_GID_MIN</b> (number)</p>
+<div class="Bd-indent">Range of group IDs used for the creation of system groups
+  by <b>useradd</b>, <b>groupadd</b>, or <b>newusers</b>.
+<p class="Pp">The default value for <b>SYS_GID_MIN</b> (resp.
+    <b>SYS_GID_MAX</b>) is 101 (resp. <b>GID_MIN</b>-1).</p>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/group</p>
+<div class="Bd-indent">Group account information.</div>
+<p class="Pp">/etc/gshadow</p>
+<div class="Bd-indent">Secure group account information.</div>
+<p class="Pp">/etc/login.defs</p>
+<div class="Bd-indent">Shadow password suite configuration.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CAVEATS"><a class="permalink" href="#CAVEATS">CAVEATS</a></h1>
+<p class="Pp">You may not add a NIS or LDAP group. This must be performed on the
+    corresponding server.</p>
+<p class="Pp">If the groupname already exists in an external group database such
+    as NIS or LDAP, <b>groupadd</b> will deny the group creation request.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_VALUES"><a class="permalink" href="#EXIT_VALUES">EXIT
+  VALUES</a></h1>
+<p class="Pp">The <b>groupadd</b> command exits with the following values:</p>
+<p class="Pp"><i>0</i></p>
+<div class="Bd-indent">success</div>
+<p class="Pp"><i>2</i></p>
+<div class="Bd-indent">invalid command syntax</div>
+<p class="Pp"><i>3</i></p>
+<div class="Bd-indent">invalid argument to option</div>
+<p class="Pp"><i>4</i></p>
+<div class="Bd-indent">GID is already used (when called without <b>-o</b>)</div>
+<p class="Pp"><i>9</i></p>
+<div class="Bd-indent">group name is already used</div>
+<p class="Pp"><i>10</i></p>
+<div class="Bd-indent">can't update group file</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>chfn</b>(1), <b>chsh</b>(1), <b>passwd</b>(1),
+    <b>gpasswd</b>(8), <b>groupdel</b>(8), <b>groupmod</b>(8),
+    <b>login.defs</b>(5), <b>useradd</b>(8), <b>userdel</b>(8),
+    <b>usermod</b>(8).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/30/2024</td>
+    <td class="foot-os">shadow-utils 4.13</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

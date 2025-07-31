@@ -1,0 +1,87 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>memusagestat (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">memusagestat(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">memusagestat(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">memusagestat - generate graphic from memory profiling data</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>memusagestat</b> [<i>option</i>]... <i>datafile</i> [<i>outfile</i>]</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>memusagestat</b> creates a PNG file containing a graphical
+    representation of the memory profiling data in the file <i>datafile</i>;
+    that file is generated via the <i>-d</i> (or <i>--data</i>) option of
+    <b>memusage</b>(1).</p>
+<p class="Pp">The red line in the graph shows the heap usage (allocated memory)
+    and the green line shows the stack usage. The x-scale is either the number
+    of memory-handling function calls or (if the <i>-t</i> option is specified)
+    time.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="o"><a class="permalink" href="#o"><b>-o&#x00A0;</b><i>file</i><b>,&#x00A0;<b>--output=</b></b><i><b>file</b></i></a></dt>
+  <dd>Name of the output file.</dd>
+  <dt id="s"><a class="permalink" href="#s"><b>-s&#x00A0;</b><i>string</i><b>,&#x00A0;<b>--string=</b></b><i><b>string</b></i></a></dt>
+  <dd>Use <i>string</i> as the title inside the output graph.</dd>
+  <dt id="t"><a class="permalink" href="#t"><b>-t,&#x00A0;<b>--time</b></b></a></dt>
+  <dd>Use time (rather than number of function calls) as the scale for the X
+      axis.</dd>
+  <dt id="T"><a class="permalink" href="#T"><b>-T,&#x00A0;<b>--total</b></b></a></dt>
+  <dd>Also draw a graph of total memory consumption.</dd>
+  <dt id="x"><a class="permalink" href="#x"><b>-x&#x00A0;</b><i>size</i><b>,&#x00A0;<b>--x-size=</b></b><i><b>size</b></i></a></dt>
+  <dd>Make the output graph <i>size</i> pixels wide.</dd>
+  <dt id="y"><a class="permalink" href="#y"><b>-y&#x00A0;</b><i>size</i><b>,&#x00A0;<b>--y-size=</b></b><i><b>size</b></i></a></dt>
+  <dd>Make the output graph <i>size</i> pixels high.</dd>
+  <dt><b>-?,&#x00A0;<b>--help</b></b></dt>
+  <dd>Print a help message and exit.</dd>
+  <dt id="usage"><a class="permalink" href="#usage"><b>--usage</b></a></dt>
+  <dd>Print a short usage message and exit.</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V,&#x00A0;<b>--version</b></b></a></dt>
+  <dd>Print version information and exit.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">To report bugs, see
+    <a class="Lk" href="http://www.gnu.org/software/libc/bugs.html">http://www.gnu.org/software/libc/bugs.html</a></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">See <b>memusage</b>(1).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>memusage</b>(1), <b>mtrace</b>(1)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

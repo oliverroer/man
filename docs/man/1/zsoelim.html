@@ -1,0 +1,88 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zsoelim (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ZSOELIM(1)</td>
+    <td class="head-vol">Manual pager utils</td>
+    <td class="head-rtitle">ZSOELIM(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">zsoelim - satisfy .so requests in roff input</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>zsoelim</b> [<b>-CVh</b>] [<i>file</i> ...]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>zsoelim</b> parses <i>file</i> arguments, or if none are
+    specified, its standard input for lines of the form:</p>
+<p class="Pp"><b>.so</b> &lt;<i>filename</i>&gt;</p>
+<p class="Pp">These requests are replaced by the contents of the <i>filename</i>
+    specified. If the request cannot be met, <b>zsoelim</b> looks for
+    <i>filename.ext</i> where <i>.ext</i> can be one of <b>.gz</b>, <b>.Z</b> or
+    <b>.z</b>. Other extension types may be supported depending upon compile
+    time options. If the request can be met by a compressed file, this file is
+    decompressed using an appropriate decompressor and its output is used to
+    satisfy the request.</p>
+<p class="Pp">Traditionally, <b>soelim</b> programs were used to allow roff
+    preprocessors to be able to preprocess the files referred to by the
+    requests. This particular version was written to circumvent problems created
+    by support for compressed manual pages.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="C"><a class="permalink" href="#C"><b>-C</b>,
+    <b>--compatible</b></a></dt>
+  <dd>This flag is available for compatibility with other <b>soelim</b>
+      programs. Its use is to enable .so requests followed by something other
+      than whitespace. As this is already the default behaviour, it is
+    ignored.</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>Print a help message and exit.</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>Display version information.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>groff</b>(1), <b>man</b>(1), <b>nroff</b>(1),
+  <b>troff</b>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<pre>Wilf. (G.Wilford@ee.surrey.ac.uk).
+Fabrizio Polacco (fpolacco@debian.org).
+Colin Watson (cjwatson@debian.org).</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">https://gitlab.com/man-db/man-db/-/issues
+  <br/>
+  https://savannah.nongnu.org/bugs/?group=man-db</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-09-23</td>
+    <td class="foot-os">2.12.0</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

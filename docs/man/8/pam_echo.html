@@ -1,0 +1,103 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_echo (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_ECHO(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_ECHO(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_echo - PAM module for printing text messages</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_echo.so</b> [file=<i>/path/message</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <i>pam_echo</i> PAM module is for printing text messages to
+    inform user about special things. Sequences starting with the <i>%</i>
+    character are interpreted in the following way:</p>
+<p class="Pp">%H</p>
+<div class="Bd-indent">The name of the remote host (PAM_RHOST).</div>
+<p class="Pp">%h</p>
+<div class="Bd-indent">The name of the local host.</div>
+<p class="Pp">%s</p>
+<div class="Bd-indent">The service name (PAM_SERVICE).</div>
+<p class="Pp">%t</p>
+<div class="Bd-indent">The name of the controlling terminal (PAM_TTY).</div>
+<p class="Pp">%U</p>
+<div class="Bd-indent">The remote user name (PAM_RUSER).</div>
+<p class="Pp">%u</p>
+<div class="Bd-indent">The local user name (PAM_USER).</div>
+<p class="Pp">All other sequences beginning with <i>%</i> expands to the
+    characters following the <i>%</i> character.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">file=/path/message</p>
+<div class="Bd-indent">The content of the file /path/message will be printed
+  with the PAM conversion function as PAM_TEXT_INFO.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">All module types (<b>auth</b>, <b>account</b>, <b>password</b> and
+    <b>session</b>) are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">Message was successful printed.</div>
+<p class="Pp">PAM_IGNORE</p>
+<div class="Bd-indent">PAM_SILENT flag was given or message file does not exist,
+  no message printed.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">For an example of the use of this module, we show how it may be
+    used to print information about good passwords:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>password optional pam_echo.so file=/usr/share/doc/good-password.txt
+password required pam_unix.so
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(8), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Thorsten Kukuk &lt;kukuk@thkukuk.de&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

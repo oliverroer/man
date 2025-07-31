@@ -1,0 +1,115 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_sepermit (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_SEPERMIT(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_SEPERMIT(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_sepermit - PAM module to allow/deny login depending on SELinux
+    enforcement state</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_sepermit.so</b> [debug]
+    [conf=<i>/path/to/config/file</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The pam_sepermit module allows or denies login depending on
+    SELinux enforcement state.</p>
+<p class="Pp">When the user which is logging in matches an entry in the config
+    file he is allowed access only when the SELinux is in enforcing mode.
+    Otherwise he is denied access. For users not matching any entry in the
+    config file the pam_sepermit module returns PAM_IGNORE return value.</p>
+<p class="Pp">The config file contains a list of user names one per line with
+    optional arguments. If the <i>name</i> is prefixed with <i>@</i> character
+    it means that all users in the group <i>name</i> match. If it is prefixed
+    with a <i>%</i> character the SELinux user is used to match against the
+    <i>name</i> instead of the account name. Note that when SELinux is disabled
+    the SELinux user assigned to the account cannot be determined. This means
+    that such entries are never matched when SELinux is disabled and
+    pam_sepermit will return PAM_IGNORE.</p>
+<p class="Pp">See <b>sepermit.conf</b>(5) for details.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Turns on debugging via <b>syslog</b>(3).</div>
+<p class="Pp">conf=/path/to/config/file</p>
+<div class="Bd-indent">Path to alternative config file overriding the
+  default.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">The <b>auth</b> and <b>account</b> module types are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_AUTH_ERR</p>
+<div class="Bd-indent">SELinux is disabled or in the permissive mode and the
+  user matches.</div>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">SELinux is in the enforcing mode and the user
+  matches.</div>
+<p class="Pp">PAM_IGNORE</p>
+<div class="Bd-indent">The user does not match any entry in the config
+  file.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">The module was unable to determine the user's name.</div>
+<p class="Pp">PAM_SERVICE_ERR</p>
+<div class="Bd-indent">Error during reading or parsing the config file.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/security/sepermit.conf</p>
+<div class="Bd-indent">Default configuration file</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<div class="Bd-indent">
+<pre>auth     [success=done ignore=ignore default=bad] pam_sepermit.so
+auth     required  pam_unix.so
+account  required  pam_unix.so
+session  required  pam_permit.so
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>sepermit.conf</b>(5), <b>pam.conf</b>(5), <b>pam.d</b>(5),
+    <b>pam</b>(7) <b>selinux</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_sepermit and this manual page were written by Tomas Mraz
+    &lt;tmraz@redhat.com&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

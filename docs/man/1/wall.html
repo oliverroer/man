@@ -1,0 +1,98 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>wall (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">WALL(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">WALL(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">wall - write a message to all users</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>wall</b> [<b>-n</b>] [<b>-t</b> <i>timeout</i>] [<b>-g</b>
+    <i>group</i>] [<i>message</i> | <i>file</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>wall</b> displays a <i>message</i>, or the contents of a
+    <i>file</i>, or otherwise its standard input, on the terminals of all
+    currently logged in users. The command will wrap lines that are longer than
+    79 characters. Short lines are whitespace padded to have 79 characters. The
+    command will always put a carriage return and new line at the end of each
+    line.</p>
+<p class="Pp">Only the superuser can write on the terminals of users who have
+    chosen to deny messages or are using a program which automatically denies
+    messages.</p>
+<p class="Pp">Reading from a <i>file</i> is refused when the invoker is not
+    superuser and the program is set-user-ID or set-group-ID.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp"><b>-n</b>, <b>--nobanner</b></p>
+<div class="Bd-indent">Suppress the banner.</div>
+<p class="Pp"><b>-t</b>, <b>--timeout</b> <i>timeout</i></p>
+<div class="Bd-indent">Abandon the write attempt to the terminals after
+  <i>timeout</i> seconds. This <i>timeout</i> must be a positive integer. The
+  default value is 300 seconds, which is a legacy from the time when people ran
+  terminals over modem lines.</div>
+<p class="Pp"><b>-g</b>, <b>--group</b> <i>group</i></p>
+<div class="Bd-indent">Limit printing message to members of group defined as a
+  <i>group</i> argument. The argument can be group name or GID.</div>
+<p class="Pp"><b>-h</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help text and exit.</div>
+<p class="Pp"><b>-V</b>, <b>--version</b></p>
+<div class="Bd-indent">Print version and exit.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">Some sessions, such as <b>wdm</b>(1x), that have in the beginning
+    of <b>utmp</b>(5) ut_type data a ':' character will not get the message from
+    <b>wall</b>. This is done to avoid write errors.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<p class="Pp">A <b>wall</b> command appeared in Version 7 AT&amp;T UNIX.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>mesg</b>(1), <b>talk</b>(1), <b>write</b>(1),
+    <b>shutdown</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">For bug reports, use the issue tracker at <i></i>
+    &lt;https://github.com/util-linux/util-linux/issues&gt;.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h1>
+<p class="Pp">The <b>wall</b> command is part of the util-linux package which
+    can be downloaded from <i>Linux Kernel Archive</i>
+    &lt;https://www.kernel.org/pub/linux/utils/util-linux/&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-23</td>
+    <td class="foot-os">util-linux 2.39.3</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

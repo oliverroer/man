@@ -1,0 +1,222 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>watch (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">WATCH(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">WATCH(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">watch - execute a program periodically, showing output
+  fullscreen</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>watch</b> [<i>options</i>] <i>command</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>watch</b> runs <i>command</i> repeatedly, displaying its output
+    and errors (the first screenfull). This allows you to watch the program
+    output change over time. By default, <i>command</i> is run every 2 seconds
+    and <b>watch</b> will run until interrupted.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="b"><a class="permalink" href="#b"><b>-b</b>, <b>--beep</b></a></dt>
+  <dd>Beep if command has a non-zero exit.</dd>
+  <dt id="c"><a class="permalink" href="#c"><b>-c</b>, <b>--color</b></a></dt>
+  <dd>Interpret ANSI color and style sequences.</dd>
+  <dt id="C"><a class="permalink" href="#C"><b>-C</b>,
+    <b>--no-color</b></a></dt>
+  <dd>Do not interpret ANSI color and style sequences.</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>,
+    <b>--differences</b>[=<i>permanent</i>]</a></dt>
+  <dd>Highlight the differences between successive updates. If the optional
+      <i>permanent</i> argument is specified then <b>watch</b> will show all
+      changes since the first iteration.</dd>
+  <dt id="e"><a class="permalink" href="#e"><b>-e</b>, <b>--errexit</b></a></dt>
+  <dd>Freeze updates on command error, and exit after a key press.</dd>
+  <dt id="g"><a class="permalink" href="#g"><b>-g</b>, <b>--chgexit</b></a></dt>
+  <dd>Exit when the output of <i>command</i> changes.</dd>
+  <dt id="n"><a class="permalink" href="#n"><b>-n</b>, <b>--interval</b>
+    <i>seconds</i></a></dt>
+  <dd>Specify update interval. The command will not allow quicker than 0.1
+      second interval, in which the smaller values are converted. Both '.' and
+      ',' work for any locales. The <b>WATCH_INTERVAL</b> environment can be
+      used to persistently set a non-default interval (following the same rules
+      and formatting).</dd>
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b>, <b>--precise</b></a></dt>
+  <dd>Make <b>watch</b> attempt to run <i>command</i> every <b>--interval</b>
+      <i>seconds</i>. Try it with <b>ntptime</b> (if present) and notice how the
+      fractional seconds stays (nearly) the same, as opposed to normal mode
+      where they continuously increase.</dd>
+  <dt id="q"><a class="permalink" href="#q"><b>-q</b>, <b>--equexit</b>
+    &lt;cycles&gt;</a></dt>
+  <dd>Exit when output of <i>command</i> does not change for the given number of
+      cycles.</dd>
+  <dt id="r"><a class="permalink" href="#r"><b>-r</b>,
+    <b>--no-rerun</b></a></dt>
+  <dd>Do not run the program on terminal resize, the output of the program will
+      re-appear at the next regular run time.</dd>
+  <dt id="t"><a class="permalink" href="#t"><b>-t</b>,
+    <b>--no-title</b></a></dt>
+  <dd>Turn off the header showing the interval, command, and current time at the
+      top of the display, as well as the following blank line.</dd>
+  <dt id="w"><a class="permalink" href="#w"><b>-w</b>, <b>--no-wrap</b></a></dt>
+  <dd>Turn off line wrapping. Long lines will be truncated instead of wrapped to
+      the next line.</dd>
+  <dt id="x"><a class="permalink" href="#x"><b>-x</b>, <b>--exec</b></a></dt>
+  <dd>Pass <i>command</i> to <b>exec</b>(2) instead of <b>sh -c</b> which
+      reduces the need to use extra quoting to get the desired effect.</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>Display help text and exit.</dd>
+  <dt id="v"><a class="permalink" href="#v"><b>-v</b>, <b>--version</b></a></dt>
+  <dd>Display version information and exit.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<div class="Bd-indent">
+<dl class="Bl-tag">
+  <dt><b>0</b></dt>
+  <dd>Success.</dd>
+  <dt><b>1</b></dt>
+  <dd>Various failures.</dd>
+  <dt><b>2</b></dt>
+  <dd>Forking the process to watch failed.</dd>
+  <dt><b>3</b></dt>
+  <dd>Replacing child process stdout with write side pipe failed.</dd>
+  <dt><b>4</b></dt>
+  <dd>Command execution failed.</dd>
+  <dt><b>5</b></dt>
+  <dd>Closing child process write pipe failed.</dd>
+  <dt><b>7</b></dt>
+  <dd>IPC pipe creation failed.</dd>
+  <dt><b>8</b></dt>
+  <dd>Getting child process return value with <b>waitpid</b>(2) failed, or
+      command exited up on error.</dd>
+  <dt id="other"><a class="permalink" href="#other"><b>other</b></a></dt>
+  <dd>The watch will propagate command exit status as child exit status.</dd>
+</dl>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ENVIRONMENT"><a class="permalink" href="#ENVIRONMENT">ENVIRONMENT</a></h1>
+<p class="Pp">The behavior of <b>watch</b> is affected by the following
+    environment variables.</p>
+<p class="Pp"></p>
+<dl class="Bl-tag">
+  <dt id="WATCH_INTERVAL"><a class="permalink" href="#WATCH_INTERVAL"><b>WATCH_INTERVAL</b></a></dt>
+  <dd>Update interval, follows the same rules as the <b>--interval</b> command
+      line option.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">POSIX option processing is used (i.e., option processing stops at
+    the first non-option argument). This means that flags after <i>command</i>
+    don't get interpreted by <b>watch</b> itself.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">Upon terminal resize, the screen will not be correctly repainted
+    until the next scheduled update. All <b>--differences</b> highlighting is
+    lost on that update as well. When using the <b>--no-rerun</b> option, no
+    output of will be visible.</p>
+<p class="Pp">Non-printing characters are stripped from program output. Use
+    <b>cat -v</b> as part of the command pipeline if you want to see them.</p>
+<p class="Pp">Combining Characters that are supposed to display on the character
+    at the last column on the screen may display one column early, or they may
+    not display at all.</p>
+<p class="Pp">Combining Characters never count as different in
+    <b>--differences</b> mode. Only the base character counts.</p>
+<p class="Pp">Blank lines directly after a line which ends in the last column do
+    not display.</p>
+<p class="Pp"><b>--precise</b> mode doesn't yet have advanced temporal
+    distortion technology to compensate for a <i>command</i> that takes more
+    than <b>--interval</b> <i>seconds</i> to execute. <b>watch</b> also can get
+    into a state where it rapid-fires as many executions of <i>command</i> as it
+    can to catch up from a previous executions running longer than
+    <b>--interval</b> (for example, <b>netstat</b>(8) taking ages on a DNS
+    lookup).</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">To watch for mail, you might do</p>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>watch -n 60 from</dd>
+</dl>
+<p class="Pp">To watch the contents of a directory change, you could use</p>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>watch -d ls -l</dd>
+</dl>
+<p class="Pp">If you're only interested in files owned by user joe, you might
+    use</p>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>watch -d 'ls -l | fgrep joe'</dd>
+</dl>
+<p class="Pp">To see the effects of quoting, try these out</p>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>watch echo $$
+    <br/>
+    watch echo '$$'
+    <br/>
+    watch echo &quot;'&quot;'$$'&quot;'&quot;</dd>
+</dl>
+<p class="Pp">To see the effect of precision time keeping, try adding <b>-p</b>
+    to</p>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>watch -n 10 sleep 1</dd>
+</dl>
+<p class="Pp">You can watch for your administrator to install the latest kernel
+    with</p>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>watch uname -r</dd>
+</dl>
+<p class="Pp">(Note that <b>-p</b> isn't guaranteed to work across reboots,
+    especially in the face of <b>ntpdate</b> (if present) or other bootup
+    time-changing mechanisms)</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">Please send bug reports to
+    <a class="Lk" href="procps@freelists.org">procps@freelists.org</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-01-17</td>
+    <td class="foot-os">procps-ng</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

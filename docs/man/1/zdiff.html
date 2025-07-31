@@ -1,0 +1,62 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zdiff (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ZDIFF(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">ZDIFF(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">zcmp, zdiff - compare compressed files</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>zcmp</b> [ cmp_options ] file1 [ file2 ]
+  <br/>
+  <b>zdiff</b> [ diff_options ] file1 [ file2 ]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>zcmp</b> and <b>zdiff</b> commands are used to invoke the
+    <b>cmp</b> or the <b>diff</b> program on files compressed via <b>gzip</b>.
+    All options specified are passed directly to <b>cmp</b> or <b>diff</b>. If
+    only <i>file1</i> is specified, it is compared to the uncompressed contents
+    of <i>file1</i><b>.gz</b><i>.</i> If two files are specified, their contents
+    (uncompressed if necessary) are fed to <b>cmp</b> or <b>diff</b>. The input
+    files are not modified. The exit status from <b>cmp</b> or <b>diff</b> is
+    preserved.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp">cmp(1), diff(1), zmore(1), zgrep(1), znew(1), zforce(1), gzip(1),
+    gzexe(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">Messages from the <b>cmp</b> or <b>diff</b> programs may refer to
+    file names such as &quot;-&quot; instead of to the file names specified.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date"></td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_setquota (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_SETQUOTA(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_SETQUOTA(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_setquota - PAM module to set or modify disk quotas on session
+    start</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_setquota.so</b> [fs=<i>/home</i>] [overwrite=<i>0</i>]
+    [debug=<i>0</i>] [startuid=<i>1000</i>] [enduid=<i>0</i>]
+    [bsoftlimit=<i>19000</i>] [bhardlimit=<i>20000</i>] [isoftlimit=<i>3000</i>]
+    [ihardlimit=<i>4000</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">pam_setquota is a PAM module to set or modify a disk quota at
+    session start</p>
+<p class="Pp">This makes quotas usable with central user databases, such as
+    MySQL or LDAP.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">fs=/home</p>
+<div class="Bd-indent">The device file or mountpoint the policy applies to.
+  Defaults to the filesystem containing the users home directory.</div>
+<p class="Pp">overwrite=0</p>
+<div class="Bd-indent">Overwrite an existing quota. Note: Enabling this will
+  remove the ability for the admin to manually configure different quotas for
+  users for a filesystem with <b>edquota</b>(8). (Defaults to 0)</div>
+<p class="Pp">debug=0</p>
+<div class="Bd-indent">Enable debugging. A value of 1 outputs the old and new
+  quota on a device. A value of 2 also prints out the matched and found
+  filesystems should <b>fs</b> be unset. (Defaults to 0)</div>
+<p class="Pp">startuid=1000</p>
+<div class="Bd-indent">Describe the start of the UID range the policy is applied
+  to. (Defaults to UID_MIN from login.defs or the uidmin value defined at
+  compile-time if UID_MIN is undefined.)</div>
+<p class="Pp">enduid=0</p>
+<div class="Bd-indent">Describe the end of the UID range the policy is applied
+  to. Setting <i>enduid=0</i> results in an open-ended UID range (i.e. all uids
+  greater than <b>startuid</b> are included). (Defaults to 0)</div>
+<p class="Pp">bsoftlimit=19000</p>
+<div class="Bd-indent">Soft limit for disk quota blocks, as defined by
+  <b>quotactl</b>(2). Note: <b>bsoftlimit</b> and <b>bhardlimit</b> <i>must</i>
+  be set at the same time!</div>
+<p class="Pp">bhardlimit=20000</p>
+<div class="Bd-indent">Hard limit for disk quota blocks, as defined by
+  <b>quotactl</b>(2). Note: <b>bsoftlimit</b> and <b>bhardlimit</b> <i>must</i>
+  be set at the same time!</div>
+<p class="Pp">isoftlimit=3000</p>
+<div class="Bd-indent">Soft limit for inodes, as defined by <b> quotactl</b>(2).
+  Note: <b>isoftlimit</b> and <b>ihardlimit</b> <i>must</i> be set at the same
+  time!</div>
+<p class="Pp">ihardlimit=4000</p>
+<div class="Bd-indent">Hard limit for inodes, as defined by <b> quotactl</b>(2).
+  Note: <b>isoftlimit</b> and <b>ihardlimit</b> <i>must</i> be set at the same
+  time!</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">Only the <b>session</b> module type is provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">The quota was set successfully.</div>
+<p class="Pp">PAM_IGNORE</p>
+<div class="Bd-indent">No action was taken because either the UID of the user
+  was outside of the specified range, a quota already existed and
+  <b>overwrite=1</b> was not configured or no limits were configured at
+  all.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">The user was not found.</div>
+<p class="Pp">PAM_PERM_DENIED</p>
+<div class="Bd-indent">/proc/mounts could not be opened.
+<p class="Pp">The filesystem or device specified was not found.</p>
+<p class="Pp">The limits for the user could not be retrieved. See syslog for
+    more information.</p>
+<p class="Pp">The limits for the user could not be set. See syslog for more
+    information.</p>
+<p class="Pp">Either <b>isoftlimit</b>/<b>ihardlimit</b> or
+    <b>bsoftlimit</b>/<b>bhardlimit</b> were not set at the same time.</p>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">A single invocation of `pam_setquota` applies a specific policy to
+    a UID range. Applying different policies to specific UID ranges is done by
+    invoking pam_setquota more than once. The last matching entry defines the
+    resulting quota.</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+      session  required   pam_setquota.so bsoftlimit=1000 bhardlimit=2000 isoftlimit=1000 ihardlimit=2000 startuid=1000 enduid=0 fs=/home
+<br/>
+      session  required   pam_setquota.so bsoftlimit=19000 bhardlimit=20000 isoftlimit=3000 ihardlimit=4000 startuid=2001 enduid=3000 fs=/dev/sda1
+<br/>
+      session  required   pam_setquota.so bsoftlimit=19000 bhardlimit=20000 isoftlimit=3000 ihardlimit=4000 startuid=3001 enduid=4000 fs=/dev/sda1 overwrite=1
+<br/>
+    </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_setquota was originally written by Ruslan Savchenko
+    &lt;savrus@mexmat.net&gt;.</p>
+<p class="Pp">Further modifications were made by Shane Tzen
+    &lt;shane@ict.usc.edu&gt;, Sven Hartge &lt;sven@svenhartge.de&gt; and Keller
+    Fuchs &lt;kellerfuchs@hashbang.sh&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

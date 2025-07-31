@@ -1,0 +1,52 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>deb-systemd-invoke (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DEB-SYSTEMD-INVOKE(1p)</td>
+    <td class="head-vol">init-system-helpers</td>
+    <td class="head-rtitle">DEB-SYSTEMD-INVOKE(1p)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">deb-systemd-invoke - wrapper around systemctl, respecting
+    policy-rc.d</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>deb-systemd-invoke</b> [<b>--user</b>] start|stop|restart
+    <i>unit&#x00A0;file</i>&#x00A0;... <b>deb-systemd-invoke</b> [<b>--user</b>]
+    [<b>--no-dbus</b>] daemon-reload|daemon-reexec</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>deb-systemd-invoke</b> is a Debian-specific helper script which
+    asks /usr/sbin/policy-rc.d before performing a systemctl call.</p>
+<p class="Pp"><b>deb-systemd-invoke</b> is intended to be used from maintscripts
+    to manage systemd unit files. It is specifically NOT intended to be used
+    interactively by users. Instead, users should run systemd and use systemctl,
+    or not bother about the systemd enabled state in case they are not running
+    systemd.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-12-06</td>
+    <td class="foot-os">1.66ubuntu1</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

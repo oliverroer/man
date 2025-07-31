@@ -1,0 +1,83 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>sepermit (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">SEPERMIT.CONF(5)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">SEPERMIT.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">sepermit.conf - configuration file for the pam_sepermit module</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The lines of the configuration file have the following syntax:</p>
+<p class="Pp"><i>&lt;user&gt;</i>[:<i>&lt;option&gt;</i>:<i>&lt;option&gt;</i>...]</p>
+<p class="Pp">The <b>user</b> can be specified in the following manner:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;a username</div>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;a groupname, with <b>@group</b> syntax. This
+  should not be confused with netgroups.</div>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;a SELinux user name with <b>%seuser</b>
+  syntax.</div>
+<p class="Pp">The recognized options are:</p>
+<p class="Pp">exclusive</p>
+<div class="Bd-indent">Only single login session will be allowed for the user
+  and the user's processes will be killed on logout.</div>
+<p class="Pp">ignore</p>
+<div class="Bd-indent">The module will never return PAM_SUCCESS status for the
+  user. It will return PAM_IGNORE if SELinux is in the enforcing mode, and
+  PAM_AUTH_ERR otherwise. It is useful if you want to support passwordless guest
+  users and other confined users with passwords simultaneously.</div>
+<p class="Pp">The lines which start with # character are comments and are
+    ignored.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">These are some example lines which might be specified in
+    /etc/security/sepermit.conf.</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>%guest_u:exclusive
+%staff_u:ignore
+%user_u:ignore
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam_sepermit</b>(8), <b>pam.d</b>(5), <b>pam</b>(7),
+    <b>selinux</b>(8),</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_sepermit and this manual page were written by Tomas Mraz
+    &lt;tmraz@redhat.com&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

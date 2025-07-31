@@ -1,0 +1,105 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>memcmp (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">memcmp(3)</td>
+    <td class="head-vol">Library Functions Manual</td>
+    <td class="head-rtitle">memcmp(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">memcmp - compare memory areas</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;string.h&gt;</b></pre>
+<pre><b>int memcmp(const void </b><i>s1</i><b>[.</b><i>n</i><b>], const void </b><i>s2</i><b>[.</b><i>n</i><b>], size_t </b><i>n</i><b>);</b></pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>memcmp</b>() function compares the first <i>n</i> bytes
+    (each interpreted as <i>unsigned char</i>) of the memory areas <i>s1</i> and
+    <i>s2</i>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
+  VALUE</a></h1>
+<p class="Pp">The <b>memcmp</b>() function returns an integer less than, equal
+    to, or greater than zero if the first <i>n</i> bytes of <i>s1</i> is found,
+    respectively, to be less than, to match, or be greater than the first
+    <i>n</i> bytes of <i>s2</i>.</p>
+<p class="Pp">For a nonzero return value, the sign is determined by the sign of
+    the difference between the first pair of bytes (interpreted as <i>unsigned
+    char</i>) that differ in <i>s1</i> and <i>s2</i>.</p>
+<p class="Pp">If <i>n</i> is zero, the return value is zero.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ATTRIBUTES"><a class="permalink" href="#ATTRIBUTES">ATTRIBUTES</a></h1>
+<p class="Pp">For an explanation of the terms used in this section, see
+    <b>attributes</b>(7).</p>
+<table class="tbl" border="1" style="border-style: solid;">
+  <tr>
+    <td><b>Interface</b></td>
+    <td><b>Attribute</b></td>
+    <td><b>Value</b></td>
+  </tr>
+  <tr>
+    <td>memcmp ()</td>
+    <td>Thread safety</td>
+    <td>MT-Safe</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<p class="Pp">C11, POSIX.1-2008.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<p class="Pp">POSIX.1-2001, C89, SVr4, 4.3BSD.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CAVEATS"><a class="permalink" href="#CAVEATS">CAVEATS</a></h1>
+<p class="Pp">Do not use <b>memcmp</b>() to compare confidential data, such as
+    cryptographic secrets, because the CPU time required for the comparison
+    depends on the contents of the addresses compared, this function is subject
+    to timing-based side-channel attacks. In such cases, a function that
+    performs comparisons in deterministic time, depending only on <i>n</i> (the
+    quantity of bytes compared) is required. Some operating systems provide such
+    a function (e.g., NetBSD's <b>consttime_memequal</b>()), but no such
+    function is specified in POSIX. On Linux, you may need to implement such a
+    function yourself.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>bstring</b>(3), <b>strcasecmp</b>(3), <b>strcmp</b>(3),
+    <b>strcoll</b>(3), <b>strncasecmp</b>(3), <b>strncmp</b>(3),
+    <b>wmemcmp</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

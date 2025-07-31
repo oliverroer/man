@@ -1,0 +1,108 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_ftp (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_FTP(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_FTP(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_ftp - PAM module for anonymous access module</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_ftp.so</b> [debug] [ignore]
+  [users=<i>XXX,YYY,</i>...]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">pam_ftp is a PAM module which provides a pluggable anonymous ftp
+    mode of access.</p>
+<p class="Pp">This module intercepts the user's name and password. If the name
+    is <i>ftp</i> or <i>anonymous</i>, the user's password is broken up at the
+    <i>@</i> delimiter into a <i>PAM_RUSER</i> and a <i>PAM_RHOST</i> part;
+    these pam-items being set accordingly. The username (<i>PAM_USER</i>) is set
+    to <i>ftp</i>. In this case the module succeeds. Alternatively, the module
+    sets the <i>PAM_AUTHTOK</i> item with the entered password and fails.</p>
+<p class="Pp">This module is not safe and easily spoofable.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Print debug information.</div>
+<p class="Pp">ignore</p>
+<div class="Bd-indent">Pay no attention to the email address of the user (if
+  supplied).</div>
+<p class="Pp">ftp=XXX,YYY,...</p>
+<div class="Bd-indent">Instead of <i>ftp</i> or <i>anonymous</i>, provide
+  anonymous login to the comma separated list of users:
+  <b></b><i>XXX,YYY,...</i>. Should the applicant enter one of these usernames
+  the returned username is set to the first in the list: <i>XXX</i>.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">Only the <b>auth</b> module type is provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">The authentication was successful.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">User not known.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Add the following line to /etc/pam.d/ftpd to handle ftp style
+    anonymous login:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>#
+# ftpd; add ftp-specifics. These lines enable anonymous ftp over
+#       standard UN*X access (the listfile entry blocks access to
+#       users listed in /etc/ftpusers)
+#
+auth    sufficient  pam_ftp.so
+auth    required    pam_unix.so use_first_pass
+auth    required    pam_listfile.so \
+<br/>
+           onerr=succeed item=user sense=deny file=/etc/ftpusers
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_ftp was written by Andrew G. Morgan
+  &lt;morgan@kernel.org&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

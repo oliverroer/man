@@ -1,0 +1,108 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>debconf-set-selections (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DEBCONF-SET-SELECTIONS(1)</td>
+    <td class="head-vol">Debconf</td>
+    <td class="head-rtitle">DEBCONF-SET-SELECTIONS(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">debconf-set-selections - insert new values into the debconf
+    database</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre> debconf-set-selections file
+ debconf-get-selections | ssh newhost debconf-set-selections
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>debconf-set-selections</b> can be used to pre-seed the debconf
+    database with answers, or to change answers in the database. Each question
+    will be marked as seen to prevent debconf from asking the question
+    interactively.</p>
+<p class="Pp">Reads from a file if a filename is given, otherwise from
+  stdin.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="WARNING"><a class="permalink" href="#WARNING">WARNING</a></h1>
+<p class="Pp">Only use this command to seed debconf values for packages that
+    will be or are installed. Otherwise you can end up with values in the
+    database for uninstalled packages that will not go away, or with worse
+    problems involving shared values. It is recommended that this only be used
+    to seed the database if the originating machine has an identical
+  install.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DATA_FORMAT"><a class="permalink" href="#DATA_FORMAT">DATA
+  FORMAT</a></h1>
+<p class="Pp">The data is a series of lines. Lines beginning with a # character
+    are comments. Blank lines are ignored. All other lines set the value of one
+    question, and should contain four values, each separated by one character of
+    whitespace. The first value is the name of the package that owns the
+    question. The second is the name of the question, the third value is the
+    type of this question, and the fourth value (through the end of the line) is
+    the value to use for the answer of the question.</p>
+<p class="Pp">Alternatively, the third value can be &quot;seen&quot;; then the
+    preseed line only controls whether the question is marked as seen in
+    debconf's database. Note that preseeding a question's value defaults to
+    marking that question as seen, so to override the default value without
+    marking a question seen, you need two lines.</p>
+<p class="Pp">Lines can be continued to the next line by ending them with a
+    &quot;\&quot; character.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<pre> # Force debconf priority to critical.
+ debconf debconf/priority select critical
+ # Override default frontend to readline, but allow user to select.
+ debconf debconf/frontend select readline
+ debconf debconf/frontend seen false
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="verbose"><a class="permalink" href="#verbose"><b>--verbose</b>,
+    <b>-v</b></a></dt>
+  <dd>verbose output</dd>
+  <dt id="checkonly"><a class="permalink" href="#checkonly"><b>--checkonly</b>,
+    <b>-c</b></a></dt>
+  <dd>only check the input file format, do not save changes to database</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>debconf-get-selections</b>(1) (available in the debconf-utils
+    package)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Petter Reinholdtsen &lt;pere@hungry.com&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-04-12</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

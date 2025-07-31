@@ -1,0 +1,56 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>installkernel (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">INSTALLKERNEL(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">INSTALLKERNEL(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">installkernel - install a new kernel image</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>installkernel </b><i>version zImage System.map</i>
+    [<i>directory</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>installkernel</b> installs a new kernel image onto the system
+    from the Linux source tree. It is called by the Linux kernel makefiles when
+    <b>make install</b> is invoked there.</p>
+<p class="Pp">The new kernel is installed into
+    <i>{directory}/vmlinuz-{version}</i>. If a symbolic link
+    <i>{directory}/vmlinuz</i> already exists, it is refreshed by making a link
+    from <i>{directory}/vmlinuz</i> to the new kernel, and the previously
+    installed kernel is available as <i>{directory}/vmlinuz.old</i>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp"><b>installkernel</b> resides in /sbin only because the Linux
+    kernel makefiles call it from there. It should really be in /usr/sbin. It
+    isn't needed to boot a system.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">7 Jan 2001</td>
+    <td class="foot-os">Debian Linux</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

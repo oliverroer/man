@@ -1,0 +1,128 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>stdbuf (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">STDBUF(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">STDBUF(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">stdbuf - Run COMMAND, with modified buffering operations for its
+    standard streams.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>stdbuf</b> <i>OPTION</i>... <i>COMMAND</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Run COMMAND, with modified buffering operations for its standard
+    streams.</p>
+<p class="Pp">Mandatory arguments to long options are mandatory for short
+    options too.</p>
+<dl class="Bl-tag">
+  <dt id="i"><a class="permalink" href="#i"><b>-i</b>,
+    <b>--input</b>=<i>MODE</i></a></dt>
+  <dd>adjust standard input stream buffering</dd>
+  <dt id="o"><a class="permalink" href="#o"><b>-o</b>,
+    <b>--output</b>=<i>MODE</i></a></dt>
+  <dd>adjust standard output stream buffering</dd>
+  <dt id="e"><a class="permalink" href="#e"><b>-e</b>,
+    <b>--error</b>=<i>MODE</i></a></dt>
+  <dd>adjust standard error stream buffering</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+<p class="Pp">If MODE is 'L' the corresponding stream will be line buffered.
+    This option is invalid with standard input.</p>
+<p class="Pp">If MODE is '0' the corresponding stream will be unbuffered.</p>
+<p class="Pp">Otherwise MODE is a number which may be followed by one of the
+    following: KB 1000, K 1024, MB 1000*1000, M 1024*1024, and so on for
+    G,T,P,E,Z,Y,R,Q. Binary prefixes can be used, too: KiB=K, MiB=M, and so on.
+    In this case the corresponding stream will be fully buffered with the buffer
+    size set to MODE bytes.</p>
+<p class="Pp">NOTE: If COMMAND adjusts the buffering of its standard streams
+    ('tee' does for example) then that will override corresponding changes by
+    'stdbuf'. Also some filters (like 'dd' and 'cat' etc.) don't use streams for
+    I/O, and are thus unaffected by 'stdbuf' settings.</p>
+<section class="Ss">
+<h2 class="Ss" id="Exit_status:"><a class="permalink" href="#Exit_status:">Exit
+  status:</a></h2>
+<dl class="Bl-tag">
+  <dt>125</dt>
+  <dd>if the stdbuf command itself fails</dd>
+  <dt>126</dt>
+  <dd>if COMMAND is found but cannot be invoked</dd>
+  <dt>127</dt>
+  <dd>if COMMAND cannot be found</dd>
+  <dt>-</dt>
+  <dd>the exit status of COMMAND otherwise</dd>
+</dl>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp"><b>tail -f access.log | stdbuf -oL cut -d ' ' -f1 | uniq</b>
+  <br/>
+  This will immediately display unique entries from access.log</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">On GLIBC platforms, specifying a buffer size, i.e., using fully
+    buffered mode will result in undefined operation.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Padraig Brady.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/stdbuf&gt;
+  <br/>
+  or available locally via: info '(coreutils) stdbuf invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

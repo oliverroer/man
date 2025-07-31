@@ -1,0 +1,99 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>outb (2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">outb(2)</td>
+    <td class="head-vol">System Calls Manual</td>
+    <td class="head-rtitle">outb(2)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">outb, outw, outl, outsb, outsw, outsl, inb, inw, inl, insb, insw,
+    insl, outb_p, outw_p, outl_p, inb_p, inw_p, inl_p - port I/O</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;sys/io.h&gt;</b></pre>
+<pre><b>unsigned char inb(unsigned short </b><i>port</i><b>);</b>
+<b>unsigned char inb_p(unsigned short </b><i>port</i><b>);</b>
+<b>unsigned short inw(unsigned short </b><i>port</i><b>);</b>
+<b>unsigned short inw_p(unsigned short </b><i>port</i><b>);</b>
+<b>unsigned int inl(unsigned short </b><i>port</i><b>);</b>
+<b>unsigned int inl_p(unsigned short </b><i>port</i><b>);</b></pre>
+<pre><b>void outb(unsigned char </b><i>value</i><b>, unsigned short </b><i>port</i><b>);</b>
+<b>void outb_p(unsigned char </b><i>value</i><b>, unsigned short </b><i>port</i><b>);</b>
+<b>void outw(unsigned short </b><i>value</i><b>, unsigned short </b><i>port</i><b>);</b>
+<b>void outw_p(unsigned short </b><i>value</i><b>, unsigned short </b><i>port</i><b>);</b>
+<b>void outl(unsigned int </b><i>value</i><b>, unsigned short </b><i>port</i><b>);</b>
+<b>void outl_p(unsigned int </b><i>value</i><b>, unsigned short </b><i>port</i><b>);</b></pre>
+<pre><b>void insb(unsigned short </b><i>port</i><b>, void </b><i>addr</i><b>[.</b><i>count</i><b>],</b>
+<b>           unsigned long </b><i>count</i><b>);</b>
+<b>void insw(unsigned short </b><i>port</i><b>, void </b><i>addr</i><b>[.</b><i>count</i><b>],</b>
+<b>           unsigned long </b><i>count</i><b>);</b>
+<b>void insl(unsigned short </b><i>port</i><b>, void </b><i>addr</i><b>[.</b><i>count</i><b>],</b>
+<b>           unsigned long </b><i>count</i><b>);</b>
+<b>void outsb(unsigned short </b><i>port</i><b>, const void </b><i>addr</i><b>[.</b><i>count</i><b>],</b>
+<b>           unsigned long </b><i>count</i><b>);</b>
+<b>void outsw(unsigned short </b><i>port</i><b>, const void </b><i>addr</i><b>[.</b><i>count</i><b>],</b>
+<b>           unsigned long </b><i>count</i><b>);</b>
+<b>void outsl(unsigned short </b><i>port</i><b>, const void </b><i>addr</i><b>[.</b><i>count</i><b>],</b>
+<b>           unsigned long </b><i>count</i><b>);</b></pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This family of functions is used to do low-level port input and
+    output. The out* functions do port output, the in* functions do port input;
+    the b-suffix functions are byte-width and the w-suffix functions word-width;
+    the _p-suffix functions pause until the I/O completes.</p>
+<p class="Pp">They are primarily designed for internal kernel use, but can be
+    used from user space.</p>
+<p class="Pp">You must compile with <b>-O</b> or <b>-O2</b> or similar. The
+    functions are defined as inline macros, and will not be substituted in
+    without optimization enabled, causing unresolved references at link
+  time.</p>
+<p class="Pp">You use <b>ioperm</b>(2) or alternatively <b>iopl</b>(2) to tell
+    the kernel to allow the user space application to access the I/O ports in
+    question. Failure to do this will cause the application to receive a
+    segmentation fault.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="VERSIONS"><a class="permalink" href="#VERSIONS">VERSIONS</a></h1>
+<p class="Pp"><b>outb</b>() and friends are hardware-specific. The <i>value</i>
+    argument is passed first and the <i>port</i> argument is passed second,
+    which is the opposite order from most DOS implementations.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<p class="Pp">None.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>ioperm</b>(2), <b>iopl</b>(2)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

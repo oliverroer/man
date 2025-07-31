@@ -1,0 +1,121 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_mail (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_MAIL(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_MAIL(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_mail - Inform about available mail</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_mail.so</b> [close] [debug] [dir=<i>maildir</i>] [empty]
+    [hash=<i>count</i>] [noenv] [nopen] [quiet] [standard]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The pam_mail PAM module provides the &quot;you have new mail&quot;
+    service to the user. It can be plugged into any application that has
+    credential or session hooks. It gives a single message indicating the
+    <i>newness</i> of any mail it finds in the user's mail folder. This module
+    also sets the PAM environment variable, <b>MAIL</b>, to the user's mail
+    directory.</p>
+<p class="Pp">If the mail spool file (be it /var/mail/$USER or a pathname given
+    with the <b>dir=</b> parameter) is a directory then pam_mail assumes it is
+    in the <i>Maildir</i> format.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">close</p>
+<div class="Bd-indent">Indicate if the user has any mail also on logout.</div>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Print debug information.</div>
+<p class="Pp">dir=maildir</p>
+<div class="Bd-indent">Look for the user's mail in an alternative location
+  defined by maildir/&lt;login&gt;. The default location for mail is
+  /var/mail/&lt;login&gt;. Note, if the supplied maildir is prefixed by a '~',
+  the directory is interpreted as indicating a file in the user's home
+  directory.</div>
+<p class="Pp">empty</p>
+<div class="Bd-indent">Also print message if user has no mail.</div>
+<p class="Pp">hash=count</p>
+<div class="Bd-indent">Mail directory hash depth. For example, a
+  <i>hashcount</i> of 2 would make the mail file be
+  /var/spool/mail/u/s/user.</div>
+<p class="Pp">noenv</p>
+<div class="Bd-indent">Do not set the <b>MAIL</b> environment variable.</div>
+<p class="Pp">nopen</p>
+<div class="Bd-indent">Don't print any mail information on login. This flag is
+  useful to get the <b>MAIL</b> environment variable set, but to not display any
+  information about it.</div>
+<p class="Pp">quiet</p>
+<div class="Bd-indent">Only report when there is new mail.</div>
+<p class="Pp">standard</p>
+<div class="Bd-indent">Old style &quot;You have...&quot; format which doesn't
+  show the mail spool being used. This also implies &quot;empty&quot;.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">The <b>session</b> and <b>auth</b> (on establishment and deletion
+    of credentials) module types are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_SERVICE_ERR</p>
+<div class="Bd-indent">Badly formed arguments.</div>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">Success.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">User not known.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Add the following line to /etc/pam.d/login to indicate that the
+    user has new mail when they login to the system.</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>session  optional  pam_mail.so standard
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_mail was written by Andrew G. Morgan
+    &lt;morgan@kernel.org&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

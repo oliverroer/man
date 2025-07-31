@@ -1,0 +1,108 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>chfn (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">CHFN(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">CHFN(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">chfn - change real user name and information</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>chfn</b> [<i>options</i>] [<i>LOGIN</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>chfn</b> command changes user fullname, office room number,
+    office phone number, and home phone number information for a user's account.
+    This information is typically printed by <b>finger</b>(1) and similar
+    programs. A normal user may only change the fields for her own account,
+    subject to the restrictions in /etc/login.defs. (The default configuration
+    is to prevent users from changing their fullname.) The superuser may change
+    any field for any account. Additionally, only the superuser may use the
+    <b>-o</b> option to change the undefined portions of the GECOS field.</p>
+<p class="Pp">These fields must not contain any colons. Except for the
+    <i>other</i> field, they should not contain any comma or equal sign. It is
+    also recommended to avoid non-US-ASCII characters, but this is only enforced
+    for the phone numbers. The <i>other</i> field is used to store accounting
+    information used by other applications.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">The options which apply to the <b>chfn</b> command are:</p>
+<p class="Pp"><b>-f</b>, <b>--full-name</b>&#x00A0;<i>FULL_NAME</i></p>
+<div class="Bd-indent">Change the user's full name.</div>
+<p class="Pp"><b>-h</b>, <b>--home-phone</b>&#x00A0;<i>HOME_PHONE</i></p>
+<div class="Bd-indent">Change the user's home phone number.</div>
+<p class="Pp"><b>-o</b>, <b>--other</b>&#x00A0;<i>OTHER</i></p>
+<div class="Bd-indent">Change the user's other GECOS information. This field is
+  used to store accounting information used by other applications, and can be
+  changed only by a superuser.</div>
+<p class="Pp"><b>-r</b>, <b>--room</b>&#x00A0;<i>ROOM_NUMBER</i></p>
+<div class="Bd-indent">Change the user's room number.</div>
+<p class="Pp"><b>-R</b>, <b>--root</b>&#x00A0;<i>CHROOT_DIR</i></p>
+<div class="Bd-indent">Apply changes in the <i>CHROOT_DIR</i> directory and use
+  the configuration files from the <i>CHROOT_DIR</i> directory. Only absolute
+  paths are supported.</div>
+<p class="Pp"><b>-u</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help message and exit.</div>
+<p class="Pp"><b>-w</b>, <b>--work-phone</b>&#x00A0;<i>WORK_PHONE</i></p>
+<div class="Bd-indent">Change the user's office phone number.</div>
+<p class="Pp">If none of the options are selected, <b>chfn</b> operates in an
+    interactive fashion, prompting the user with the current values for all of
+    the fields. Enter the new value to change the field, or leave the line blank
+    to use the current value. The current value is displayed between a pair of
+    <b>[ ]</b> marks. Without options, <b>chfn</b> prompts for the current user
+    account.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CONFIGURATION"><a class="permalink" href="#CONFIGURATION">CONFIGURATION</a></h1>
+<p class="Pp">The following configuration variables in /etc/login.defs change
+    the behavior of this tool:</p>
+<p class="Pp"><b>CHFN_RESTRICT</b> (string)</p>
+<div class="Bd-indent">This parameter specifies which values in the <i>gecos</i>
+  field of the /etc/passwd file may be changed by regular users using the
+  <b>chfn</b> program. It can be any combination of letters <i>f</i>, <i>r</i>,
+  <i>w</i>, <i>h</i>, for Full name, Room number, Work phone, and Home phone,
+  respectively. For backward compatibility, <i>yes</i> is equivalent to
+  <i>rwh</i> and <i>no</i> is equivalent to <i>frwh</i>. If not specified, only
+  the superuser can make any changes. The most restrictive setting is better
+  achieved by not installing <b>chfn</b> SUID.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/login.defs</p>
+<div class="Bd-indent">Shadow password suite configuration.</div>
+<p class="Pp">/etc/passwd</p>
+<div class="Bd-indent">User account information.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>chsh</b>(1), <b>login.defs</b>(5), <b>passwd</b>(5).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/30/2024</td>
+    <td class="foot-os">shadow-utils 4.13</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

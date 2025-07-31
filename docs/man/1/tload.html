@@ -1,0 +1,88 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>tload (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">TLOAD(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">TLOAD(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">tload - graphic representation of system load average</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>tload</b> [<i>options</i>] [<i>tty</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>tload</b> prints a graph of the current system load average to
+    the specified <i>tty</i> (or the tty of the <b>tload</b> process if none is
+    specified).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="s"><a class="permalink" href="#s"><b>-s</b>, <b>--scale</b>
+    <i>number</i></a></dt>
+  <dd>The scale option allows a vertical scale to be specified for the display
+      (in characters between graph ticks); thus, a smaller value represents a
+      larger scale, and vice versa.</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>, <b>--delay</b>
+    <i>seconds</i></a></dt>
+  <dd>The delay sets the delay between graph updates in <i>seconds</i>.</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>Display this help text.</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>Display version information and exit.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp"><i>/proc/loadavg</i> load average information</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>ps</b>(1), <b>top</b>(1), <b>uptime</b>(1), <b>w</b>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">The <b>-d</b><i> delay</i> option sets the time argument for an
+    <b>alarm</b>(2); if -d 0 is specified, the alarm is set to 0, which will
+    never send the <b>SIGALRM</b> and update the display.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
+<p class="Pp">Branko Lankester, <a class="Lk" href="david@ods.com">David
+    Engel</a>, and <a class="Lk" href="johnsonm@redhat.com">Michael K.
+    Johnson</a>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">Please send bug reports to
+    <a class="Lk" href="procps@freelists.org">procps@freelists.org</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2020-06-04</td>
+    <td class="foot-os">procps-ng</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

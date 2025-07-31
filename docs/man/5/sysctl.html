@@ -1,0 +1,106 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>sysctl (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">SYSCTL.CONF(5)</td>
+    <td class="head-vol">File Formats</td>
+    <td class="head-rtitle">SYSCTL.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">sysctl.conf - sysctl preload/configuration file</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>sysctl.conf</b> is a simple file containing sysctl values to be
+    read in and set by <b>sysctl</b>. The syntax is simply as follows:</p>
+<div class="Bd-indent">
+<p class="Pp"></p>
+<pre># comment
+; comment
+token = value</pre>
+</div>
+<p class="Pp">Note that blank lines are ignored, and whitespace before and after
+    a token or value is ignored, although a value can contain whitespace within.
+    Lines which begin with a <i>#</i> or <i>;</i> are considered comments and
+    ignored.</p>
+<p class="Pp">If a line begins with a single -, any attempts to set the value
+    that fail will be ignored.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">As the <b>/etc/sysctl.conf</b> file is used to override default
+    kernel parameter values, only a small number of parameters is predefined in
+    the file. Use <i>/sbin/sysctl&#x00A0;-a</i> or follow <b>sysctl</b>(8) to
+    list all possible parameters. The description of individual parameters can
+    be found in the kernel documentation.</p>
+<p class="Pp">Maximum supported line length of the value is 4096 characters due
+    to a limitation of <i>/proc</i> entries in Linux kernel.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLE"><a class="permalink" href="#EXAMPLE">EXAMPLE</a></h1>
+<div class="Bd-indent">
+<p class="Pp"></p>
+<pre># sysctl.conf sample
+#
+<br/>
+  kernel.domainname = example.com
+; this one has a space which will be written to the sysctl!
+<br/>
+  kernel.modprobe = /sbin/mod probe</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp"><i>/etc/sysctl.d/*.conf</i>
+  <br/>
+  <i>/run/sysctl.d/*.conf</i>
+  <br/>
+  <i>/usr/local/lib/sysctl.d/*.conf</i>
+  <br/>
+  <i>/usr/lib/sysctl.d/*.conf</i>
+  <br/>
+  <i>/lib/sysctl.d/*.conf</i>
+  <br/>
+  <i>/etc/sysctl.conf</i></p>
+<p class="Pp">The paths where <b>sysctl</b> preload files usually exist. See
+    also <b>sysctl</b> option <i>--system</i>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>sysctl</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><a class="Lk" href="staikos@0wned.org">George Staikos</a></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">Please send bug reports to
+    <a class="Lk" href="procps@freelists.org">procps@freelists.org</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2021-09-15</td>
+    <td class="foot-os">procps-ng</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

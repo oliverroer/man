@@ -1,0 +1,141 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>nl (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">NL(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">NL(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">nl - number lines of files</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>nl</b> [<i>OPTION</i>]... [<i>FILE</i>]...</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Write each FILE to standard output, with line numbers added.</p>
+<p class="Pp">With no FILE, or when FILE is -, read standard input.</p>
+<p class="Pp">Mandatory arguments to long options are mandatory for short
+    options too.</p>
+<dl class="Bl-tag">
+  <dt id="b"><a class="permalink" href="#b"><b>-b</b>,
+    <b>--body-numbering</b>=<i>STYLE</i></a></dt>
+  <dd>use STYLE for numbering body lines</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>,
+    <b>--section-delimiter</b>=<i>CC</i></a></dt>
+  <dd>use CC for logical page delimiters</dd>
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b>,
+    <b>--footer-numbering</b>=<i>STYLE</i></a></dt>
+  <dd>use STYLE for numbering footer lines</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>,
+    <b>--header-numbering</b>=<i>STYLE</i></a></dt>
+  <dd>use STYLE for numbering header lines</dd>
+  <dt id="i"><a class="permalink" href="#i"><b>-i</b>,
+    <b>--line-increment</b>=<i>NUMBER</i></a></dt>
+  <dd>line number increment at each line</dd>
+  <dt id="l"><a class="permalink" href="#l"><b>-l</b>,
+    <b>--join-blank-lines</b>=<i>NUMBER</i></a></dt>
+  <dd>group of NUMBER empty lines counted as one</dd>
+  <dt><b>-n</b>, <b>--number-format</b>=<i>FORMAT</i></dt>
+  <dd>insert line numbers according to FORMAT</dd>
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b>,
+    <b>--no-renumber</b></a></dt>
+  <dd>do not reset line numbers for each section</dd>
+  <dt id="s"><a class="permalink" href="#s"><b>-s</b>,
+    <b>--number-separator</b>=<i>STRING</i></a></dt>
+  <dd>add STRING after (possible) line number</dd>
+  <dt id="v"><a class="permalink" href="#v"><b>-v</b>,
+    <b>--starting-line-number</b>=<i>NUMBER</i></a></dt>
+  <dd>first line number for each section</dd>
+  <dt id="w"><a class="permalink" href="#w"><b>-w</b>,
+    <b>--number-width</b>=<i>NUMBER</i></a></dt>
+  <dd>use NUMBER columns for line numbers</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+<p class="Pp">Default options are: <b>-bt</b> <b>-d</b>'\:' <b>-fn</b>
+    <b>-hn</b> <b>-i1</b> <b>-l1</b> <b>-n</b>'rn' <b>-s</b>&lt;TAB&gt;
+    <b>-v1</b> <b>-w6</b></p>
+<p class="Pp">CC are two delimiter characters used to construct logical page
+    delimiters; a missing second character implies ':'. As a GNU extension one
+    can specify more than two characters, and also specifying the empty string
+    (<b>-d</b> '') disables section matching.</p>
+<p class="Pp">STYLE is one of:</p>
+<dl class="Bl-tag">
+  <dt id="a"><a class="permalink" href="#a">a</a></dt>
+  <dd>number all lines</dd>
+  <dt id="t"><a class="permalink" href="#t">t</a></dt>
+  <dd>number only nonempty lines</dd>
+  <dt id="n"><a class="permalink" href="#n">n</a></dt>
+  <dd>number no lines</dd>
+  <dt id="pBRE"><a class="permalink" href="#pBRE">pBRE</a></dt>
+  <dd>number only lines that contain a match for the basic regular expression,
+      BRE</dd>
+</dl>
+<p class="Pp">FORMAT is one of:</p>
+<dl class="Bl-tag">
+  <dt id="ln"><a class="permalink" href="#ln">ln</a></dt>
+  <dd>left justified, no leading zeros</dd>
+  <dt id="rn"><a class="permalink" href="#rn">rn</a></dt>
+  <dd>right justified, no leading zeros</dd>
+  <dt id="rz"><a class="permalink" href="#rz">rz</a></dt>
+  <dd>right justified, leading zeros</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Scott Bartram and David MacKenzie.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/nl&gt;
+  <br/>
+  or available locally via: info '(coreutils) nl invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

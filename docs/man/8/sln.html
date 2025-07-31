@@ -1,0 +1,57 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>sln (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">sln(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">sln(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">sln - create symbolic links</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>sln</b><i> source dest</i>
+<b>sln</b><i> filelist</i></pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>sln</b> program creates symbolic links. Unlike the
+    <b>ln</b>(1) program, it is statically linked. This means that if for some
+    reason the dynamic linker is not working, <b>sln</b> can be used to make
+    symbolic links to dynamic libraries.</p>
+<p class="Pp">The command line has two forms. In the first form, it creates
+    <i>dest</i> as a new symbolic link to <i>source</i>.</p>
+<p class="Pp">In the second form, <i>filelist</i> is a list of space-separated
+    pathname pairs, and the effect is as if <b>sln</b> was executed once for
+    each line of the file, with the two pathnames as the arguments.</p>
+<p class="Pp">The <b>sln</b> program supports no command-line options.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>ln</b>(1), <b>ld.so</b>(8), <b>ldconfig</b>(8)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

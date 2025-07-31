@@ -1,0 +1,94 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>debconf (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DEBCONF(1)</td>
+    <td class="head-vol">Debconf</td>
+    <td class="head-rtitle">DEBCONF(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">debconf - run a debconf-using program</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre> debconf [options] command [args]
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Debconf is a configuration system for Debian packages. For a
+    debconf overview and documentation for sysadmins, see <b>debconf</b>(7) (in
+    the debconf-doc package).</p>
+<p class="Pp">The <b>debconf</b> program runs a program under debconf's control,
+    setting it up to talk with debconf on stdio. The program's output is
+    expected to be debconf protocol commands, and it is expected to read result
+    codes on stdin. See <b>debconf-devel</b>(7) for details about the debconf
+    protocol.</p>
+<p class="Pp">The command to be run under debconf must be specified in a way
+    that will let your PATH find it.</p>
+<p class="Pp">This command is not the usual way that debconf is used. It's more
+    typical for debconf to be used via <b>dpkg-preconfigure</b>(8) or
+    <b>dpkg-reconfigure</b>(8).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="o"><a class="permalink" href="#o"><b>-o</b><i>package</i>,
+    <b>--owner=</b><i>package</i></a></dt>
+  <dd>Tell debconf what package the command it is running is a part of. This is
+      necessary to get ownership of registered questions right, and to support
+      unregister and purge commands properly.</dd>
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b><i>type</i>,
+    <b>--frontend=</b><i>type</i></a></dt>
+  <dd>Select the frontend to use.</dd>
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b><i>value</i>,
+    <b>--priority=</b><i>value</i></a></dt>
+  <dd>Specify the minimum priority of question that will be displayed.</dd>
+  <dt id="terse"><a class="permalink" href="#terse"><b>--terse</b></a></dt>
+  <dd>Enables terse output mode. This affects only some frontends.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">To debug a shell script that uses debconf, you might use:</p>
+<p class="Pp"></p>
+<pre> DEBCONF_DEBUG=developer debconf my-shell-prog
+</pre>
+<p class="Pp">Or, you might use this:</p>
+<p class="Pp"></p>
+<pre> debconf --frontend=readline sh -x my-shell-prog
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>debconf-devel</b>(7), <b>debconf</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Joey Hess &lt;joeyh@debian.org&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-04-12</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

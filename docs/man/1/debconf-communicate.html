@@ -1,0 +1,73 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>debconf-communicate (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DEBCONF-COMMUNICATE(1)</td>
+    <td class="head-vol">Debconf</td>
+    <td class="head-rtitle">DEBCONF-COMMUNICATE(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">debconf-communicate - communicate with debconf</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre> echo commands | debconf-communicate [options] [package]
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>debconf-communicate</b> allows you to communicate with debconf
+    on the fly, from the command line. The package argument is the name of the
+    package which you are pretending to be as you communicate with debconf, and
+    it may be omitted if you are lazy. It reads commands in the form used by the
+    debconf protocol from stdin. For documentation on the available commands and
+    their usage, see the debconf specification.</p>
+<p class="Pp">The commands are executed in sequence. The textual return code of
+    each is printed out to standard output.</p>
+<p class="Pp">The return value of this program is the numeric return code of the
+    last executed command.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLE"><a class="permalink" href="#EXAMPLE">EXAMPLE</a></h1>
+<pre> echo get debconf/frontend | debconf-communicate
+</pre>
+<p class="Pp">Print out the value of the debconf/frontend question.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="WARNING"><a class="permalink" href="#WARNING">WARNING</a></h1>
+<p class="Pp">This program should never be used from a maintainer script of a
+    package that uses debconf! It may however, be useful in debugging.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>debconf-loadtemplate</b>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Joey Hess &lt;joeyh@debian.org&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-04-12</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

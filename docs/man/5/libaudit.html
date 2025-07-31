@@ -1,0 +1,67 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>libaudit (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">LIBAUDIT.CONF(5)</td>
+    <td class="head-vol">System Administration Utilities</td>
+    <td class="head-rtitle">LIBAUDIT.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">libaudit.conf - libaudit configuration file</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The file <i>/etc/libaudit.conf</i> contains configuration
+    information for user space applications that link to libaudit. The
+    applications are responsible for querying the settings in this file and
+    obeying the admin's preferences. This file contains one configuration
+    keyword per line, an equal sign, and then followed by appropriate
+    configuration information. The keywords recognized are:
+    <i>failure_action</i>. These keywords are described below.</p>
+<p class="Pp"></p>
+<dl class="Bl-tag">
+  <dt id="failure_action"><a class="permalink" href="#failure_action"><i>failure_action</i></a></dt>
+  <dd>This keyword specifies what action the admin wishes a user space
+      application to take when there is a failure to send an audit event to the
+      kernel. The possible values are: <i>IGNORE</i>
+    <br/>
+     - meaning do nothing, <i>LOG</i> - write to syslog the inability to send an
+      audit event, and <i>TERMINATE</i> - the user space application should
+      exit.
+    <p class="Pp"></p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>get_auditfail_action</b>(3).</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Steve Grubb</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">Oct 2009</td>
+    <td class="foot-os">Red Hat</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

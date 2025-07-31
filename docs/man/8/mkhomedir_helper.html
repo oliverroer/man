@@ -1,0 +1,64 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>mkhomedir_helper (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MKHOMEDIR_HELPER(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">MKHOMEDIR_HELPER(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">mkhomedir_helper - Helper binary that creates home directories</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>mkhomedir_helper</b> {<i>user</i>}
+    [<i>umask</i>&#x00A0;[&#x00A0;<i>path-to-skel</i>&#x00A0;[&#x00A0;<i>home_mode</i>&#x00A0;]&#x00A0;]]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><i>mkhomedir_helper</i> is a helper program for the
+    <i>pam_mkhomedir</i> module that creates home directories and populates them
+    with contents of the specified skel directory.</p>
+<p class="Pp">The default value of <i>umask</i> is 0022 and the default value of
+    <i>path-to-skel</i> is <i>/etc/skel</i>. The default value of
+    <i>home_mode</i> is computed from the value of <i>umask</i>.</p>
+<p class="Pp">The helper is separated from the module to not require direct
+    access from login SELinux domains to the contents of user home directories.
+    The SELinux domain transition happens when the module is executing the
+    <i>mkhomedir_helper</i>.</p>
+<p class="Pp">The helper never touches home directories if they already
+  exist.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam_mkhomedir</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Tomas Mraz based on the code originally in
+    <i>pam_mkhomedir</i> module.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

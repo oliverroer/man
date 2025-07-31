@@ -1,0 +1,87 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>faillock (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">FAILLOCK(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">FAILLOCK(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">faillock - Tool for displaying and modifying the authentication
+    failure record files</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>faillock</b> [--dir&#x00A0;<i>/path/to/tally-directory</i>]
+    [--user&#x00A0;<i>username</i>] [--reset]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <i>pam_faillock.so</i> module maintains a list of failed
+    authentication attempts per user during a specified interval and locks the
+    account in case there were more than <i>deny</i> consecutive failed
+    authentications. It stores the failure records into per-user files in the
+    tally directory.</p>
+<p class="Pp">The <b>faillock</b> command is an application which can be used to
+    examine and modify the contents of the tally files. It can display the
+    recent failed authentication attempts of the <i>username</i> or clear the
+    tally files of all or individual <i>usernames</i>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">--conf /path/to/config-file</p>
+<div class="Bd-indent">The file where the configuration is located. The default
+  is /etc/security/faillock.conf.</div>
+<p class="Pp">--dir /path/to/tally-directory</p>
+<div class="Bd-indent">The directory where the user files with the failure
+  records are kept.
+<p class="Pp">The priority to set this option is to use the value provided from
+    the command line. If this isn't provided, then the value from the
+    configuration file is used. Finally, if neither of them has been provided,
+    then /var/run/faillock is used.</p>
+</div>
+<p class="Pp">--user username</p>
+<div class="Bd-indent">The user whose failure records should be displayed or
+  cleared.</div>
+<p class="Pp">--reset</p>
+<div class="Bd-indent">Instead of displaying the user's failure records, clear
+  them.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/var/run/faillock/*</p>
+<div class="Bd-indent">the files logging the authentication failures for
+  users</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam_faillock</b>(8), <b>pam</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">faillock was written by Tomas Mraz.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

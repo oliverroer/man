@@ -1,0 +1,95 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>proc_pid (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">proc_pid(5)</td>
+    <td class="head-vol">File Formats Manual</td>
+    <td class="head-rtitle">proc_pid(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">/proc/pid/, /proc/self/ - process information</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<dl class="Bl-tag">
+  <dt><i>/proc/</i>pid<i>/</i></dt>
+  <dd>There is a numerical subdirectory for each running process; the
+      subdirectory is named by the process ID. Each <i>/proc/</i>pid
+      subdirectory contains the pseudo-files and directories described
+    below.</dd>
+</dl>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>The files inside each <i>/proc/</i>pid directory are normally owned by the
+      effective user and effective group ID of the process. However, as a
+      security measure, the ownership is made <i>root:root</i> if the process's
+      &quot;dumpable&quot; attribute is set to a value other than 1.</dd>
+  <dt></dt>
+  <dd>Before Linux 4.11, <i>root:root</i> meant the &quot;global&quot; root user
+      ID and group ID (i.e., UID 0 and GID 0 in the initial user namespace).
+      Since Linux 4.11, if the process is in a noninitial user namespace that
+      has a valid mapping for user (group) ID 0 inside the namespace, then the
+      user (group) ownership of the files under <i>/proc/</i>pid is instead made
+      the same as the root user (group) ID of the namespace. This means that
+      inside a container, things work as expected for the container
+      &quot;root&quot; user.</dd>
+  <dt></dt>
+  <dd>The process's &quot;dumpable&quot; attribute may change for the following
+      reasons:</dd>
+</dl>
+<div class="Bd-indent">
+<dl class="Bl-tag">
+  <dt>&#x2022;</dt>
+  <dd>The attribute was explicitly set via the <b>prctl</b>(2)
+      <b>PR_SET_DUMPABLE</b> operation.</dd>
+  <dt>&#x2022;</dt>
+  <dd>The attribute was reset to the value in the file
+      <i>/proc/sys/fs/suid_dumpable</i> (described below), for the reasons
+      described in <b>prctl</b>(2).</dd>
+</dl>
+</div>
+<dl class="Bl-tag">
+  <dt></dt>
+  <dd>Resetting the &quot;dumpable&quot; attribute to 1 reverts the ownership of
+      the <i>/proc/</i>pid<i>/*</i> files to the process's effective UID and
+      GID. Note, however, that if the effective UID or GID is subsequently
+      modified, then the &quot;dumpable&quot; attribute may be reset, as
+      described in <b>prctl</b>(2). Therefore, it may be desirable to reset the
+      &quot;dumpable&quot; attribute <i>after</i> making any desired changes to
+      the process's effective UID or GID.</dd>
+</dl>
+<dl class="Bl-tag">
+  <dt><i>/proc/self/</i></dt>
+  <dd>This directory refers to the process accessing the <i>/proc</i>
+      filesystem, and is identical to the <i>/proc</i> directory named by the
+      process ID of the same process.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>proc</b>(5)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-08-15</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>kill (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">KILL(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">KILL(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">kill - send a signal to a process</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>kill</b> [options] &lt;pid&gt; [...]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The default signal for kill is TERM. Use <b>-l</b> or <b>-L</b> to
+    list available signals. Particularly useful signals include HUP, INT, KILL,
+    STOP, CONT, and 0. Alternate signals may be specified in three ways:
+    <b>-9</b>, <b>-SIGKILL</b> or <b>-KILL</b>. Negative PID values may be used
+    to choose whole process groups; see the PGID column in ps command output. A
+    PID of <b>-1</b> is special; it indicates all processes except the kill
+    process itself and init.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt><b>&lt;pid&gt; [...]</b></dt>
+  <dd>Send signal to every &lt;pid&gt; listed.</dd>
+  <dt><b>-&lt;signal&gt;</b></dt>
+  <dd></dd>
+  <dt id="s"><a class="permalink" href="#s"><b>-s &lt;signal&gt;</b></a></dt>
+  <dd></dd>
+  <dt id="signal"><a class="permalink" href="#signal"><b>--signal
+    &lt;signal&gt;</b></a></dt>
+  <dd>Specify the <b>signal</b> to be sent. The signal can be specified by using
+      name or number. The behavior of signals is explained in <b>signal</b>(7)
+      manual page.</dd>
+  <dt id="q"><a class="permalink" href="#q"><b>-q</b>, <b>--queue
+    </b><i>value</i><b></b></a></dt>
+  <dd>Use <b>sigqueue</b>(3) rather than <b>kill</b>(2) and the value argument
+      is used to specify an integer to be sent with the signal. If the receiving
+      process has installed a handler for this signal using the SA_SIGINFO flag
+      to <b>sigaction</b>(2), then it can obtain this data via the si_value
+      field of the siginfo_t structure.</dd>
+  <dt id="l"><a class="permalink" href="#l"><b>-l</b>, <b>--list</b>
+    [<i>signal</i>]</a></dt>
+  <dd>List signal names. This option has optional argument, which will convert
+      signal number to signal name, or other way round.</dd>
+  <dt id="L"><a class="permalink" href="#L"><b>-L</b>,<b>&#x00A0;--table</b></a></dt>
+  <dd>List signal names in a nice table.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">Your shell (command line interpreter) may have a built-in kill
+    command. You may need to run the command described here as /bin/kill to
+    solve the conflict.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<dl class="Bl-tag">
+  <dt id="kill"><a class="permalink" href="#kill"><b>kill -9 -1</b></a></dt>
+  <dd>Kill all processes you can kill.</dd>
+  <dt id="kill~2"><a class="permalink" href="#kill~2"><b>kill -l 11</b></a></dt>
+  <dd>Translate number 11 into a signal name.</dd>
+  <dt id="kill~3"><a class="permalink" href="#kill~3"><b>kill -L</b></a></dt>
+  <dd>List the available signal choices in a nice table.</dd>
+  <dt id="kill~4"><a class="permalink" href="#kill~4"><b>kill 123 543 2341
+    3453</b></a></dt>
+  <dd>Send the default signal, SIGTERM, to all those processes.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>kill</b>(2), <b>killall</b>(1), <b>nice</b>(1),
+    <b>pkill</b>(1), <b>renice</b>(1), <b>signal</b>(7), <b>sigqueue</b>(3),
+    <b>skill</b>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<p class="Pp">This command meets appropriate standards. The <b>-L</b> flag is
+    Linux-specific.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><a class="Lk" href="albert@users.sf.net">Albert Cahalan</a> wrote
+    kill in 1999 to replace a bsdutils one that was not standards compliant. The
+    util-linux one might also work correctly.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">Please send bug reports to
+    <a class="Lk" href="procps@freelists.org">procps@freelists.org</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-01-16</td>
+    <td class="foot-os">procps-ng</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

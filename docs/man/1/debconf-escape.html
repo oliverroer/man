@@ -1,0 +1,61 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>debconf-escape (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DEBCONF-ESCAPE(1)</td>
+    <td class="head-vol">Debconf</td>
+    <td class="head-rtitle">DEBCONF-ESCAPE(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">debconf-escape - helper when working with debconf's escape
+    capability</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre> debconf-escape -e &lt; unescaped-text
+ debconf-escape -u &lt; escaped-text
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">When debconf has the 'escape' capability set, it will expect
+    commands you send it to have backslashes and newlines escaped (as
+    <span class="Li">&quot;\\&quot;</span> and
+    <span class="Li">&quot;\n&quot;</span> respectively) and will in turn escape
+    backslashes and newlines in its replies. This can be used, for example, to
+    substitute multi-line strings into templates, or to get multi-line extended
+    descriptions reliably using <span class="Li">&quot;METAGET&quot;</span>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>debconf-devel</b>(7) (available in the debconf-doc package)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Colin Watson &lt;cjwatson@debian.org&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-04-12</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

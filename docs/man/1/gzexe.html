@@ -1,0 +1,81 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>gzexe (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">GZEXE(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">GZEXE(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">gzexe - compress executable files in place</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>gzexe</b> <i>name ...</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>gzexe</b> utility allows you to compress executables in
+    place and have them automatically uncompress and execute when you run them
+    (at a penalty in performance). For example if you execute ``gzexe
+    /usr/bin/gdb'' it will create the following two files:</p>
+<pre>
+<br/>
+    -rwxr-xr-x  1 root root 1026675 Jun  7 13:53 /usr/bin/gdb
+<br/>
+    -rwxr-xr-x  1 root root 2304524 May 30 13:02 /usr/bin/gdb~</pre>
+<p class="Pp">/usr/bin/gdb~ is the original file and /usr/bin/gdb is the
+    self-uncompressing executable file. You can remove /usr/bin/gdb~ once you
+    are sure that /usr/bin/gdb works properly.</p>
+<p class="Pp">This utility is most useful on systems with very small disks.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b></a></dt>
+  <dd>Decompress the given executables instead of compressing them.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>gzip</b>(1), <b>znew</b>(1), <b>zmore</b>(1), <b>zcmp</b>(1),
+    <b>zforce</b>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CAVEATS"><a class="permalink" href="#CAVEATS">CAVEATS</a></h1>
+<p class="Pp">The compressed executable is a shell script. This may create some
+    security holes. In particular, the compressed executable relies on the PATH
+    environment variable to find <b>gzip</b> and some standard utilities
+    (<b>basename</b>, <b>chmod</b>, <b>ln</b>, <b>mkdir</b>, <b>mktemp</b>,
+    <b>rm</b>, <b>sleep</b>, and <b>tail</b>).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">The <b>gzexe</b> command attempts to retain the original file
+    attributes on the compressed executable, but you may have to fix them
+    manually in some cases, using <b>chmod</b> or <b>chown</b>.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date"></td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

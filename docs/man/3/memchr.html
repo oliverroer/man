@@ -1,0 +1,122 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>memchr (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">memchr(3)</td>
+    <td class="head-vol">Library Functions Manual</td>
+    <td class="head-rtitle">memchr(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">memchr, memrchr, rawmemchr - scan memory for a character</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;string.h&gt;</b></pre>
+<pre><b>void *memchr(const void </b><i>s</i><b>[.</b><i>n</i><b>], int </b><i>c</i><b>, size_t </b><i>n</i><b>);</b>
+<b>void *memrchr(const void </b><i>s</i><b>[.</b><i>n</i><b>], int </b><i>c</i><b>, size_t </b><i>n</i><b>);</b></pre>
+<pre><b>[[deprecated]] void *rawmemchr(const void *</b><i>s</i><b>, int </b><i>c</i><b>);</b></pre>
+<p class="Pp"></p>
+<div class="Bd-indent">Feature Test Macro Requirements for glibc (see
+  <b>feature_test_macros</b>(7)):</div>
+<p class="Pp"><b>memrchr</b>(), <b>rawmemchr</b>():</p>
+<pre>
+<br/>
+    _GNU_SOURCE</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>memchr</b>() function scans the initial <i>n</i> bytes of
+    the memory area pointed to by <i>s</i> for the first instance of <i>c</i>.
+    Both <i>c</i> and the bytes of the memory area pointed to by <i>s</i> are
+    interpreted as <i>unsigned char</i>.</p>
+<p class="Pp">The <b>memrchr</b>() function is like the <b>memchr</b>()
+    function, except that it searches backward from the end of the <i>n</i>
+    bytes pointed to by <i>s</i> instead of forward from the beginning.</p>
+<p class="Pp">The <b>rawmemchr</b>() function is similar to <b>memchr</b>(), but
+    it assumes (i.e., the programmer knows for certain) that an instance of
+    <i>c</i> lies somewhere in the memory area starting at the location pointed
+    to by <i>s</i>. If an instance of <i>c</i> is not found, the behavior is
+    undefined. Use either <b>strlen</b>(3) or <b>memchr</b>(3) instead.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
+  VALUE</a></h1>
+<p class="Pp">The <b>memchr</b>() and <b>memrchr</b>() functions return a
+    pointer to the matching byte or NULL if the character does not occur in the
+    given memory area.</p>
+<p class="Pp">The <b>rawmemchr</b>() function returns a pointer to the matching
+    byte.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ATTRIBUTES"><a class="permalink" href="#ATTRIBUTES">ATTRIBUTES</a></h1>
+<p class="Pp">For an explanation of the terms used in this section, see
+    <b>attributes</b>(7).</p>
+<table class="tbl" border="1" style="border-style: solid;">
+  <tr>
+    <td><b>Interface</b></td>
+    <td><b>Attribute</b></td>
+    <td><b>Value</b></td>
+  </tr>
+  <tr>
+    <td>memchr (), memrchr (), rawmemchr ()</td>
+    <td>Thread safety</td>
+    <td>MT-Safe</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<dl class="Bl-tag">
+  <dt id="memchr"><a class="permalink" href="#memchr"><b>memchr</b>()</a></dt>
+  <dd>C11, POSIX.1-2008.</dd>
+  <dt id="memrchr"><a class="permalink" href="#memrchr"><b>memrchr</b>()</a></dt>
+  <dd></dd>
+  <dt id="rawmemchr"><a class="permalink" href="#rawmemchr"><b>rawmemchr</b>()</a></dt>
+  <dd>GNU.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<dl class="Bl-tag">
+  <dt id="memchr~2"><a class="permalink" href="#memchr~2"><b>memchr</b>()</a></dt>
+  <dd>POSIX.1-2001, C89, SVr4, 4.3BSD.</dd>
+  <dt id="memrchr~2"><a class="permalink" href="#memrchr~2"><b>memrchr</b>()</a></dt>
+  <dd>glibc 2.2.</dd>
+  <dt id="rawmemchr~2"><a class="permalink" href="#rawmemchr~2"><b>rawmemchr</b>()</a></dt>
+  <dd>glibc 2.1.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>bstring</b>(3), <b>ffs</b>(3), <b>memmem</b>(3),
+    <b>strchr</b>(3), <b>strpbrk</b>(3), <b>strrchr</b>(3), <b>strsep</b>(3),
+    <b>strspn</b>(3), <b>strstr</b>(3), <b>wmemchr</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

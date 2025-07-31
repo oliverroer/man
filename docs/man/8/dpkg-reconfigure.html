@@ -1,0 +1,99 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>dpkg-reconfigure (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">DPKG-RECONFIGURE(8)</td>
+    <td class="head-vol">Debconf</td>
+    <td class="head-rtitle">DPKG-RECONFIGURE(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">dpkg-reconfigure - reconfigure an already installed package</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre> dpkg-reconfigure [options] packages
+</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>dpkg-reconfigure</b> reconfigures packages after they have
+    already been installed. Pass it the names of a package or packages to
+    reconfigure. It will ask configuration questions, much like when the package
+    was first installed.</p>
+<p class="Pp">If you just want to see the current configuration of a package,
+    see <b>debconf-show</b>(1) instead.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b><i>type</i>,
+    <b>--frontend=</b><i>type</i></a></dt>
+  <dd>Select the frontend to use. The default frontend can be permanently
+      changed by:
+    <p class="Pp"></p>
+    <pre> dpkg-reconfigure debconf
+    </pre>
+    <p class="Pp">Note that if you normally have debconf set to use the
+        noninteractive frontend, dpkg-reconfigure will use the dialog frontend
+        instead, so you actually get to reconfigure the package.</p>
+  </dd>
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b><i>value</i>,
+    <b>--priority=</b><i>value</i></a></dt>
+  <dd>Specify the minimum priority of question that will be displayed.
+      dpkg-reconfigure normally shows low priority questions no matter what your
+      default priority is. See <b>debconf</b>(7) for a list.</dd>
+  <dt id="terse"><a class="permalink" href="#terse"><b>--terse</b></a></dt>
+  <dd>Enables terse output mode. This affects only some frontends.</dd>
+  <dt id="default"><a class="permalink" href="#default"><b>--default-priority</b></a></dt>
+  <dd>Use whatever the default priority of question is, instead of forcing the
+      priority to low.</dd>
+  <dt id="u"><a class="permalink" href="#u"><b>-u</b>,
+    <b>--unseen-only</b></a></dt>
+  <dd>By default, all questions are shown, even if they have already been
+      answered. If this parameter is set though, only questions that have not
+      yet been seen will be asked.</dd>
+  <dt id="force"><a class="permalink" href="#force"><b>--force</b></a></dt>
+  <dd>Force dpkg-reconfigure to reconfigure a package even if the package is in
+      an inconsistent or broken state. Use with caution.</dd>
+  <dt id="no"><a class="permalink" href="#no"><b>--no-reload</b></a></dt>
+  <dd>Prevent dpkg-reconfigure from reloading templates. Use with caution; this
+      will prevent dpkg-reconfigure from repairing broken templates databases.
+      However, it may be useful in constrained environments where rewriting the
+      templates database is expensive.</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>Display usage help.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>debconf</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Joey Hess &lt;joeyh@debian.org&gt;</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-04-12</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

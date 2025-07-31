@@ -1,0 +1,127 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>w (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">W(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">W(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">w - Show who is logged on and what they are doing.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>w</b> [<i>options</i>] [<i>user</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>w</b> displays information about the users currently on the
+    machine, and their processes. The header shows, in this order, the current
+    time, how long the system has been running, how many users are currently
+    logged on, and the system load averages for the past 1, 5, and 15
+  minutes.</p>
+<p class="Pp">The following entries are displayed for each user: login name, the
+    tty name, the remote host, login time, idle time, JCPU, PCPU, and the
+    command line of their current process.</p>
+<p class="Pp">The JCPU time is the time used by all processes attached to the
+    tty. It does not include past background jobs, but does include currently
+    running background jobs.</p>
+<p class="Pp">The PCPU time is the time used by the current process, named in
+    the &quot;what&quot; field.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COMMAND"><a class="permalink" href="#COMMAND">COMMAND-LINE
+  OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>,
+    <b>--no-header</b></a></dt>
+  <dd>Don't print the header.</dd>
+  <dt id="u"><a class="permalink" href="#u"><b>-u</b>,
+    <b>--no-current</b></a></dt>
+  <dd>Ignores the username while figuring out the current process and cpu times.
+      To demonstrate this, do a <b>su</b> and do a <b>w</b> and a <b>w
+    -u</b>.</dd>
+  <dt id="s"><a class="permalink" href="#s"><b>-s</b>, <b>--short</b></a></dt>
+  <dd>Use the short format. Don't print the login time, JCPU or PCPU times.</dd>
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b>, <b>--from</b></a></dt>
+  <dd>Toggle printing the <b>from</b> (remote hostname) field. The default as
+      released is for the <b>from</b> field to not be printed, although your
+      system administrator or distribution maintainer may have compiled a
+      version in which the <b>from</b> field is shown by default.</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>Display help text and exit.</dd>
+  <dt id="i"><a class="permalink" href="#i"><b>-i</b>, <b>--ip-addr</b></a></dt>
+  <dd>Display IP address instead of hostname for <b>from</b> field.</dd>
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b>, <b>--pids</b></a></dt>
+  <dd>Display pid of the login process/the &quot;what&quot; process in the
+      &quot;what&quot; field.</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>Display version information.</dd>
+  <dt id="o"><a class="permalink" href="#o"><b>-o</b>,
+    <b>--old-style</b></a></dt>
+  <dd>Old style output. Prints blank space for idle times less than one
+    minute.</dd>
+  <dt id="user"><a class="permalink" href="#user"><b>user </b></a></dt>
+  <dd>Show information about the specified user only.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ENVIRONMENT"><a class="permalink" href="#ENVIRONMENT">ENVIRONMENT</a></h1>
+<dl class="Bl-tag">
+  <dt id="PROCPS_USERLEN"><a class="permalink" href="#PROCPS_USERLEN">PROCPS_USERLEN</a></dt>
+  <dd>Override the default width of the username column. Defaults to 8.</dd>
+  <dt id="PROCPS_FROMLEN"><a class="permalink" href="#PROCPS_FROMLEN">PROCPS_FROMLEN</a></dt>
+  <dd>Override the default width of the from column. Defaults to 16.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<dl class="Bl-tag">
+  <dt><i>/var/run/utmp</i></dt>
+  <dd>information about who is currently logged on</dd>
+  <dt><i>/proc</i></dt>
+  <dd>process information</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>free</b>(1), <b>ps</b>(1), <b>top</b>(1), <b>uptime</b>(1),
+    <b>utmp</b>(5), <b>who</b>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
+<p class="Pp"><b>w</b> was re-written almost entirely by Charles Blake, based on
+    the version by <a class="Lk" href="greenfie@gauss.rutgers.edu">Larry
+    Greenfield</a> and <a class="Lk" href="johnsonm@redhat.com">Michael K.
+    Johnson</a></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">Please send bug reports to
+    <a class="Lk" href="procps@freelists.org">procps@freelists.org</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-01-15</td>
+    <td class="foot-os">procps-ng</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

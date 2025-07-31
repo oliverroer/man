@@ -1,0 +1,124 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pidof (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PIDOF(8)</td>
+    <td class="head-vol">Linux System Administrator's Manual</td>
+    <td class="head-rtitle">PIDOF(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pidof - find the process ID of a running program</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>pidof</b> [<b>-s</b>] [<b>-c</b>] [<b>-n</b>] [<b>-x</b>]
+    [<b>-z</b>] [<b>-o</b> <i>omitpid[,omitpid...]</i>] [<b>-o</b>
+    <i>omitpid[,omitpid...]...</i>] [<b>-d</b> <i>sep</i>] <i>program</i>
+    [<i>program...</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>pidof</b> finds the process id's (PIDs) of the named programs.
+    It prints those id's on the standard output. This program is on some systems
+    used in run-level change scripts, especially when the system has a
+    <i>System-V</i> like <i>rc</i> structure. In that case these scripts are
+    located in <i>/etc/rc?.d</i>, where ? is the runlevel. If the system has a
+    <b>start-stop-daemon</b>(8) program that should be used instead.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="s"><a class="permalink" href="#s"><b>-s</b></a></dt>
+  <dd>Single shot - this instructs the program to only return one
+    <i>pid</i>.</dd>
+  <dt id="c"><a class="permalink" href="#c"><b>-c</b></a></dt>
+  <dd>Only return process PIDs that are running with the same root directory.
+      This option is ignored for non-root users, as they will be unable to check
+      the current root directory of processes they do not own.</dd>
+  <dt id="n"><a class="permalink" href="#n"><b>-n</b></a></dt>
+  <dd>Avoid <b>stat</b>(2) system function call on all binaries which are
+      located on network based file systems like <b>NFS</b>. Instead of using
+      this option the variable <b>PIDOF_NETFS</b> may be set and exported.</dd>
+  <dt id="q"><a class="permalink" href="#q"><b>-q</b></a></dt>
+  <dd>Do not display matched PIDs to standard out. Simply exit with a status of
+      true or false to indicate whether a matching PID was found.</dd>
+  <dt id="x"><a class="permalink" href="#x"><b>-x</b></a></dt>
+  <dd>Scripts too - this causes the program to also return process id's of
+      shells running the named scripts.</dd>
+  <dt id="z"><a class="permalink" href="#z"><b>-z</b></a></dt>
+  <dd>Try to detect processes which are stuck in zombie (Z) status. Usually
+      these processes are skipped as trying to deal with them can cause pidof or
+      related tools to hang. Note: In the past pidof would ignore processes in
+      the uninterruptable state (D), unless the <b>-z</b> flag was specified.
+      This is no longer the case. The <b>pidof</b> program will find and report
+      processes in the D state whether <b>-z</b> is specified or not.</dd>
+  <dt id="d"><a class="permalink" href="#d">-d <i>sep</i></a></dt>
+  <dd>Tells <i>pidof</i> to use <i>sep</i> as an output separator if more than
+      one PID is shown. The default separator is a space.</dd>
+  <dt id="o"><a class="permalink" href="#o">-o <i>omitpid</i></a></dt>
+  <dd>Tells <i>pidof</i> to omit processes with that process id. The special pid
+      <b>%PPID</b> can be used to name the parent process of the <b>pidof</b>
+      program, in other words the calling shell or shell script.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<dl class="Bl-tag">
+  <dt><b>0</b></dt>
+  <dd>At least one program was found with the requested name.</dd>
+  <dt><b>1</b></dt>
+  <dd>No program was found with the requested name.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp"><i>pidof</i> is actually the same program as <b>killall5</b>(8);
+    the program behaves according to the name under which it is called.</p>
+<p class="Pp">When <b>pidof</b> is invoked with a full pathname to the program
+    it should find the pid of, it is reasonably safe. Otherwise it is possible
+    that it returns PIDs of running programs that happen to have the same name
+    as the program you're after but are actually other programs. Note that the
+    executable name of running processes is calculated with <b>readlink</b>(2),
+    so symbolic links to executables will also match.</p>
+<p class="Pp">Zombie processes or processes in disk sleep (states Z and D,
+    respectively) are ignored, as attempts to access the stats of these will
+    sometimes fail. The <b>-z</b> flag (see above) tells <b>pidof</b> to try to
+    detect these sleeping and zombie processes, at the risk of failing or
+    hanging.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>shutdown</b>(8), <b>init</b>(8), <b>halt</b>(8),
+    <b>reboot</b>(8), <b>killall5</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><a class="Mt" href="mailto:miquels@cistron.nl">Miquel van
+    Smoorenburg</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">01 Sep 1998</td>
+    <td class="foot-os">sysvinit </td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

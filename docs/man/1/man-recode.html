@@ -1,0 +1,100 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>man-recode (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MAN-RECODE(1)</td>
+    <td class="head-vol">Manual pager utils</td>
+    <td class="head-rtitle">MAN-RECODE(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">man-recode - convert manual pages to another encoding</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>man-recode</b> <b>-t</b> <i>to-code</i>
+    {<b>--suffix=</b><i>suffix</i>|<b>--in-place</b>} [<b>-dqhV</b>]
+    [<i>filename</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>man-recode</b> converts multiple manual pages from one encoding
+    to another, guessing the appropriate input encoding for each one. It is
+    useful when permanently recoding pages written in legacy character sets, or
+    in build systems that need to recode a set of pages to a single common
+    encoding (usually UTF-8) for installation. When converting many manual
+    pages, this program is much faster than running <b>man --recode</b> or
+    <b>manconv</b> on each page.</p>
+<p class="Pp">If an encoding declaration is found on the first line of a manual
+    page, then that declaration is used as the input encoding for that page.
+    Failing that, the input encoding is guessed based on the file name.</p>
+<p class="Pp">Encoding declarations have the following form:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>'\&quot; -*- coding: UTF-8 -*-</pre>
+</div>
+<p class="Pp">or (if manual page preprocessors are also to be declared):</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>'\&quot; t -*- coding: ISO-8859-1 -*-</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="t"><a class="permalink" href="#t"><b>-t</b> <i>encoding</i>,
+    <b>--to-code=</b><i>encoding</i></a></dt>
+  <dd>Convert manual pages to <i>encoding</i>.</dd>
+  <dt id="suffix="><a class="permalink" href="#suffix="><b>--suffix=</b><i>suffix</i></a></dt>
+  <dd>Form each output file name by appending <i>suffix</i> to the input file
+      name, after removing any compression extension.</dd>
+  <dt id="in"><a class="permalink" href="#in"><b>--in-place</b></a></dt>
+  <dd>Overwrite each input file with the output, after removing any compression
+      extension.</dd>
+  <dt id="q"><a class="permalink" href="#q"><b>-q</b>, <b>--quiet</b></a></dt>
+  <dd>Do not issue error messages when the page cannot be converted.</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>, <b>--debug</b></a></dt>
+  <dd>Print debugging information.</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>Print a help message and exit.</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>Display version information.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><i>iconv</i>(1), <i>man</i>(1), <i>manconv</i>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">https://gitlab.com/man-db/man-db/-/issues
+  <br/>
+  https://savannah.nongnu.org/bugs/?group=man-db</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<pre>Colin Watson (cjwatson@debian.org).</pre>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-09-23</td>
+    <td class="foot-os">2.12.0</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

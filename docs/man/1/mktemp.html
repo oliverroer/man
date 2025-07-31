@@ -1,0 +1,103 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>mktemp (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MKTEMP(1)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">MKTEMP(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">mktemp - create a temporary file or directory</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>mktemp</b> [<i>OPTION</i>]... [<i>TEMPLATE</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Create a temporary file or directory, safely, and print its name.
+    TEMPLATE must contain at least 3 consecutive 'X's in last component. If
+    TEMPLATE is not specified, use tmp.XXXXXXXXXX, and <b>--tmpdir</b> is
+    implied. Files are created u+rw, and directories u+rwx, minus umask
+    restrictions.</p>
+<dl class="Bl-tag">
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>,
+    <b>--directory</b></a></dt>
+  <dd>create a directory, not a file</dd>
+  <dt id="u"><a class="permalink" href="#u"><b>-u</b>, <b>--dry-run</b></a></dt>
+  <dd>do not create anything; merely print a name (unsafe)</dd>
+  <dt id="q"><a class="permalink" href="#q"><b>-q</b>, <b>--quiet</b></a></dt>
+  <dd>suppress diagnostics about file/dir-creation failure</dd>
+  <dt id="suffix"><a class="permalink" href="#suffix"><b>--suffix</b>=<i>SUFF</i></a></dt>
+  <dd>append SUFF to TEMPLATE; SUFF must not contain a slash. This option is
+      implied if TEMPLATE does not end in X</dd>
+  <dt id="p"><a class="permalink" href="#p"><b>-p</b> DIR,
+    <b>--tmpdir</b>[=<i>DIR</i>]</a></dt>
+  <dd>interpret TEMPLATE relative to DIR; if DIR is not specified, use $TMPDIR
+      if set, else <i>/tmp</i>. With this option, TEMPLATE must not be an
+      absolute name; unlike with <b>-t</b>, TEMPLATE may contain slashes, but
+      mktemp creates only the final component</dd>
+  <dt id="t"><a class="permalink" href="#t"><b>-t</b></a></dt>
+  <dd>interpret TEMPLATE as a single file name component, relative to a
+      directory: $TMPDIR, if set; else the directory specified via <b>-p</b>;
+      else <i>/tmp</i> [deprecated]</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Jim Meyering and Eric Blake.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>mkstemp</b>(3), <b>mkdtemp</b>(3), <b>mktemp</b>(3)</p>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/mktemp&gt;
+  <br/>
+  or available locally via: info '(coreutils) mktemp invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

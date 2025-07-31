@@ -1,0 +1,129 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_umask (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_UMASK(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_UMASK(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_umask - PAM module to set the file mode creation mask</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_umask.so</b> [debug] [silent] [usergroups]
+    [nousergroups] [umask=<i>mask</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">pam_umask is a PAM module to set the file mode creation mask of
+    the current environment. The umask affects the default permissions assigned
+    to newly created files.</p>
+<p class="Pp">The PAM module tries to get the umask value from the following
+    places in the following order:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;umask= entry in the user's GECOS field</div>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;umask= argument</div>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;UMASK entry from /etc/login.defs (influenced by
+  USERGROUPS_ENAB in /etc/login.defs)</div>
+<p class="Pp"></p>
+<div class="Bd-indent">&#x2022;UMASK= entry from /etc/default/login</div>
+<p class="Pp">The GECOS field is split on comma ',' characters. The module also
+    in addition to the umask= entry recognizes pri= entry, which sets the nice
+    priority value for the session, and ulimit= entry, which sets the maximum
+    size of files the processes in the session can create.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Print debug information.</div>
+<p class="Pp">silent</p>
+<div class="Bd-indent">Don't print informative messages.</div>
+<p class="Pp">usergroups</p>
+<div class="Bd-indent">If the user is not root and the username is the same as
+  primary group name, the umask group bits are set to be the same as owner bits
+  (examples: 022 -&gt; 002, 077 -&gt; 007). Note that using this option
+  explicitly is discouraged. pam_umask enables this functionality by default if
+  /etc/login.defs enables USERGROUPS_ENAB, and the umask is not set explicitly
+  in other places than /etc/login.defs (this is compatible with login's
+  behaviour without PAM).</div>
+<p class="Pp">nousergroups</p>
+<div class="Bd-indent">This is the direct opposite of the usergroups option
+  described above, which can be useful in case pam_umask has been compiled with
+  usergroups enabled by default and you want to disable it at runtime.</div>
+<p class="Pp">umask=mask</p>
+<div class="Bd-indent">Sets the calling process's file mode creation mask
+  (umask) to <b>mask</b> &amp; 0777. The value is interpreted as Octal.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">Only the <b>session</b> type is provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">The new umask was set successfully.</div>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_CONV_ERR</p>
+<div class="Bd-indent">The conversation method supplied by the application
+  failed to obtain the username.</div>
+<p class="Pp">PAM_INCOMPLETE</p>
+<div class="Bd-indent">The conversation method supplied by the application
+  returned PAM_CONV_AGAIN.</div>
+<p class="Pp">PAM_SERVICE_ERR</p>
+<div class="Bd-indent">No username was given.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">User not known.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Add the following line to /etc/pam.d/login to set the user
+    specific umask at login:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+        session optional pam_umask.so umask=0022
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_umask was written by Thorsten Kukuk
+  &lt;kukuk@thkukuk.de&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_stress (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_STRESS(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_STRESS(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_stress - The stress-testing PAM module</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_stress.so</b> [debug] [no_warn] [use_first_pass]
+    [try_first_pass] [rootok] [expired] [fail_1] [fail_2] [prelim]
+  [required]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The pam_stress PAM module is mainly intended to give the
+    impression of failing as a fully functioning module might.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Put lots of information in syslog. *NOTE* this option
+  writes passwords to syslog, so don't use anything sensitive when
+  testing.</div>
+<p class="Pp">no_warn</p>
+<div class="Bd-indent">Do not give warnings about things (otherwise warnings are
+  issued via the conversation function)</div>
+<p class="Pp">use_first_pass</p>
+<div class="Bd-indent">Do not prompt for a password, for pam_sm_authentication
+  function just use item PAM_AUTHTOK.</div>
+<p class="Pp">try_first_pass</p>
+<div class="Bd-indent">Do not prompt for a password unless there has been no
+  previous authentication token (item PAM_AUTHTOK is NULL)</div>
+<p class="Pp">rootok</p>
+<div class="Bd-indent">This is intended for the pam_sm_chauthtok function and it
+  instructs this function to permit root to change the user's password without
+  entering the old password.</div>
+<p class="Pp">expired</p>
+<div class="Bd-indent">An argument intended for the account and chauthtok module
+  parts. It instructs the module to act as if the user's password has
+  expired</div>
+<p class="Pp">fail_1</p>
+<div class="Bd-indent">This instructs the module to make its first function
+  fail.</div>
+<p class="Pp">fail_2</p>
+<div class="Bd-indent">This instructs the module to make its second function (if
+  there is one) fail.</div>
+<p class="Pp">prelim</p>
+<div class="Bd-indent">For pam_sm_chauthtok, means fail on
+  PAM_PRELIM_CHECK.</div>
+<p class="Pp">required</p>
+<div class="Bd-indent">For pam_sm_chauthtok, means fail if the user hasn't
+  already been authenticated by this module. (See stress_new_pwd data string in
+  the NOTES.)</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">All module types (<b>auth</b>, <b>account</b>, <b>password</b> and
+    <b>session</b>) are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_PERM_DENIED</p>
+<div class="Bd-indent">Permission denied.</div>
+<p class="Pp">PAM_AUTH_ERR</p>
+<div class="Bd-indent">Access to the system was denied.</div>
+<p class="Pp">PAM_CONV_ERR</p>
+<div class="Bd-indent">Conversation failure.</div>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">The function passes all checks.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">The user is not known to the system.</div>
+<p class="Pp">PAM_CRED_ERR</p>
+<div class="Bd-indent">Failure involving user credentials.</div>
+<p class="Pp">PAM_NEW_AUTHTOK_REQD</p>
+<div class="Bd-indent">Authentication token is no longer valid; new one
+  required.</div>
+<p class="Pp">PAM_SESSION_ERR</p>
+<div class="Bd-indent">Session failure.</div>
+<p class="Pp">PAM_TRY_AGAIN</p>
+<div class="Bd-indent">Failed preliminary check by service.</div>
+<p class="Pp">PAM_AUTHTOK_LOCK_BUSY</p>
+<div class="Bd-indent">Authentication token lock busy.</div>
+<p class="Pp">PAM_AUTHTOK_ERR</p>
+<div class="Bd-indent">Authentication token manipulation error.</div>
+<p class="Pp">PAM_SYSTEM_ERR</p>
+<div class="Bd-indent">System error.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">This module uses the stress_new_pwd data string which tells
+    pam_sm_chauthtok that pam_sm_acct_mgmt says we need a new password. The only
+    possible value for this data string is 'yes'.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<div class="Bd-indent">
+<pre>#%PAM-1.0
+#
+# Any of the following will suffice
+account  required pam_stress.so
+auth     required pam_stress.so
+password required pam_stress.so
+session  required pam_stress.so
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(8).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHORS"><a class="permalink" href="#AUTHORS">AUTHORS</a></h1>
+<p class="Pp">The pam_stress PAM module was developed by Andrew Morgan
+    &lt;morgan@linux.kernel.org&gt;. The man page for pam_stress was written by
+    Lucas Ramage &lt;ramage.lucas@protonmail.com&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

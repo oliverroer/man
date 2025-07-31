@@ -1,0 +1,91 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>e2undo (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">E2UNDO(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">E2UNDO(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">e2undo - Replay an undo log for an ext2/ext3/ext4 file system</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>e2undo</b> [ <b>-f</b> ] [ <b>-h</b> ] [ <b>-n</b> ] [
+    <b>-o</b> <i>offset</i> ] [ <b>-v</b> ] [ <b>-z</b> <i>undo_file</i> ]
+    <i>undo_log device</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>e2undo</b> will replay the undo log <i>undo_log</i> for an
+    ext2/ext3/ext4 file system found on <i>device</i>. This can be used to undo
+    a failed operation by an e2fsprogs program.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b></a></dt>
+  <dd>Normally, <b>e2undo</b> will check the file system superblock to make sure
+      the undo log matches with the file system on the device. If they do not
+      match, <b>e2undo</b> will refuse to apply the undo log as a safety
+      mechanism. The <b>-f</b> option disables this safety mechanism.</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b></a></dt>
+  <dd>Display a usage message.</dd>
+  <dt id="n"><a class="permalink" href="#n"><b>-n</b></a></dt>
+  <dd>Dry-run; do not actually write blocks back to the file system.</dd>
+  <dt id="o"><a class="permalink" href="#o"><b>-o</b><i> offset</i></a></dt>
+  <dd>Specify the file system's <i>offset</i> (in bytes) from the beginning of
+      the device or file.</dd>
+  <dt id="v"><a class="permalink" href="#v"><b>-v</b></a></dt>
+  <dd>Report which block we're currently replaying.</dd>
+  <dt id="z"><a class="permalink" href="#z"><b>-z</b><i> undo_file</i></a></dt>
+  <dd>Before overwriting a file system block, write the old contents of the
+      block to an undo file. This undo file can be used with e2undo(8) to
+      restore the old contents of the file system should something go wrong. If
+      the empty string is passed as the undo_file argument, the undo file will
+      be written to a file named e2undo-<i>device</i>.e2undo in the directory
+      specified via the <i>E2FSPROGS_UNDO_DIR</i> environment variable.
+    <p class="Pp">WARNING: The undo file cannot be used to recover from a power
+        or system crash.</p>
+  </dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><b>e2undo</b> was written by Aneesh Kumar K.V.
+    (aneesh.kumar@linux.vnet.ibm.com)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h1>
+<p class="Pp"><b>e2undo</b> is part of the e2fsprogs package and is available
+    from http://e2fsprogs.sourceforge.net.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>mke2fs</b>(8), <b>tune2fs</b>(8)</p>
+<p class="Pp"></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">February 2023</td>
+    <td class="foot-os">E2fsprogs version 1.47.0</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

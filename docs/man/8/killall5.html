@@ -1,0 +1,77 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>killall5 (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">KILLALL5(8)</td>
+    <td class="head-vol">Linux System Administrator's Manual</td>
+    <td class="head-rtitle">KILLALL5(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">killall5 - send a signal to all processes</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>killall5</b> <b>-signalnumber</b> [<b>-o</b>
+    <i>omitpid</i>[,<i>omitpid</i>...]] [<b>-o</b>
+    <i>omitpid</i>[,<i>omitpid</i>...]...]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>killall5</b> is the SystemV <b>killall</b> command. It sends a
+    signal to all processes except kernel threads and the processes in its own
+    session, so it won't kill the shell that is running the script it was called
+    from. Its primary (only) use is in the <b>rc</b> scripts found in the
+    <i>/etc/init.d</i> directory.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="o"><a class="permalink" href="#o"><b>-o</b> <i>omitpid</i></a></dt>
+  <dd>Tells <b>killall5</b> to omit processes with that process id.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp"><b>killall5</b> can also be invoked as <b>pidof</b>(8), which is
+    simply a (symbolic) link to the <b>killall5</b> program.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<p class="Pp">The program return zero if it killed processes. It returns 2 if no
+    process were killed, and 1 if it was unable to find any processes
+    (<i>/proc/</i> is missing).</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>halt</b>(8), <b>reboot</b>(8), <b>pidof</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><a class="Mt" href="mailto:miquels@cistron.nl">Miquel van
+    Smoorenburg</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">04 Nov 2003</td>
+    <td class="foot-os">sysvinit </td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

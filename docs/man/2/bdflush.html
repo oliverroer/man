@@ -1,0 +1,97 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>bdflush (2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">bdflush(2)</td>
+    <td class="head-vol">System Calls Manual</td>
+    <td class="head-rtitle">bdflush(2)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">bdflush - start, flush, or tune buffer-dirty-flush daemon</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;sys/kdaemon.h&gt;</b></pre>
+<pre><b>[[deprecated]] int bdflush(int </b><i>func</i><b>, long *</b><i>address</i><b>);</b>
+<b>[[deprecated]] int bdflush(int </b><i>func</i><b>, long </b><i>data</i><b>);</b></pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><i>Note</i>: Since Linux 2.6, this system call is deprecated and
+    does nothing. It is likely to disappear altogether in a future kernel
+    release. Nowadays, the task performed by <b>bdflush</b>() is handled by the
+    kernel <i>pdflush</i> thread.</p>
+<p class="Pp"><b>bdflush</b>() starts, flushes, or tunes the buffer-dirty-flush
+    daemon. Only a privileged process (one with the <b>CAP_SYS_ADMIN</b>
+    capability) may call <b>bdflush</b>().</p>
+<p class="Pp">If <i>func</i> is negative or 0, and no daemon has been started,
+    then <b>bdflush</b>() enters the daemon code and never returns.</p>
+<p class="Pp">If <i>func</i> is 1, some dirty buffers are written to disk.</p>
+<p class="Pp">If <i>func</i> is 2 or more and is even (low bit is 0), then
+    <i>address</i> is the address of a long word, and the tuning parameter
+    numbered (<i>func</i>-2)/2 is returned to the caller in that address.</p>
+<p class="Pp">If <i>func</i> is 3 or more and is odd (low bit is 1), then
+    <i>data</i> is a long word, and the kernel sets tuning parameter numbered
+    (<i>func</i>-3)/2 to that value.</p>
+<p class="Pp">The set of parameters, their values, and their valid ranges are
+    defined in the Linux kernel source file <i>fs/buffer.c</i>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
+  VALUE</a></h1>
+<p class="Pp">If <i>func</i> is negative or 0 and the daemon successfully
+    starts, <b>bdflush</b>() never returns. Otherwise, the return value is 0 on
+    success and -1 on failure, with <i>errno</i> set to indicate the error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<dl class="Bl-tag">
+  <dt id="EBUSY"><a class="permalink" href="#EBUSY"><b>EBUSY</b></a></dt>
+  <dd>An attempt was made to enter the daemon code after another process has
+      already entered.</dd>
+  <dt id="EFAULT"><a class="permalink" href="#EFAULT"><b>EFAULT</b></a></dt>
+  <dd><i>address</i> points outside your accessible address space.</dd>
+  <dt id="EINVAL"><a class="permalink" href="#EINVAL"><b>EINVAL</b></a></dt>
+  <dd>An attempt was made to read or write an invalid parameter number, or to
+      write an invalid value to a parameter.</dd>
+  <dt id="EPERM"><a class="permalink" href="#EPERM"><b>EPERM</b></a></dt>
+  <dd>Caller does not have the <b>CAP_SYS_ADMIN</b> capability.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<p class="Pp">Linux.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<p class="Pp">Since glibc 2.23, glibc no longer supports this obsolete system
+    call.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>sync</b>(1), <b>fsync</b>(2), <b>sync</b>(2)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

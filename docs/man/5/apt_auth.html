@@ -1,0 +1,166 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>apt_auth (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">APT_AUTH.CONF(5)</td>
+    <td class="head-vol">APT</td>
+    <td class="head-rtitle">APT_AUTH.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">apt_auth.conf - Login configuration file for APT sources and
+    proxies</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">APT configuration files like <b>sources.list</b>(5) or
+    <b>apt.conf</b>(5) need to be accessible for everyone using apt tools on the
+    system to have access to all package-related information like the available
+    packages in a repository. Login information needed to connect to a proxy or
+    to download data from a repository on the other hand shouldn't always be
+    accessible by everyone and can hence not be placed in a file with
+    world-readable file permissions.</p>
+<p class="Pp">The APT auth.conf file /etc/apt/auth.conf, and .conf files inside
+    /etc/apt/auth.conf.d can be used to store login information in a netrc-like
+    format with restrictive file permissions.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NETRC"><a class="permalink" href="#NETRC">NETRC-LIKE
+  FORMAT</a></h1>
+<p class="Pp">The format defined here is similar to the format of the ~/.netrc
+    file used by <b>ftp</b>(1) and similar programs interacting with servers. It
+    is a simple token-based format with the following tokens being recognized;
+    Unknown tokens will be ignored. Tokens may be separated by spaces, tabs or
+    newlines.</p>
+<p class="Pp">machine
+    <i>[protocol://]</i><i>hostname</i>[:<i>port</i>][/<i>path</i>]</p>
+<div class="Bd-indent">Entries are looked up by searching for the <i>machine</i>
+  token matching the hostname of the URI apt needs login information for.
+  Extending the netrc-format a portnumber can be specified. If no port is given
+  the token matches for all ports. Similar the path is optional and only needed
+  and useful if multiple repositories with different login information reside on
+  the same server. A machine token with a path matches if the path in the URI
+  starts with the path given in the token. Once a match is made, the subsequent
+  tokens are processed, stopping when the end of file is reached or another
+  <i>machine</i> token is encountered.
+<p class="Pp">If protocol is not specified, the entry only matches https and
+    tor+https.</p>
+</div>
+<p class="Pp">login <i>name</i></p>
+<div class="Bd-indent">The username to be used.</div>
+<p class="Pp">password <i>string</i></p>
+<div class="Bd-indent">The password to be used.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLE"><a class="permalink" href="#EXAMPLE">EXAMPLE</a></h1>
+<p class="Pp">Supplying login information for a user named apt with the password
+    debian for the <b>sources.list</b>(5) entry</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>deb https://example.org/debian bookworm main</pre>
+</div>
+<p class="Pp">could be done in the entry directly:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>deb https://apt:debian@example.org/debian bookworm main</pre>
+</div>
+<p class="Pp">Alternatively an entry like the following in the auth.conf file
+    could be used:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>machine example.org
+login apt
+password debian</pre>
+</div>
+<p class="Pp">Or alternatively within a single line:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>machine example.org login apt password debian</pre>
+</div>
+<p class="Pp">If you need to be more specific all of these lines will also apply
+    to the example entry:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>machine example.org/deb login apt password debian
+machine example.org/debian login apt password debian
+machine example.org/debian/ login apt password debian</pre>
+</div>
+<p class="Pp">On the other hand neither of the following lines apply:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>machine example.org:443 login apt password debian
+machine example.org/deb/ login apt password debian
+machine example.org/ubuntu login apt password debian
+machine example.orga login apt password debian
+machine example.net login apt password debian</pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">Basic support for this feature is present since version 0.7.25,
+    but was undocumented for years. The documentation was added in version 1.5
+    changing also the implementation slightly. For maximum backward
+    compatibility you should avoid multiple machine tokens with the same
+    hostname, but if you need multiple they should all have a path specified in
+    the machine token.</p>
+<p class="Pp">Login information in auth.conf are more flexible than those in
+    sources.list. For example, login information can be specified for parts of a
+    repository only, or if the sources.list entry redirects elsewhere, login
+    information for the redirect destination can be supplied.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/apt/auth.conf</p>
+<div class="Bd-indent">Login information for APT sources and proxies in a
+  netrc-like format. Configuration Item: Dir::Etc::netrc.</div>
+<p class="Pp">/etc/apt/auth.conf.d/*.conf</p>
+<div class="Bd-indent">Login information for APT sources and proxies in a
+  netrc-like format. Configuration Item: Dir::Etc::netrcparts.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>apt.conf</b>(5) <b>sources.list</b>(5)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp"><b>APT bug page</b>[1]. If you wish to report a bug in APT, please
+    see /usr/share/doc/debian/bug-reporting.txt or the <b>reportbug</b>(1)
+    command.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><b>APT team</b></p>
+<div class="Bd-indent"></div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES~2"><a class="permalink" href="#NOTES~2">NOTES</a></h1>
+<dl class="Bl-tag">
+  <dt> 1.</dt>
+  <dd>APT bug page</dd>
+</dl>
+<div class="Bd-indent">https://bugs.debian.org/src:apt</div>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">02&#x00A0;December&#x00A0;2019</td>
+    <td class="foot-os">APT 2.8.3</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

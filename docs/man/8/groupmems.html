@@ -1,0 +1,129 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>groupmems (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">GROUPMEMS(8)</td>
+    <td class="head-vol">System Management Commands</td>
+    <td class="head-rtitle">GROUPMEMS(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">groupmems - administer members of a user's primary group</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>groupmems</b> -a&#x00A0;<i>user_name</i> |
+    -d&#x00A0;<i>user_name</i> | [-g&#x00A0;<i>group_name</i>] | -l | -p</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>groupmems</b> command allows a user to administer their own
+    group membership list without the requirement of superuser privileges. The
+    <b>groupmems</b> utility is for systems that configure its users to be in
+    their own name sake primary group (i.e., guest / guest).</p>
+<p class="Pp">Only the superuser, as administrator, can use <b>groupmems</b> to
+    alter the memberships of other groups.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">The options which apply to the <b>groupmems</b> command are:</p>
+<p class="Pp"><b>-a</b>, <b>--add</b>&#x00A0;<i>user_name</i></p>
+<div class="Bd-indent">Add a user to the group membership list.
+<p class="Pp">If the /etc/gshadow file exist, and the group has no entry in the
+    /etc/gshadow file, a new entry will be created.</p>
+</div>
+<p class="Pp"><b>-d</b>, <b>--delete</b>&#x00A0;<i>user_name</i></p>
+<div class="Bd-indent">Delete a user from the group membership list.
+<p class="Pp">If the /etc/gshadow file exist, the user will be removed from the
+    list of members and administrators of the group.</p>
+<p class="Pp">If the /etc/gshadow file exist, and the group has no entry in the
+    /etc/gshadow file, a new entry will be created.</p>
+</div>
+<p class="Pp"><b>-g</b>, <b>--group</b>&#x00A0;<i>group_name</i></p>
+<div class="Bd-indent">The superuser can specify which group membership list to
+  modify.</div>
+<p class="Pp"><b>-h</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help message and exit.</div>
+<p class="Pp"><b>-l</b>, <b>--list</b></p>
+<div class="Bd-indent">List the group membership list.</div>
+<p class="Pp"><b>-p</b>, <b>--purge</b></p>
+<div class="Bd-indent">Purge all users from the group membership list.
+<p class="Pp">If the /etc/gshadow file exist, and the group has no entry in the
+    /etc/gshadow file, a new entry will be created.</p>
+</div>
+<p class="Pp"><b>-R</b>, <b>--root</b>&#x00A0;<i>CHROOT_DIR</i></p>
+<div class="Bd-indent">Apply changes in the <i>CHROOT_DIR</i> directory and use
+  the configuration files from the <i>CHROOT_DIR</i> directory. Only absolute
+  paths are supported.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SETUP"><a class="permalink" href="#SETUP">SETUP</a></h1>
+<p class="Pp">The <b>groupmems</b> executable should be in mode 2710 as user
+    <i>root</i> and in group <i>groups</i>. The system administrator can add
+    users to group <i>groups</i> to allow or disallow them using the
+    <b>groupmems</b> utility to manage their own group membership list.</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>	$ groupadd -r groups
+	$ chmod 2710 groupmems
+	$ chown root.groups groupmems
+	$ groupmems -g groups -a gk4
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="CONFIGURATION"><a class="permalink" href="#CONFIGURATION">CONFIGURATION</a></h1>
+<p class="Pp">The following configuration variables in /etc/login.defs change
+    the behavior of this tool:</p>
+<p class="Pp"><b>MAX_MEMBERS_PER_GROUP</b> (number)</p>
+<div class="Bd-indent">Maximum members per group entry. When the maximum is
+  reached, a new group entry (line) is started in /etc/group (with the same
+  name, same password, and same GID).
+<p class="Pp">The default value is 0, meaning that there are no limits in the
+    number of members in a group.</p>
+<p class="Pp">This feature (split group) permits to limit the length of lines in
+    the group file. This is useful to make sure that lines for NIS groups are
+    not larger than 1024 characters.</p>
+<p class="Pp">If you need to enforce such limit, you can use 25.</p>
+<p class="Pp">Note: split groups may not be supported by all tools (even in the
+    Shadow toolsuite). You should not use this variable unless you really need
+    it.</p>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/group</p>
+<div class="Bd-indent">Group account information.</div>
+<p class="Pp">/etc/gshadow</p>
+<div class="Bd-indent">secure group account information</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>chfn</b>(1), <b>chsh</b>(1), <b>passwd</b>(1),
+    <b>groupadd</b>(8), <b>groupdel</b>(8), <b>useradd</b>(8),
+    <b>userdel</b>(8), <b>usermod</b>(8).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/30/2024</td>
+    <td class="foot-os">shadow-utils 4.13</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>dpkg-realpath (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">dpkg-realpath(1)</td>
+    <td class="head-vol">dpkg suite</td>
+    <td class="head-rtitle">dpkg-realpath(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<br/>
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">dpkg-realpath - print the resolved pathname with DPKG_ROOT
+  support</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>dpkg-realpath</b> [<i>option</i>...] <i>pathname</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>dpkg-realpath</b> is a tool (since dpkg 1.20.1) to resolve a
+    pathname, that takes the <b>dpkg</b>(1) root directory into account, either
+    implicitly from the <b>DPKG_ROOT</b> environment variable or from the
+    command-line <b>--root</b> or <b>--instdir</b> options, and returns an
+    absolute <i>pathname</i> relative to the root directory. The root directory
+    must not be prefixed to the <i>pathname</i> to be resolved.</p>
+<p class="Pp">This is intended to be used by other <b>dpkg</b> helpers, or by
+    maintainer scripts instead of using <b>realpath</b>(1) or <b>readlink</b>(1)
+    to canonicalize pathnames, as these latter commands do not support
+    canonicalization relative to a different root than <i>/</i>.</p>
+<p class="Pp">This program was introduced in dpkg 1.20.1.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="z"><a class="permalink" href="#z"><b>-z</b>, <b>--zero</b></a></dt>
+  <dd>Use a NUL byte to end output lines instead of a new line character (since
+      dpkg 1.20.6).</dd>
+  <dt id="instdir"><a class="permalink" href="#instdir"><b>--instdir</b>
+    <i>directory</i></a></dt>
+  <dd></dd>
+  <dt id="root"><a class="permalink" href="#root"><b>--root</b>
+    <i>directory</i></a></dt>
+  <dd>Set the root directory to <i>directory</i>, which is the base directory
+      that pathnames get canonicalized against. Defaults to
+      &#x00AB;<b>/</b>&#x00BB; if <b>DPKG_ROOT</b> has not been set.</dd>
+  <dt><b>-?</b>, <b>--help</b></dt>
+  <dd>Show the usage message and exit.</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>Show the version and exit.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ENVIRONMENT"><a class="permalink" href="#ENVIRONMENT">ENVIRONMENT</a></h1>
+<dl class="Bl-tag">
+  <dt id="DPKG_ROOT"><a class="permalink" href="#DPKG_ROOT"><b>DPKG_ROOT</b></a></dt>
+  <dd>If set and the <b>--instdir</b> or <b>--root</b> options have not been
+      specified, it will be used as the filesystem root directory.</dd>
+  <dt id="DPKG_COLORS"><a class="permalink" href="#DPKG_COLORS"><b>DPKG_COLORS</b></a></dt>
+  <dd>Sets the color mode. The currently accepted values are: <b>auto</b>
+      (default), <b>always</b> and <b>never</b>.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>realpath</b>(1), <b>readlink</b>(1).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2024-07-17</td>
+    <td class="foot-os">1.22.6</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

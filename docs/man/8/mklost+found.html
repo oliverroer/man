@@ -1,0 +1,76 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>mklost+found (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MKLOST+FOUND(8)</td>
+    <td class="head-vol">System Manager's Manual</td>
+    <td class="head-rtitle">MKLOST+FOUND(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">mklost+found - create a lost+found directory on a mounted Linux
+    second extended file system</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>mklost+found</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>mklost+found</b> is used to create a <i>lost+found</i>
+    directory in the current working directory on a Linux second extended file
+    system. There is normally a <i>lost+found</i> directory in the root
+    directory of each file system.</p>
+<p class="Pp"><b>mklost+found</b> pre-allocates disk blocks to the
+    <i>lost+found</i> directory so that when <b>e2fsck</b>(8) is being run to
+    recover a file system, it does not need to allocate blocks in the file
+    system to store a large number of unlinked files. This ensures that
+    <b>e2fsck</b> will not have to allocate data blocks in the file system
+    during recovery.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">There are none.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp"><b>mklost+found</b> has been written by Remy Card
+    &lt;Remy.Card@linux.org&gt;. It is currently being maintained by Theodore
+    Ts'o &lt;tytso@alum.mit.edu&gt;.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">There are none :-)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h1>
+<p class="Pp"><b>mklost+found</b> is part of the e2fsprogs package and is
+    available from http://e2fsprogs.sourceforge.net.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>e2fsck</b>(8), <b>mke2fs</b>(8)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">February 2023</td>
+    <td class="foot-os">E2fsprogs version 1.47.0</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>strdup (3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">strdup(3)</td>
+    <td class="head-vol">Library Functions Manual</td>
+    <td class="head-rtitle">strdup(3)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">strdup, strndup, strdupa, strndupa - duplicate a string</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="LIBRARY"><a class="permalink" href="#LIBRARY">LIBRARY</a></h1>
+<p class="Pp">Standard C library (<i>libc</i>, <i>-lc</i>)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<pre><b>#include &lt;string.h&gt;</b></pre>
+<pre><b>char *strdup(const char *</b><i>s</i><b>);</b></pre>
+<pre><b>char *strndup(const char </b><i>s</i><b>[.</b><i>n</i><b>], size_t </b><i>n</i><b>);</b>
+<b>char *strdupa(const char *</b><i>s</i><b>);</b>
+<b>char *strndupa(const char </b><i>s</i><b>[.</b><i>n</i><b>], size_t </b><i>n</i><b>);</b></pre>
+<p class="Pp"></p>
+<div class="Bd-indent">Feature Test Macro Requirements for glibc (see
+  <b>feature_test_macros</b>(7)):</div>
+<p class="Pp"><b>strdup</b>():</p>
+<pre>
+<br/>
+    _XOPEN_SOURCE &gt;= 500
+<br/>
+        || /* Since glibc 2.12: */ _POSIX_C_SOURCE &gt;= 200809L
+<br/>
+        || /* glibc &lt;= 2.19: */ _BSD_SOURCE || _SVID_SOURCE</pre>
+<p class="Pp"><b>strndup</b>():</p>
+<pre>
+<br/>
+    Since glibc 2.10:
+<br/>
+        _POSIX_C_SOURCE &gt;= 200809L
+<br/>
+    Before glibc 2.10:
+<br/>
+        _GNU_SOURCE</pre>
+<p class="Pp"><b>strdupa</b>(), <b>strndupa</b>():</p>
+<pre>
+<br/>
+    _GNU_SOURCE</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>strdup</b>() function returns a pointer to a new string
+    which is a duplicate of the string <i>s</i>. Memory for the new string is
+    obtained with <b>malloc</b>(3), and can be freed with <b>free</b>(3).</p>
+<p class="Pp">The <b>strndup</b>() function is similar, but copies at most
+    <i>n</i> bytes. If <i>s</i> is longer than <i>n</i>, only <i>n</i> bytes are
+    copied, and a terminating null byte ('\0') is added.</p>
+<p class="Pp"><b>strdupa</b>() and <b>strndupa</b>() are similar, but use
+    <b>alloca</b>(3) to allocate the buffer.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUE"><a class="permalink" href="#RETURN_VALUE">RETURN
+  VALUE</a></h1>
+<p class="Pp">On success, the <b>strdup</b>() function returns a pointer to the
+    duplicated string. It returns NULL if insufficient memory was available,
+    with <i>errno</i> set to indicate the error.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ERRORS"><a class="permalink" href="#ERRORS">ERRORS</a></h1>
+<dl class="Bl-tag">
+  <dt id="ENOMEM"><a class="permalink" href="#ENOMEM"><b>ENOMEM</b></a></dt>
+  <dd>Insufficient memory available to allocate duplicate string.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="ATTRIBUTES"><a class="permalink" href="#ATTRIBUTES">ATTRIBUTES</a></h1>
+<p class="Pp">For an explanation of the terms used in this section, see
+    <b>attributes</b>(7).</p>
+<table class="tbl" border="1" style="border-style: solid;">
+  <tr>
+    <td><b>Interface</b></td>
+    <td><b>Attribute</b></td>
+    <td><b>Value</b></td>
+  </tr>
+  <tr>
+    <td>strdup (), strndup (), strdupa (), strndupa ()</td>
+    <td>Thread safety</td>
+    <td>MT-Safe</td>
+  </tr>
+</table>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="STANDARDS"><a class="permalink" href="#STANDARDS">STANDARDS</a></h1>
+<dl class="Bl-tag">
+  <dt id="strdup"><a class="permalink" href="#strdup"><b>strdup</b>()</a></dt>
+  <dd></dd>
+  <dt id="strndup"><a class="permalink" href="#strndup"><b>strndup</b>()</a></dt>
+  <dd>POSIX.1-2008.</dd>
+  <dt id="strdupa"><a class="permalink" href="#strdupa"><b>strdupa</b>()</a></dt>
+  <dd></dd>
+  <dt id="strndupa"><a class="permalink" href="#strndupa"><b>strndupa</b>()</a></dt>
+  <dd>GNU.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="HISTORY"><a class="permalink" href="#HISTORY">HISTORY</a></h1>
+<dl class="Bl-tag">
+  <dt id="strdup~2"><a class="permalink" href="#strdup~2"><b>strdup</b>()</a></dt>
+  <dd>SVr4, 4.3BSD-Reno, POSIX.1-2001.</dd>
+  <dt id="strndup~2"><a class="permalink" href="#strndup~2"><b>strndup</b>()</a></dt>
+  <dd>POSIX.1-2008.</dd>
+  <dt id="strdupa~2"><a class="permalink" href="#strdupa~2"><b>strdupa</b>()</a></dt>
+  <dd></dd>
+  <dt id="strndupa~2"><a class="permalink" href="#strndupa~2"><b>strndupa</b>()</a></dt>
+  <dd>GNU.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>alloca</b>(3), <b>calloc</b>(3), <b>free</b>(3),
+    <b>malloc</b>(3), <b>realloc</b>(3), <b>string</b>(3), <b>wcsdup</b>(3)</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-10-31</td>
+    <td class="foot-os">Linux man-pages 6.7</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

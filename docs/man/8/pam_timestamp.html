@@ -1,0 +1,115 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_timestamp (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_TIMESTAMP(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_TIMESTAMP(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_timestamp - Authenticate using cached successful
+    authentication attempts</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_timestamp.so</b> [timestampdir=<i>directory</i>]
+    [timestamp_timeout=<i>number</i>] [verbose] [debug]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">In a nutshell, <i>pam_timestamp</i> caches successful
+    authentication attempts, and allows you to use a recent successful attempt
+    as the basis for authentication. This is similar mechanism which is used in
+    <b>sudo</b>.</p>
+<p class="Pp">When an application opens a session using <i>pam_timestamp</i>, a
+    timestamp file is created in the <i>timestampdir</i> directory for the user.
+    When an application attempts to authenticate the user, a
+    <i>pam_timestamp</i> will treat a sufficiently recent timestamp file as
+    grounds for succeeding.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">timestampdir=directory</p>
+<div class="Bd-indent">Specify an alternate directory where <i>pam_timestamp</i>
+  creates timestamp files.</div>
+<p class="Pp">timestamp_timeout=number</p>
+<div class="Bd-indent">How long should <i>pam_timestamp</i> treat timestamp as
+  valid after their last modification date (in seconds). Default is 300
+  seconds.</div>
+<p class="Pp">verbose</p>
+<div class="Bd-indent">Attempt to inform the user when access is granted.</div>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Turns on debugging messages sent to
+  <b>syslog</b>(3).</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">The <b>auth</b> and <b>session</b> module types are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_AUTH_ERR</p>
+<div class="Bd-indent">The module was not able to retrieve the user name or no
+  valid timestamp file was found.</div>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">Everything was successful.</div>
+<p class="Pp">PAM_SESSION_ERR</p>
+<div class="Bd-indent">Timestamp file could not be created or updated.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">Users can get confused when they are not always asked for
+    passwords when running a given program. Some users reflexively begin typing
+    information before noticing that it is not being asked for.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<div class="Bd-indent">
+<pre>auth sufficient pam_timestamp.so verbose
+auth required   pam_unix.so
+session required pam_unix.so
+session optional pam_timestamp.so
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/var/run/pam_timestamp/...</p>
+<div class="Bd-indent">timestamp files and directories</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam_timestamp_check</b>(8), <b>pam.conf</b>(5),
+    <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_timestamp was written by Nalin Dahyabhai.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

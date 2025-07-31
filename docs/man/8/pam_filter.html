@@ -1,0 +1,131 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_filter (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_FILTER(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_FILTER(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_filter - PAM filter module</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_filter.so</b> [debug] [new_term] [non_term] run1|run2
+    <i>filter</i> [<i>...</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">This module is intended to be a platform for providing access to
+    all of the input/output that passes between the user and the application. It
+    is only suitable for tty-based and (stdin/stdout) applications.</p>
+<p class="Pp">To function this module requires <i>filters</i> to be installed on
+    the system. The single filter provided with the module simply transposes
+    upper and lower case letters in the input and output streams. (This can be
+    very annoying and is not kind to termcap based editors).</p>
+<p class="Pp">Each component of the module has the potential to invoke the
+    desired filter. The filter is always <b>execv</b>(2) with the privilege of
+    the calling application and <i>not</i> that of the user. For this reason it
+    cannot usually be killed by the user without closing their session.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">debug</p>
+<div class="Bd-indent">Print debug information.</div>
+<p class="Pp">new_term</p>
+<div class="Bd-indent">The default action of the filter is to set the
+  <i>PAM_TTY</i> item to indicate the terminal that the user is using to connect
+  to the application. This argument indicates that the filter should set
+  <i>PAM_TTY</i> to the filtered pseudo-terminal.</div>
+<p class="Pp">non_term</p>
+<div class="Bd-indent">don't try to set the <i>PAM_TTY</i> item.</div>
+<p class="Pp">runX</p>
+<div class="Bd-indent">In order that the module can invoke a filter it should
+  know when to invoke it. This argument is required to tell the filter when to
+  do this.
+<p class="Pp">Permitted values for <i>X</i> are <i>1</i> and <i>2</i>. These
+    indicate the precise time that the filter is to be run. To understand this
+    concept it will be useful to have read the <b>pam</b>(3) manual page.
+    Basically, for each management group there are up to two ways of calling the
+    module's functions. In the case of the <i>authentication</i> and
+    <i>session</i> components there are actually two separate functions. For the
+    case of authentication, these functions are <b>pam_authenticate</b>(3) and
+    <b>pam_setcred</b>(3), here <b>run1</b> means run the filter from the
+    <b>pam_authenticate</b> function and <b>run2</b> means run the filter from
+    <b>pam_setcred</b>. In the case of the session modules, <i>run1</i> implies
+    that the filter is invoked at the <b>pam_open_session</b>(3) stage, and
+    <i>run2</i> for <b>pam_close_session</b>(3).</p>
+<p class="Pp">For the case of the account component. Either <i>run1</i> or
+    <i>run2</i> may be used.</p>
+<p class="Pp">For the case of the password component, <i>run1</i> is used to
+    indicate that the filter is run on the first occasion of
+    <b>pam_chauthtok</b>(3) (the <i>PAM_PRELIM_CHECK</i> phase) and <i>run2</i>
+    is used to indicate that the filter is run on the second occasion (the
+    <i>PAM_UPDATE_AUTHTOK</i> phase).</p>
+</div>
+<p class="Pp">filter</p>
+<div class="Bd-indent">The full pathname of the filter to be run and any command
+  line arguments that the filter might expect.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">All module types (<b>auth</b>, <b>account</b>, <b>password</b> and
+    <b>session</b>) are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">The new filter was set successfully.</div>
+<p class="Pp">PAM_ABORT</p>
+<div class="Bd-indent">Critical error, immediate abort.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">Add the following line to /etc/pam.d/login to see how to configure
+    login to transpose upper and lower case letters once the user has logged
+  in:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+        session required pam_filter.so run1 /lib/security/pam_filter/upperLOWER
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam.conf</b>(5), <b>pam.d</b>(5), <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_filter was written by Andrew G. Morgan
+    &lt;morgan@kernel.org&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

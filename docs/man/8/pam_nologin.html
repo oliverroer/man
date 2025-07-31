@@ -1,0 +1,109 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_nologin (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_NOLOGIN(8)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_NOLOGIN(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_nologin - Prevent non-root users from login</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp HP"><b>pam_nologin.so</b> [file=<i>/path/nologin</i>]
+  [successok]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">pam_nologin is a PAM module that prevents users from logging into
+    the system when /var/run/nologin or /etc/nologin exists. The contents of the
+    file are displayed to the user. The pam_nologin module has no effect on the
+    root user's ability to log in.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp">file=/path/nologin</p>
+<div class="Bd-indent">Use this file instead the default /var/run/nologin or
+  /etc/nologin.</div>
+<p class="Pp">successok</p>
+<div class="Bd-indent">Return PAM_SUCCESS if no file exists, the default is
+  PAM_IGNORE.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="MODULE_TYPES_PROVIDED"><a class="permalink" href="#MODULE_TYPES_PROVIDED">MODULE
+  TYPES PROVIDED</a></h1>
+<p class="Pp">The <b>auth</b> and <b>account</b> module types are provided.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="RETURN_VALUES"><a class="permalink" href="#RETURN_VALUES">RETURN
+  VALUES</a></h1>
+<p class="Pp">PAM_AUTH_ERR</p>
+<div class="Bd-indent">The user is not root and /etc/nologin exists, so the user
+  is not permitted to log in.</div>
+<p class="Pp">PAM_BUF_ERR</p>
+<div class="Bd-indent">Memory buffer error.</div>
+<p class="Pp">PAM_IGNORE</p>
+<div class="Bd-indent">This is the default return value.</div>
+<p class="Pp">PAM_SUCCESS</p>
+<div class="Bd-indent">Success: either the user is root or the nologin file does
+  not exist.</div>
+<p class="Pp">PAM_USER_UNKNOWN</p>
+<div class="Bd-indent">User not known to the underlying authentication
+  module.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">The suggested usage for /etc/pam.d/login is:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>auth  required  pam_nologin.so
+<br/>
+      </pre>
+</div>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="NOTES"><a class="permalink" href="#NOTES">NOTES</a></h1>
+<p class="Pp">In order to make this module effective, all login methods should
+    be secured by it. It should be used as a <i>required</i> method listed
+    before any <i>sufficient</i> methods in order to get standard Unix nologin
+    semantics. Note, the use of <b>successok</b> module argument causes the
+    module to return <i>PAM_SUCCESS</i> and as such would break such a
+    configuration - failing <i>sufficient</i> modules would lead to a successful
+    login because the nologin module <i>succeeded</i>.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>nologin</b>(5), <b>pam.conf</b>(5), <b>pam.d</b>(5),
+    <b>pam</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_nologin was written by Michael K. Johnson
+    &lt;johnsonm@redhat.com&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>pam_env (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">PAM_ENV.CONF(5)</td>
+    <td class="head-vol">Linux-PAM Manual</td>
+    <td class="head-rtitle">PAM_ENV.CONF(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">pam_env.conf, environment - the environment variables config
+  files</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The /etc/security/pam_env.conf file specifies the environment
+    variables to be set, unset or modified by <b>pam_env</b>(8). When someone
+    logs in, this file is read and the environment variables are set
+  according.</p>
+<p class="Pp">Each line starts with the variable name, there are then two
+    possible options for each variable DEFAULT and OVERRIDE. DEFAULT allows an
+    administrator to set the value of the variable to some default value, if
+    none is supplied then the empty string is assumed. The OVERRIDE option tells
+    pam_env that it should enter in its value (overriding the default value) if
+    there is one to use. When OVERRIDE is not used, &quot;&quot; is assumed and
+    no override will be done.</p>
+<p class="Pp"><i>VARIABLE</i> [<i>DEFAULT=[value]</i>]
+  [<i>OVERRIDE=[value]</i>]</p>
+<p class="Pp">(Possibly non-existent) environment variables may be used in
+    values using the ${string} syntax and (possibly non-existent) PAM_ITEMs as
+    well as HOME and SHELL may be used in values using the @{string} syntax.
+    Both the $ and @ characters can be backslash escaped to be used as literal
+    values values can be delimited with &quot;&quot;, escaped &quot; not
+    supported. Note that many environment variables that you would like to use
+    may not be set by the time the module is called. For example, ${HOME} is
+    used below several times, but many PAM applications don't make it available
+    by the time you need it. The special variables @{HOME} and @{SHELL} are
+    expanded to the values for the user from his <i>passwd</i> entry.</p>
+<p class="Pp">The &quot;<i>#</i>&quot; character at start of line (no space at
+    front) can be used to mark this line as a comment line.</p>
+<p class="Pp">The /etc/environment file specifies the environment variables to
+    be set. The file must consist of simple <i>NAME=VALUE</i> pairs on separate
+    lines. The <b>pam_env</b>(8) module will read the file after the
+    pam_env.conf file.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXAMPLES"><a class="permalink" href="#EXAMPLES">EXAMPLES</a></h1>
+<p class="Pp">These are some example lines which might be specified in
+    /etc/security/pam_env.conf.</p>
+<p class="Pp">Set the REMOTEHOST variable for any hosts that are remote, default
+    to &quot;localhost&quot; rather than not being set at all</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+      REMOTEHOST     DEFAULT=localhost OVERRIDE=@{PAM_RHOST}
+<br/>
+    </pre>
+</div>
+<p class="Pp">Set the DISPLAY variable if it seems reasonable</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+      DISPLAY        DEFAULT=${REMOTEHOST}:0.0 OVERRIDE=${DISPLAY}
+<br/>
+    </pre>
+</div>
+<p class="Pp">Now some simple variables</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+      PAGER          DEFAULT=less
+<br/>
+      MANPAGER       DEFAULT=less
+<br/>
+      LESS           DEFAULT=&quot;M q e h15 z23 b80&quot;
+<br/>
+      NNTPSERVER     DEFAULT=localhost
+<br/>
+      PATH           DEFAULT=${HOME}/bin:/usr/local/bin:/bin\
+<br/>
+      :/usr/bin:/usr/local/bin/X11:/usr/bin/X11
+<br/>
+      XDG_DATA_HOME  DEFAULT=@{HOME}/share/
+<br/>
+    </pre>
+</div>
+<p class="Pp">Silly examples of escaped variables, just to show how they
+  work.</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>
+<br/>
+      DOLLAR         DEFAULT=\$
+<br/>
+      DOLLARDOLLAR   DEFAULT=        OVERRIDE=\$${DOLLAR}
+<br/>
+      DOLLARPLUS     DEFAULT=\${REMOTEHOST}${REMOTEHOST}
+<br/>
+      ATSIGN         DEFAULT=&quot;&quot;      OVERRIDE=\@
+<br/>
+    </pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>pam_env</b>(8), <b>pam.d</b>(5), <b>pam</b>(7),
+    <b>environ</b>(7)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">pam_env was written by Dave Kinchlea
+  &lt;kinch@kinch.ark.com&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/07/2023</td>
+    <td class="foot-os">Linux-PAM</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

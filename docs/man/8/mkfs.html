@@ -1,0 +1,101 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>mkfs (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MKFS.BFS(8)</td>
+    <td class="head-vol">System Administration</td>
+    <td class="head-rtitle">MKFS.BFS(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">mkfs.bfs - make an SCO bfs filesystem</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>mkfs.bfs</b> [options] <i>device</i> [<i>block-count</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>mkfs.bfs</b> creates an SCO bfs filesystem on a block device
+    (usually a disk partition or a file accessed via the loop device).</p>
+<p class="Pp">The <i>block-count</i> parameter is the desired size of the
+    filesystem, in blocks. If nothing is specified, the entire partition will be
+    used.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<p class="Pp"><b>-N</b>, <b>--inodes</b> <i>number</i></p>
+<div class="Bd-indent">Specify the desired <i>number</i> of inodes (at most
+  512). If nothing is specified, some default number in the range 48-512 is
+  picked depending on the size of the partition.</div>
+<p class="Pp"><b>-V</b>, <b>--vname</b> <i>label</i></p>
+<div class="Bd-indent">Specify the volume <i>label</i>. I have no idea if/where
+  this is used.</div>
+<p class="Pp"><b>-F</b>, <b>--fname</b> <i>name</i></p>
+<div class="Bd-indent">Specify the filesystem <i>name</i>. I have no idea
+  if/where this is used.</div>
+<p class="Pp"><b>--lock</b>[=<i>mode</i>]</p>
+<div class="Bd-indent">Use exclusive BSD lock for device or file it operates.
+  The optional argument <i>mode</i> can be <b>yes</b>, <b>no</b> (or 1 and 0) or
+  <b>nonblock</b>. If the <i>mode</i> argument is omitted, it defaults to
+  <b>yes</b>. This option overwrites environment variable
+  <b>$LOCK_BLOCK_DEVICE</b>. The default is not to use any lock at all, but
+  it&#x2019;s recommended to avoid collisions with <b>systemd-udevd</b>(8) or
+  other tools.</div>
+<p class="Pp"><b>-v</b>, <b>--verbose</b></p>
+<div class="Bd-indent">Explain what is being done.</div>
+<p class="Pp"><b>-c</b></p>
+<div class="Bd-indent">This option is silently ignored.</div>
+<p class="Pp"><b>-l</b></p>
+<div class="Bd-indent">This option is silently ignored.</div>
+<p class="Pp"><b>-h</b>, <b>--help</b></p>
+<div class="Bd-indent">Display help text and exit.</div>
+<p class="Pp"><b>-V</b>, <b>--version</b></p>
+<div class="Bd-indent">Print version and exit. Option <b>-V</b> only works as
+  <b>--version</b> when it is the only option.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="EXIT_STATUS"><a class="permalink" href="#EXIT_STATUS">EXIT
+  STATUS</a></h1>
+<p class="Pp">The exit status returned by <b>mkfs.bfs</b> is 0 when all went
+    well, and 1 when something went wrong.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>mkfs</b>(8)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">For bug reports, use the issue tracker at <i></i>
+    &lt;https://github.com/util-linux/util-linux/issues&gt;.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AVAILABILITY"><a class="permalink" href="#AVAILABILITY">AVAILABILITY</a></h1>
+<p class="Pp">The <b>mkfs.bfs</b> command is part of the util-linux package
+    which can be downloaded from <i>Linux Kernel Archive</i>
+    &lt;https://www.kernel.org/pub/linux/utils/util-linux/&gt;.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-11-21</td>
+    <td class="foot-os">util-linux 2.39.3</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

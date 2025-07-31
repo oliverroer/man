@@ -1,0 +1,96 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>manconv (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">MANCONV(1)</td>
+    <td class="head-vol">Manual pager utils</td>
+    <td class="head-rtitle">MANCONV(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">manconv - convert manual page from one encoding to another</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>manconv</b> <b>-f</b> [<i>from-code</i>[:<i>from-code</i>...]]
+    <b>-t</b> <i>to-code</i> [<b>-dqhV</b>] [<i>filename</i>]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><b>manconv</b> converts a manual page from one encoding to
+    another, like <b>iconv</b>. Unlike <b>iconv</b>, it can try multiple
+    possible input encodings in sequence. This is useful for manual pages
+    installed in directories without an explicit encoding declaration, since
+    they may be in UTF-8 or in a legacy character set.</p>
+<p class="Pp">If an encoding declaration is found on the first line of the
+    manual page, that declaration overrides any input encodings specified on
+    <b>manconv</b>'s command line. Encoding declarations have the following
+    form:</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>'\&quot; -*- coding: UTF-8 -*-</pre>
+</div>
+<p class="Pp">or (if manual page preprocessors are also to be declared):</p>
+<p class="Pp"></p>
+<div class="Bd-indent">
+<pre>'\&quot; t -*- coding: ISO-8859-1 -*-</pre>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b> <i>encodings</i>,
+    <b>--from-code</b> <i>encodings</i></a></dt>
+  <dd>Try each of <i>encodings</i> (a colon-separated list) in sequence as the
+      input encoding. The default is to guess likely input encodings based on
+      the file name.</dd>
+  <dt id="t"><a class="permalink" href="#t"><b>-t</b> <i>encoding</i>,
+    <b>--to-code</b> <i>encoding</i></a></dt>
+  <dd>Convert the manual page to <i>encoding</i>.</dd>
+  <dt id="q"><a class="permalink" href="#q"><b>-q</b>, <b>--quiet</b></a></dt>
+  <dd>Do not issue error messages when the page cannot be converted.</dd>
+  <dt id="d"><a class="permalink" href="#d"><b>-d</b>, <b>--debug</b></a></dt>
+  <dd>Print debugging information.</dd>
+  <dt id="h"><a class="permalink" href="#h"><b>-h</b>, <b>--help</b></a></dt>
+  <dd>Print a help message and exit.</dd>
+  <dt id="V"><a class="permalink" href="#V"><b>-V</b>, <b>--version</b></a></dt>
+  <dd>Display version information.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><i>iconv</i>(1), <i>man</i>(1), <i>man-recode</i>(1)</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<pre>Colin Watson (cjwatson@debian.org).</pre>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">https://gitlab.com/man-db/man-db/-/issues
+  <br/>
+  https://savannah.nongnu.org/bugs/?group=man-db</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">2023-09-23</td>
+    <td class="foot-os">2.12.0</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

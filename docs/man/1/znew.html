@@ -1,0 +1,77 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>znew (1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">ZNEW(1)</td>
+    <td class="head-vol">General Commands Manual</td>
+    <td class="head-rtitle">ZNEW(1)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">znew - recompress .Z files to .gz files</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>znew</b> [ -ftv9PK] [ name.Z ... ]</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">The <b>Znew</b> command recompresses files from .Z (compress)
+    format to .gz (gzip) format. If you want to recompress a file already in
+    gzip format, rename the file to force a .Z extension then apply znew.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="OPTIONS"><a class="permalink" href="#OPTIONS">OPTIONS</a></h1>
+<dl class="Bl-tag">
+  <dt id="f"><a class="permalink" href="#f"><b>-f</b></a></dt>
+  <dd>Force recompression from .Z to .gz format even if a .gz file already
+      exists.</dd>
+  <dt id="t"><a class="permalink" href="#t"><b>-t</b></a></dt>
+  <dd>Tests the new files before deleting originals.</dd>
+  <dt id="v"><a class="permalink" href="#v"><b>-v</b></a></dt>
+  <dd>Verbose. Display the name and percentage reduction for each file
+      compressed.</dd>
+  <dt><b>-9</b></dt>
+  <dd>Use the slowest compression method (optimal compression).</dd>
+  <dt id="P"><a class="permalink" href="#P"><b>-P</b></a></dt>
+  <dd>Use pipes for the conversion to reduce disk space usage.</dd>
+  <dt id="K"><a class="permalink" href="#K"><b>-K</b></a></dt>
+  <dd>Keep a .Z file when it is smaller than the .gz file; implies
+    <b>-t</b>.</dd>
+</dl>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>gzip</b>(1), <b>zmore</b>(1), <b>zdiff</b>(1), <b>zgrep</b>(1),
+    <b>zforce</b>(1), <b>gzexe</b>(1), <b>compress(1)</b></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">If the <b>-P</b> option is used, <b>znew</b> does not maintain the
+    timestamp if <b>touch</b>(1) does not support the <b>-r</b> option, and does
+    not maintain permissions if <b>chmod</b>(1) does not support the
+    <b>--reference</b> option.</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date"></td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

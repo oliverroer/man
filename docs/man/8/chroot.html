@@ -1,0 +1,105 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>chroot (8)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">CHROOT(8)</td>
+    <td class="head-vol">User Commands</td>
+    <td class="head-rtitle">CHROOT(8)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">chroot - run command or interactive shell with special root
+    directory</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SYNOPSIS"><a class="permalink" href="#SYNOPSIS">SYNOPSIS</a></h1>
+<p class="Pp"><b>chroot</b> [<i>OPTION</i>] <i>NEWROOT </i>[<i>COMMAND
+    </i>[<i>ARG</i>]...]
+  <br/>
+  <b>chroot</b> <i>OPTION</i></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">Run COMMAND with root directory set to NEWROOT.</p>
+<dl class="Bl-tag">
+  <dt id="groups"><a class="permalink" href="#groups"><b>--groups</b>=<i>G_LIST</i></a></dt>
+  <dd>specify supplementary groups as g1,g2,..,gN</dd>
+  <dt id="userspec"><a class="permalink" href="#userspec"><b>--userspec</b>=<i>USER</i>:GROUP</a></dt>
+  <dd>specify user and group (ID or name) to use</dd>
+  <dt id="skip"><a class="permalink" href="#skip"><b>--skip-chdir</b></a></dt>
+  <dd>do not change working directory to '/'</dd>
+  <dt id="help"><a class="permalink" href="#help"><b>--help</b></a></dt>
+  <dd>display this help and exit</dd>
+  <dt id="version"><a class="permalink" href="#version"><b>--version</b></a></dt>
+  <dd>output version information and exit</dd>
+</dl>
+<p class="Pp">If no command is given, run '&quot;$SHELL&quot; <b>-i</b>'
+    (default: '/bin/sh <b>-i</b>').</p>
+<section class="Ss">
+<h2 class="Ss" id="Exit_status:"><a class="permalink" href="#Exit_status:">Exit
+  status:</a></h2>
+<dl class="Bl-tag">
+  <dt>125</dt>
+  <dd>if the chroot command itself fails</dd>
+  <dt>126</dt>
+  <dd>if COMMAND is found but cannot be invoked</dd>
+  <dt>127</dt>
+  <dd>if COMMAND cannot be found</dd>
+  <dt>-</dt>
+  <dd>the exit status of COMMAND otherwise</dd>
+</dl>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="AUTHOR"><a class="permalink" href="#AUTHOR">AUTHOR</a></h1>
+<p class="Pp">Written by Roland McGrath.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="REPORTING_BUGS"><a class="permalink" href="#REPORTING_BUGS">REPORTING
+  BUGS</a></h1>
+<p class="Pp">GNU coreutils online help:
+    &lt;https://www.gnu.org/software/coreutils/&gt;
+  <br/>
+  Report any translation bugs to
+  &lt;https://translationproject.org/team/&gt;</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="COPYRIGHT"><a class="permalink" href="#COPYRIGHT">COPYRIGHT</a></h1>
+<p class="Pp">Copyright &#x00A9; 2023 Free Software Foundation, Inc. License
+    GPLv3+: GNU GPL version 3 or later
+    &lt;https://gnu.org/licenses/gpl.html&gt;.
+  <br/>
+  This is free software: you are free to change and redistribute it. There is NO
+    WARRANTY, to the extent permitted by law.</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>chroot</b>(2)</p>
+<p class="Pp">Full documentation
+    &lt;https://www.gnu.org/software/coreutils/chroot&gt;
+  <br/>
+  or available locally via: info '(coreutils) chroot invocation'</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">April 2024</td>
+    <td class="foot-os">GNU coreutils 9.4</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>

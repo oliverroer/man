@@ -1,0 +1,88 @@
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>gshadow (5)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/index.css" rel="stylesheet" />
+</head>
+<body style="overscroll-behavior-x: auto">
+<main>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">GSHADOW(5)</td>
+    <td class="head-vol">File Formats and Configuration</td>
+    <td class="head-rtitle">GSHADOW(5)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp">gshadow - shadowed group file</p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp">/etc/gshadow contains the shadowed information for group
+  accounts.</p>
+<p class="Pp">This file must not be readable by regular users if password
+    security is to be maintained.</p>
+<p class="Pp">Each line of this file contains the following colon-separated
+    fields:</p>
+<p class="Pp"><b>group name</b></p>
+<div class="Bd-indent">It must be a valid group name, which exist on the
+  system.</div>
+<p class="Pp"><b>encrypted password</b></p>
+<div class="Bd-indent">Refer to <b>crypt</b>(3) for details on how this string
+  is interpreted.
+<p class="Pp">If the password field contains some string that is not a valid
+    result of <b>crypt</b>(3), for instance ! or *, users will not be able to
+    use a unix password to access the group (but group members do not need the
+    password).</p>
+<p class="Pp">The password is used when a user who is not a member of the group
+    wants to gain the permissions of this group (see <b>newgrp</b>(1)).</p>
+<p class="Pp">This field may be empty, in which case only the group members can
+    gain the group permissions.</p>
+<p class="Pp">A password field which starts with an exclamation mark means that
+    the password is locked. The remaining characters on the line represent the
+    password field before the password was locked.</p>
+<p class="Pp">This password supersedes any password specified in /etc/group.</p>
+</div>
+<p class="Pp"><b>administrators</b></p>
+<div class="Bd-indent">It must be a comma-separated list of user names.
+<p class="Pp">Administrators can change the password or the members of the
+    group.</p>
+<p class="Pp">Administrators also have the same permissions as the members (see
+    below).</p>
+</div>
+<p class="Pp"><b>members</b></p>
+<div class="Bd-indent">It must be a comma-separated list of user names.
+<p class="Pp">Members can access the group without being prompted for a
+    password.</p>
+<p class="Pp">You should use the same list of users as in /etc/group.</p>
+</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FILES"><a class="permalink" href="#FILES">FILES</a></h1>
+<p class="Pp">/etc/group</p>
+<div class="Bd-indent">Group account information.</div>
+<p class="Pp">/etc/gshadow</p>
+<div class="Bd-indent">Secure group account information.</div>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><b>gpasswd</b>(5), <b>group</b>(5), <b>grpck</b>(8),
+    <b>grpconv</b>(8), <b>newgrp</b>(1).</p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">05/30/2024</td>
+    <td class="foot-os">shadow-utils 4.13</td>
+  </tr>
+</table>
+</main>
+</body>
+</html>
