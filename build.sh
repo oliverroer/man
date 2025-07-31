@@ -20,7 +20,7 @@ htmlhead() {
   echo '<link rel="preconnect" href="https://fonts.googleapis.com">'
   echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">'
   echo '<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">'
-  echo '<link href="/index.css" rel="stylesheet" />'
+  echo '<link href="/man/index.css" rel="stylesheet" />'
   echo '</head>'
   
   echo '<body style="overscroll-behavior-x: auto">'
@@ -82,7 +82,7 @@ index_section() {
   find "$SECTION_DIR" -type f -name "*.html" | sort -u | while read -r FILE; do
     BASE_NAME="${FILE##*/}"
     NAME="${BASE_NAME%.html}"
-    printf '<li><a href="/man/%s/%s">%s</a></li>' "$SECTION" "$BASE_NAME" "$NAME"
+    printf '<li><a href="/man/man/%s/%s">%s</a></li>' "$SECTION" "$BASE_NAME" "$NAME"
   done
 
   echo '</ul>'
@@ -113,6 +113,6 @@ css() {
 
 
 #export
-#postprocess
+postprocess
 css
-#index > "$DOCS_DIR/index.html"
+index > "$DOCS_DIR/index.html"
