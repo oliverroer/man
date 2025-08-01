@@ -103,7 +103,7 @@ index_section() {
   find "$SECTION_DIR" -type f -name "*.html" | sort -u | while read -r FILE; do
     BASE_NAME="${FILE##*/}"
     NAME="${BASE_NAME%.html}"
-    printf '<li><a href="/man/%s/%s">%s</a></li>' "$SECTION" "$BASE_NAME" "$NAME"
+    printf '<li><a href="/man/man/%s/%s">%s</a></li>' "$SECTION" "$BASE_NAME" "$NAME"
   done
 
   echo '</ul>'
