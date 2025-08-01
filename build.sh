@@ -12,6 +12,24 @@ exportraw() {
   docker run --volume "$SCRIPT_DIR":/work --rm -it ubuntu bash /work/export.sh
 }
 
+font_geist() {
+  echo '<link rel="preconnect" href="https://fonts.googleapis.com">'
+  echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+  echo '<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">'
+}
+
+font_geist_mono() {
+  echo '<link rel="preconnect" href="https://fonts.googleapis.com">'
+  echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+  echo '<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap" rel="stylesheet">'
+}
+
+font_fira_mono() {
+  echo '<link rel="preconnect" href="https://fonts.googleapis.com">'
+  echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">'
+  echo '<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">'
+}
+
 htmlhead() {
   local TITLE="$1"
 
@@ -20,9 +38,9 @@ htmlhead() {
   echo '<meta charset="utf-8" />'
   echo '<meta name="viewport" content="width=device-width,initial-scale=1" />'
   echo "<title>${TITLE}</title>"
-  echo '<link rel="preconnect" href="https://fonts.googleapis.com">'
-  echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">'
-  echo '<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">'
+  font_geist
+  font_geist_mono
+  font_fira_mono
   echo '<link href="/man/index.css" rel="stylesheet" />'
   echo '</head>'
   
@@ -118,4 +136,4 @@ css() {
 #exportraw
 #postprocess
 css
-index > "$DOCS_DIR/index.html"
+#index > "$DOCS_DIR/index.html"
