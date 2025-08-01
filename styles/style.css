@@ -1,3 +1,9 @@
+:root, :host {
+  --font-geist: "Geist", sans-serif;
+  --font-geist-mono: "Geist Mono", monospace;
+  --font-fira-mono: "Fira Mono", monospace;
+}
+
 :root,
 :host {
   --color-red-50: oklch(97.1% 0.013 17.38);
@@ -400,20 +406,18 @@
   --space-4xl: calc(var(--spacing) * 16);
 
   --color-bg-1: black;
-  --color-bg-2: var(--color-zinc-950);
-  --color-bg-3: rgb(24, 25, 27);
+  --color-bg-2: rgb(10,10,10);
+  --color-bg-3: hsla(0, 0%, 8%, 1);
   
-
   --color-text: var(--color-zinc-300);
   --color-text-decoration: rgb(0 229 153);
-  --color-text-muted: rgb(148 151 158);
+  --color-text-muted: rgb(161, 161, 161);
   --color-text-head: var(--color-emerald-400);
   --color-text-header: var(--color-emerald-600);
   --color-border-1: var(--color-emerald-800);
   --color-border-1--shadow: var(--color-emerald-950);
 
-  --color-border-1: rgb(24, 25, 27);
-  --color-border-1: rgb(36, 38, 40);
+  --color-border-1: rgb(31, 31, 31);
 
   --color-border-2: var(--color-emerald-900);
   --color-border-muted: var(--color-zinc-700);
@@ -426,9 +430,14 @@
   --color-code-6: var(--color-cyan-800);
 }
 
-body,
-code {
-  font-family: "Fira Mono", monospace;
+body {
+  font-family: var(--font-geist-mono);
+  font-weight: 400;
+  font-style: normal;
+}
+
+code, var {
+  font-family: var(--font-geist-mono);
   font-weight: 400;
   font-style: normal;
 }
@@ -507,14 +516,16 @@ h2 a:hover {
 h1,
 h1 a {
   color: var(--color-text);
-  font-size: var(--text-3xl);
+  font-size: var(--text-2xl);
   font-weight: var(--font-weight-semibold);
 }
 
 h2,
 h2 a {
   color: var(--color-text);
-  font-size: var(--text-2xl);
+  color: var(--color-text-muted);
+  
+  font-size: var(--text-xl);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -539,21 +550,14 @@ dt a:hover {
 
 dd {
   padding: var(--space-xl);
-  background-color: var(--color-bg-3);
+  background-color: var(--color-bg-2);
   border-radius: var(--radius-md);
   color: var(--color-text);
+  border: 1px solid var(--color-border-1);
 }
 
 p {
   margin: var(--space-xl) 0;
-}
-
-/*
- * function
- * example: exit(2) / SYNOPSIS
- */
-.Fn {
-  color: var(--shiki-token-function);
 }
 
 /*
@@ -566,56 +570,10 @@ b {
 }
 
 /*
- * sometimes used for command line args
- * example: mandoc(1) / DESCRIPTION
- */
-code.Fl {
-  color: var(--shiki-token-link);
-}
-
-/*
  * italic
  * example: bash(1) / OPTIONS
  */
 i {
-  color: var(--shiki-token-keyword);
-}
-
-/*
- * example: mandoc(1) / SYNOPSIS
- */
-code.Cm {
-  color: var(--shiki-token-keyword);
-}
-
-/*
- * function argument
- * example: exit(2) / SYNOPSIS
- */
-.Fa {
-  color: var(--shiki-token-keyword);
-}
-
-/*
- * example: mandoc(1) / SYNOPSIS
- */
-var.Ar {
-  color: var(--shiki-token-constant);
-}
-
-/*
- * function return type
- * example: exit(2) / SYNOPSIS
- */
-.Ft {
-  color: var(--shiki-token-keyword);
-}
-
-/*
- * include
- * example: exit(2) / SYNOPSIS
- */
-.In {
   color: var(--shiki-token-keyword);
 }
 
@@ -628,31 +586,148 @@ a {
   text-decoration-color: var(--shiki-token-link);
 }
 
-/* --- TODO ---*/
-.Bd-indent {
+ol li {
+  list-style-type: decimal;
   margin-left: var(--space-2xl);
 }
 
+ul li {
+  margin-left: var(--space-2xl);
+  list-style: square;
+}
+
+li::marker {
+  color: var(--color-text-muted);
+}
+
+
+td {
+  padding: var(--space-base) var(--space-lg);
+}
+
+table.tbl td {
+  border: 1px solid var(--color-border-1);
+}
+
+/* https://man.openbsd.org/mdoc.7 */
+
 /*
- * code snippet
- * example: mandoc(1) / DESCRIPTION
+ * Ar: Command arguments.
+ * example: dash(1) / SYNOPSIS
  */
+
+.Ar {
+  color: var(--shiki-token-constant);
+}
+
+/*
+ * Bd: Indented display block block indendation.
+ * example: bash(1) / DEFINITIONS
+ */
+
+.Bd-indent {
+  margin-left: var(--space-xl);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  padding-left: var(--space-xl);
+  padding-top: var(--space-base);
+  padding-bottom: var(--space-base);
+  border-left: 1px solid var(--color-border-1);
+}
+
+.Bd-indent p:first-child {
+  margin-top: 0;
+}
+
+.Bd-indent p:last-child {
+  margin-bottom: 0;
+}
+
 .Bd.Bd-indent {
   margin: var(--space-lg);
 
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-bg-3);
-  padding: var(--space-base);
+  border: 1px solid var(--color-border-1);
+  padding: var(--space-lg);
   
   background-color: var(--color-bg-2);
-  color: var(--shiki-foreground);
-
- 
+  color: var(--shiki-foreground);  
 }
 
+/*
+ * Bl: Begin a list.
+ * exaple: dash(1) / Complex Commands
+ */
+
+table.Bl-column td {
+  padding: var(--space-base) var(--space-lg);
+  border: 1px solid var(--color-border-1);
+}
+
+/*
+ * Cm: Command modifiers. 
+ * example: mandoc(1) / SYNOPSIS
+ */
+.Cm {
+  color: var(--shiki-token-keyword);
+}
+
+/*
+ * Fa: Function argument or parameter. 
+ * example: exit(2) / SYNOPSIS
+ */
+.Fa {
+  color: var(--shiki-token-keyword);
+}
+
+/*
+ * Command-line flag or option.
+ * example: mandoc(1) / DESCRIPTION
+ */
+.Fl {
+  color: var(--shiki-token-link);
+}
+
+/*
+ * A function name.
+ * example: exit(2) / SYNOPSIS
+ */
+.Fn {
+  color: var(--shiki-token-function);
+}
+
+/*
+ * Ft: A function type.
+ * example: exit(2) / SYNOPSIS
+ */
+.Ft {
+  color: var(--shiki-token-keyword);
+}
+
+/*
+ * The name of an include file.
+ * example: exit(2) / SYNOPSIS
+ */
+.In {
+  color: var(--shiki-token-keyword);
+}
+
+/*
+ * Break a paragraph.
+ * example: dash(1) / NAME
+ */
+.Pp {
+  margin: var(--space-xl) 0; 
+}
+
+/*
+ * Unquoted in-line literal.
+ * example: dash(1) / Invocation
+ */
 .Li {
   padding: 0 var(--space-base);
   border-radius: var(--radius-md);
   background-color: var(--bg-2);
   color: var(--color-text-muted);
 }
+
