@@ -136,4 +136,4 @@ css() {
 #exportraw
 #postprocess
 css
-#index > "$DOCS_DIR/index.html"
+index > "$DOCS_DIR/index.html"
